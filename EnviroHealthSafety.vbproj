@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBB2071A-C9BD-4423-AF53-21DCF4D0BD35}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>EnviroHealthSafety.My.MyApplication</StartupObject>
+    <RootNamespace>EnviroHealthSafety</RootNamespace>
+    <AssemblyName>EnviroHealthSafety</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>S:\WRM\Environmental Health and Safety Database\1_Database\2_PublishingApp\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>Environmental Health and Safety</ProductName>
+    <PublisherName>Bureau of Reclamation</PublisherName>
+    <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>EnviroHealthSafety.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>EnviroHealthSafety.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>burn.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F6F23ADE292914659437E1A6979D127B501A5B99</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>EnviroHealthSafety_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.12.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.5.12.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="EnviroHealthSafety.designer.vb">
+      <DependentUpon>EnviroHealthSafety.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EnviroHealthSafety.vb">
+      <DependentUpon>EnviroHealthSafety.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_WSD_Identification.Designer.vb">
+      <DependentUpon>frmWSC_WSD_Identification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_WSD_Identification.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSC_WSD_UserKnowledge.Designer.vb">
+      <DependentUpon>frmWSC_WSD_UserKnowledge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_WSD_UserKnowledge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSC_WSD.Designer.vb">
+      <DependentUpon>frmWSC_WSD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_WSD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct_Manufacturer.Designer.vb">
+      <DependentUpon>frmProduct_Manufacturer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduct_Manufacturer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct_ResponsibleParty.Designer.vb">
+      <DependentUpon>frmProduct_ResponsibleParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduct_ResponsibleParty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct_Detail.Designer.vb">
+      <DependentUpon>frmProduct_Detail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduct_Detail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSC_WSD_WasteAnalysis.Designer.vb">
+      <DependentUpon>frmWSC_WSD_WasteAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_WSD_WasteAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ProductInventory.Designer.vb">
+      <DependentUpon>frm_ProductInventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ProductInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSC_Search.Designer.vb">
+      <DependentUpon>frmWSC_Search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_Search.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSC_WPD.Designer.vb">
+      <DependentUpon>frmWSC_WPD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC_WPD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWSC.Designer.vb">
+      <DependentUpon>frmWSC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWSC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOffice_Building.Designer.vb">
+      <DependentUpon>frmOffice_Building.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOffice_Building.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOffice_PhysicalLocation.Designer.vb">
+      <DependentUpon>frmOffice_PhysicalLocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOffice_PhysicalLocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOffice.Designer.vb">
+      <DependentUpon>frmOffice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOffice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_SDS.Designer.vb">
+      <DependentUpon>frm_ChemicalProduct_SDS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_SDS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_Location.Designer.vb">
+      <DependentUpon>frm_ChemicalProduct_Location.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_Location.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_Library.Designer.vb">
+      <DependentUpon>frm_ChemicalProduct_Library.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_Library.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_General.Designer.vb">
+      <DependentUpon>frm_ChemicalProduct_General.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_General.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_EHSMain.Designer.vb">
+      <DependentUpon>frm_EHSMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_EHSMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Region.Designer.vb">
+      <DependentUpon>frm_Region.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Region.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_SDSSearch.Designer.vb">
+      <DependentUpon>frm_SDSSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_SDSSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct.Designer.vb">
+      <DependentUpon>frm_ChemicalProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EHS_DataConnection.vb" />
+    <Compile Include="frm_SDSResult.Designer.vb">
+      <DependentUpon>frm_SDSResult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_SDSResult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_Location_Detail.Designer.vb">
+      <DependentUpon>frm_ChemicalProduct_Location_Detail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ChemicalProduct_Location_Detail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mod_UserStartUp.vb" />
+    <Compile Include="mod_WasteStreamCharacterization.vb" />
+    <Compile Include="mod_ChemicalProduct.vb" />
+    <Compile Include="mod_OfficeMaintenance.vb" />
+    <Compile Include="search_SDS.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmWSC_WSD.resx">
+      <DependentUpon>frmWSC_WSD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduct_Manufacturer.resx">
+      <DependentUpon>frmProduct_Manufacturer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduct_ResponsibleParty.resx">
+      <DependentUpon>frmProduct_ResponsibleParty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduct_Detail.resx">
+      <DependentUpon>frmProduct_Detail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWSC_WSD_Identification.resx">
+      <DependentUpon>frmWSC_WSD_Identification.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ProductInventory.resx">
+      <DependentUpon>frm_ProductInventory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWSC_Search.resx">
+      <DependentUpon>frmWSC_Search.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWSC_WPD.resx">
+      <DependentUpon>frmWSC_WPD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWSC.resx">
+      <DependentUpon>frmWSC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOffice_Building.resx">
+      <DependentUpon>frmOffice_Building.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOffice_PhysicalLocation.resx">
+      <DependentUpon>frmOffice_PhysicalLocation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChemicalProduct_SDS.resx">
+      <DependentUpon>frm_ChemicalProduct_SDS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChemicalProduct_Location.resx">
+      <DependentUpon>frm_ChemicalProduct_Location.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChemicalProduct_Library.resx">
+      <DependentUpon>frm_ChemicalProduct_Library.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChemicalProduct_General.resx">
+      <DependentUpon>frm_ChemicalProduct_General.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_EHSMain.resx">
+      <DependentUpon>frm_EHSMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOffice.resx">
+      <DependentUpon>frmOffice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Region.resx">
+      <DependentUpon>frm_Region.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_SDSSearch.resx">
+      <DependentUpon>frm_SDSSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChemicalProduct.resx">
+      <DependentUpon>frm_ChemicalProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_SDSResult.resx">
+      <DependentUpon>frm_SDSResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChemicalProduct_Location_Detail.resx">
+      <DependentUpon>frm_ChemicalProduct_Location_Detail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EnviroHealthSafety.xsc">
+      <DependentUpon>EnviroHealthSafety.xsd</DependentUpon>
+    </None>
+    <None Include="EnviroHealthSafety.xsd" />
+    <None Include="EnviroHealthSafety.xss">
+      <DependentUpon>EnviroHealthSafety.xsd</DependentUpon>
+    </None>
+    <None Include="EnviroHealthSafety_TemporaryKey.pfx" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\EHS_SearchBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action-plan1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adaptation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analysis1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blueprint1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\burn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calibration1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %283%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\evaluation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-transfer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globe1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graph1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group-meeting1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\interface1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifying-glass1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\priority1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\product1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProgressBar1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stakeholder1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\survey1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\training1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transfer-user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\waste1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\writing1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="burn.ico" />
+    <Content Include="Resources\BofR-horiz-pms-white-type.png" />
+    <None Include="Resources\BofR-shield-cmyk.png" />
+    <None Include="Resources\BofR-vert-cmyk-white-type.png" />
+    <None Include="Resources\BofR-vert-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\DataSources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
