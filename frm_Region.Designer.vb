@@ -29,7 +29,7 @@ Partial Class frm_Region
         Dim Region_EmailLabel As System.Windows.Forms.Label
         Dim Region_WebsiteLabel As System.Windows.Forms.Label
         Me.TlkpRegionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.txt_Region_ID = New System.Windows.Forms.TextBox()
         Me.Region_NumberTextBox = New System.Windows.Forms.TextBox()
         Me.Region_AbbrTextBox = New System.Windows.Forms.TextBox()
@@ -37,12 +37,12 @@ Partial Class frm_Region
         Me.Region_WebsiteTextBox = New System.Windows.Forms.TextBox()
         Me.dgv_AssociatedOffice = New System.Windows.Forms.DataGridView()
         Me.TlkpOfficeTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety1 = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data1 = New EnviroHealthSafety_Data()
         Me.TlkpOfficeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TlkpRegionTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpRegionTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.TlkpOfficeTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter()
-        Me.TlkpOffice_TypeTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOffice_TypeTableAdapter()
+        Me.TlkpRegionTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpRegionTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.TlkpOfficeTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter()
+        Me.TlkpOffice_TypeTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOffice_TypeTableAdapter()
         Me.btn_NewOffice = New FontAwesome.Sharp.IconButton()
         Me.cmb_RegionName = New System.Windows.Forms.ComboBox()
         Me.IconButton1 = New FontAwesome.Sharp.IconButton()
@@ -62,10 +62,10 @@ Partial Class frm_Region
         Region_EmailLabel = New System.Windows.Forms.Label()
         Region_WebsiteLabel = New System.Windows.Forms.Label()
         CType(Me.TlkpRegionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgv_AssociatedOffice, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOfficeTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOfficeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -127,12 +127,12 @@ Partial Class frm_Region
         'TlkpRegionBindingSource
         '
         Me.TlkpRegionBindingSource.DataMember = "tlkpRegion"
-        Me.TlkpRegionBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpRegionBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txt_Region_ID
         '
@@ -224,17 +224,17 @@ Partial Class frm_Region
         'TlkpOfficeTypeBindingSource
         '
         Me.TlkpOfficeTypeBindingSource.DataMember = "tlkpOffice_Type"
-        Me.TlkpOfficeTypeBindingSource.DataSource = Me.EnviroHealthSafety1
+        Me.TlkpOfficeTypeBindingSource.DataSource = Me.EnviroHealthSafety_Data1
         '
-        'EnviroHealthSafety1
+        'EnviroHealthSafety_Data1
         '
-        Me.EnviroHealthSafety1.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data1.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TlkpOfficeBindingSource
         '
         Me.TlkpOfficeBindingSource.DataMember = "tlkpOffice"
-        Me.TlkpOfficeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpOfficeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'TlkpRegionTableAdapter
         '
@@ -269,8 +269,8 @@ Partial Class frm_Region
         Me.TableAdapterManager.tlkpRegionTableAdapter = Me.TlkpRegionTableAdapter
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -502,21 +502,21 @@ Partial Class frm_Region
         Me.Name = "frm_Region"
         Me.Text = "Region - Office Management"
         CType(Me.TlkpRegionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgv_AssociatedOffice, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOfficeTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOfficeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents TlkpRegionBindingSource As BindingSource
-    Friend WithEvents TlkpRegionTableAdapter As EnviroHealthSafetyTableAdapters.tlkpRegionTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter
+    Friend WithEvents TlkpRegionTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpRegionTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter
     Friend WithEvents txt_Region_ID As TextBox
     Friend WithEvents Region_NumberTextBox As TextBox
     Friend WithEvents Region_AbbrTextBox As TextBox
@@ -524,9 +524,9 @@ Partial Class frm_Region
     Friend WithEvents Region_WebsiteTextBox As TextBox
     Friend WithEvents dgv_AssociatedOffice As DataGridView
     Friend WithEvents TlkpOfficeBindingSource As BindingSource
-    Friend WithEvents EnviroHealthSafety1 As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data1 As EnviroHealthSafety_Data
     Friend WithEvents TlkpOfficeTypeBindingSource As BindingSource
-    Friend WithEvents TlkpOffice_TypeTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOffice_TypeTableAdapter
+    Friend WithEvents TlkpOffice_TypeTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOffice_TypeTableAdapter
     Friend WithEvents btn_NewOffice As FontAwesome.Sharp.IconButton
     Friend WithEvents cmb_RegionName As ComboBox
     Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton

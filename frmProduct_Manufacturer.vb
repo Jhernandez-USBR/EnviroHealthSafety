@@ -12,8 +12,8 @@
         Me.ControlBox = False
     End Sub
     Private Sub frmProduct_Manufacturer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Manufacturer' table. You can move, or remove it, as needed.
-        Me.Chemical_ManufacturerTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Manufacturer)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Manufacturer' table. You can move, or remove it, as needed.
+        Me.Chemical_ManufacturerTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Manufacturer)
 
         If Not (IsNothing(mod_ChemicalProduct.CP_ManufacturerID) Or mod_ChemicalProduct.CP_ManufacturerID = 0) Then
             Me.Chemical_ManufacturerBindingSource.Position = Me.Chemical_ManufacturerBindingSource.Find("Manufacturer_ID", mod_ChemicalProduct.CP_ManufacturerID)
@@ -29,7 +29,7 @@
         Me.ValidateManufacturerDetail()
         Me.Validate()
         Me.Chemical_ManufacturerBindingSource.EndEdit()
-        Me.Chemical_ManufacturerTableAdapter.Update(Me.EnviroHealthSafety.Chemical_Manufacturer)
+        Me.Chemical_ManufacturerTableAdapter.Update(Me.EnviroHealthSafety_Data.Chemical_Manufacturer)
     End Sub
 
     Private Sub ValidateManufacturerDetail()

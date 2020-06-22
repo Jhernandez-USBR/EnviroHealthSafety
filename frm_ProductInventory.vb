@@ -4,21 +4,21 @@
     Private Sub Chemical_ProductBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.Chemical_ProductBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
 
     End Sub
 
     Private Sub frm_ProductInventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.ztbl_Employee' table. You can move, or remove it, as needed.
-        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety.ztbl_Employee)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Product' table. You can move, or remove it, as needed.
-        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Product)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.ztbl_Employee' table. You can move, or remove it, as needed.
+        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety_Data.ztbl_Employee)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Product' table. You can move, or remove it, as needed.
+        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Product)
 
     End Sub
 
     Private Sub SearchProductName()
         Try
-            Me.Chemical_ProductTableAdapter.FillBySearchProduct(Me.EnviroHealthSafety.Chemical_Product, Me.txt_SearchProductName.Text)
+            Me.Chemical_ProductTableAdapter.FillBySearchProduct(Me.EnviroHealthSafety_Data.Chemical_Product, Me.txt_SearchProductName.Text)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

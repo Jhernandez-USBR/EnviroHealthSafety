@@ -31,11 +31,11 @@ Partial Class frmOffice_PhysicalLocation
         Dim PhysicalLocation_CreateDateLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.TlkpOffice_PhysicalLocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TlkpOffice_PhysicalLocationTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOffice_PhysicalLocationTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.TlkpOffice_BuildingTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOffice_BuildingTableAdapter()
+        Me.TlkpOffice_PhysicalLocationTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOffice_PhysicalLocationTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.TlkpOffice_BuildingTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOffice_BuildingTableAdapter()
         Me.txtPhysicalLocation_ID = New System.Windows.Forms.TextBox()
         Me.OfficeBuilding_IDComboBox = New System.Windows.Forms.ComboBox()
         Me.TlkpOfficeBuildingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -49,8 +49,8 @@ Partial Class frmOffice_PhysicalLocation
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ChemicalProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ChemicalLocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Chemical_LocationTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_LocationTableAdapter()
-        Me.Chemical_ProductTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter()
+        Me.Chemical_LocationTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_LocationTableAdapter()
+        Me.Chemical_ProductTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter()
         Me.lbl_ChemicalDataGridView = New System.Windows.Forms.Label()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.IconToolStripButton2 = New FontAwesome.Sharp.IconToolStripButton()
@@ -76,7 +76,7 @@ Partial Class frmOffice_PhysicalLocation
         PhysicalLocation_CreateDateLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOffice_PhysicalLocationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOfficeBuildingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,15 +174,15 @@ Partial Class frmOffice_PhysicalLocation
         Label2.TabIndex = 17
         Label2.Text = "Office:"
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TlkpOffice_PhysicalLocationBindingSource
         '
         Me.TlkpOffice_PhysicalLocationBindingSource.DataMember = "tlkpOffice_PhysicalLocation"
-        Me.TlkpOffice_PhysicalLocationBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpOffice_PhysicalLocationBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'TlkpOffice_PhysicalLocationTableAdapter
         '
@@ -217,8 +217,8 @@ Partial Class frmOffice_PhysicalLocation
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -275,7 +275,7 @@ Partial Class frmOffice_PhysicalLocation
         'TlkpOfficeBuildingBindingSource
         '
         Me.TlkpOfficeBuildingBindingSource.DataMember = "tlkpOffice_Building"
-        Me.TlkpOfficeBuildingBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpOfficeBuildingBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'PhysicalLocation_NameTextBox
         '
@@ -387,12 +387,12 @@ Partial Class frmOffice_PhysicalLocation
         'ChemicalProductBindingSource
         '
         Me.ChemicalProductBindingSource.DataMember = "Chemical_Product"
-        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'ChemicalLocationBindingSource
         '
         Me.ChemicalLocationBindingSource.DataMember = "Chemical_Location"
-        Me.ChemicalLocationBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ChemicalLocationBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Chemical_LocationTableAdapter
         '
@@ -652,7 +652,7 @@ Partial Class frmOffice_PhysicalLocation
         Me.Name = "frmOffice_PhysicalLocation"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Physical Location"
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOffice_PhysicalLocationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOfficeBuildingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -666,11 +666,11 @@ Partial Class frmOffice_PhysicalLocation
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents TlkpOffice_PhysicalLocationBindingSource As BindingSource
-    Friend WithEvents TlkpOffice_PhysicalLocationTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOffice_PhysicalLocationTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents TlkpOffice_BuildingTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOffice_BuildingTableAdapter
+    Friend WithEvents TlkpOffice_PhysicalLocationTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOffice_PhysicalLocationTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents TlkpOffice_BuildingTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOffice_BuildingTableAdapter
     Friend WithEvents txtPhysicalLocation_ID As TextBox
     Friend WithEvents OfficeBuilding_IDComboBox As ComboBox
     Friend WithEvents PhysicalLocation_NameTextBox As TextBox
@@ -683,9 +683,9 @@ Partial Class frmOffice_PhysicalLocation
     Friend WithEvents PhysicalLocation_CreateDateDateTimePicker As DateTimePicker
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ChemicalLocationBindingSource As BindingSource
-    Friend WithEvents Chemical_LocationTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_LocationTableAdapter
+    Friend WithEvents Chemical_LocationTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_LocationTableAdapter
     Friend WithEvents ChemicalProductBindingSource As BindingSource
-    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter
+    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter
     Friend WithEvents lbl_ChemicalDataGridView As Label
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents IconToolStripButton2 As FontAwesome.Sharp.IconToolStripButton

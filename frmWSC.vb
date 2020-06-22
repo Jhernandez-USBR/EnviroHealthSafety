@@ -3,12 +3,12 @@
 
 
     Private Sub frm_WSC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.ztbl_Employee' table. You can move, or remove it, as needed.
-        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety.ztbl_Employee)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice' table. You can move, or remove it, as needed.
-        Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC' table. You can move, or remove it, as needed.
-        Me.WSCTableAdapter.Fill(Me.EnviroHealthSafety.WSC)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.ztbl_Employee' table. You can move, or remove it, as needed.
+        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety_Data.ztbl_Employee)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice' table. You can move, or remove it, as needed.
+        Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpOffice)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC' table. You can move, or remove it, as needed.
+        Me.WSCTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC)
 
         Try
             If Not (IsNothing(mod_WasteStreamCharacterization.mod_WSC_ID) Or (mod_WasteStreamCharacterization.mod_WSC_ID = 0)) Then
@@ -81,7 +81,7 @@
             Me.ValidateWSC_DetailData()
             Me.Validate()
             Me.WSCBindingSource.EndEdit()
-            Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+            Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
             Me.Refresh()
             MsgBox("Record was saved")
         Catch ex As System.Exception

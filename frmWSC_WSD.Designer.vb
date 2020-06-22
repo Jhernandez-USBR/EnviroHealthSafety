@@ -28,7 +28,7 @@ Partial Class frmWSC_WSD
         Me.TStrip_lbl_HeaderText = New System.Windows.Forms.ToolStripLabel()
         Me.checkbox_UserKnowledge = New System.Windows.Forms.CheckBox()
         Me.WSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.lbl_Determination = New System.Windows.Forms.Label()
         Me.WSCWSDUserKnowledgeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.checkbox_WasteAnalysis = New System.Windows.Forms.CheckBox()
@@ -41,9 +41,9 @@ Partial Class frmWSC_WSD
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.WSC_WSD_WasteAnalysisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.WSCTableAdapter = New EnviroHealthSafetyTableAdapters.WSCTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.WSC_WSD_UserKnowledgeTableAdapter = New EnviroHealthSafetyTableAdapters.WSC_WSD_UserKnowledgeTableAdapter()
+        Me.WSCTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSCTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.WSC_WSD_UserKnowledgeTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_WSD_UserKnowledgeTableAdapter()
         Me.Panel_UserKnowledge = New System.Windows.Forms.Panel()
         Me.IconButton1 = New FontAwesome.Sharp.IconButton()
         Me.dgv_UserKnowledge = New System.Windows.Forms.DataGridView()
@@ -53,11 +53,11 @@ Partial Class frmWSC_WSD
         Me.UserKnowledgeTypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserKnowledgeDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserKnowledgeLibraryIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WSC_WSD_WasteAnalysisTableAdapter = New EnviroHealthSafetyTableAdapters.WSC_WSD_WasteAnalysisTableAdapter()
+        Me.WSC_WSD_WasteAnalysisTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_WSD_WasteAnalysisTableAdapter()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.TStrip_WSCDetermination.SuspendLayout()
         CType(Me.WSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WSCWSDUserKnowledgeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_WasteAnalysis.SuspendLayout()
         CType(Me.dgv_WasteAnalysis, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,12 +103,12 @@ Partial Class frmWSC_WSD
         'WSCBindingSource
         '
         Me.WSCBindingSource.DataMember = "WSC"
-        Me.WSCBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'lbl_Determination
         '
@@ -124,7 +124,7 @@ Partial Class frmWSC_WSD
         'WSCWSDUserKnowledgeBindingSource
         '
         Me.WSCWSDUserKnowledgeBindingSource.DataMember = "WSC_WSD_UserKnowledge"
-        Me.WSCWSDUserKnowledgeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCWSDUserKnowledgeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'checkbox_WasteAnalysis
         '
@@ -234,7 +234,7 @@ Partial Class frmWSC_WSD
         'WSC_WSD_WasteAnalysisBindingSource
         '
         Me.WSC_WSD_WasteAnalysisBindingSource.DataMember = "WSC_WSD_WasteAnalysis"
-        Me.WSC_WSD_WasteAnalysisBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSC_WSD_WasteAnalysisBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSCTableAdapter
         '
@@ -269,8 +269,8 @@ Partial Class frmWSC_WSD
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -436,7 +436,7 @@ Partial Class frmWSC_WSD
         Me.TStrip_WSCDetermination.ResumeLayout(False)
         Me.TStrip_WSCDetermination.PerformLayout()
         CType(Me.WSCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WSCWSDUserKnowledgeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_WasteAnalysis.ResumeLayout(False)
         CType(Me.dgv_WasteAnalysis, System.ComponentModel.ISupportInitialize).EndInit()
@@ -454,11 +454,11 @@ Partial Class frmWSC_WSD
     Friend WithEvents lbl_Determination As Label
     Friend WithEvents checkbox_WasteAnalysis As CheckBox
     Friend WithEvents Panel_WasteAnalysis As Panel
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents WSCBindingSource As BindingSource
-    Friend WithEvents WSCTableAdapter As EnviroHealthSafetyTableAdapters.WSCTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents WSC_WSD_UserKnowledgeTableAdapter As EnviroHealthSafetyTableAdapters.WSC_WSD_UserKnowledgeTableAdapter
+    Friend WithEvents WSCTableAdapter As EnviroHealthSafety_DataTableAdapters.WSCTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents WSC_WSD_UserKnowledgeTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_WSD_UserKnowledgeTableAdapter
     Friend WithEvents WSCWSDUserKnowledgeBindingSource As BindingSource
     Friend WithEvents Panel_UserKnowledge As Panel
     Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
@@ -470,7 +470,7 @@ Partial Class frmWSC_WSD
     Friend WithEvents UserKnowledgeDateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents UserKnowledgeLibraryIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents WSC_WSD_WasteAnalysisBindingSource As BindingSource
-    Friend WithEvents WSC_WSD_WasteAnalysisTableAdapter As EnviroHealthSafetyTableAdapters.WSC_WSD_WasteAnalysisTableAdapter
+    Friend WithEvents WSC_WSD_WasteAnalysisTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_WSD_WasteAnalysisTableAdapter
     Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
     Friend WithEvents dgv_WasteAnalysis As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn

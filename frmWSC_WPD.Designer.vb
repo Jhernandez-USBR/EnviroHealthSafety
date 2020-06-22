@@ -25,10 +25,10 @@ Partial Class frmWSC_WPD
         Me.components = New System.ComponentModel.Container()
         Dim WSC_DescriptionLabel As System.Windows.Forms.Label
         Dim WSC_WasteGenerationLabel As System.Windows.Forms.Label
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.WSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.WSCTableAdapter = New EnviroHealthSafetyTableAdapters.WSCTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
+        Me.WSCTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSCTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
         Me.WSC_IDTextBox = New System.Windows.Forms.TextBox()
         Me.WSC_DescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.WSC_WasteGenerationTextBox = New System.Windows.Forms.TextBox()
@@ -39,7 +39,7 @@ Partial Class frmWSC_WPD
         Me.btn_WSC_WPD = New FontAwesome.Sharp.IconButton()
         WSC_DescriptionLabel = New System.Windows.Forms.Label()
         WSC_WasteGenerationLabel = New System.Windows.Forms.Label()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tStrip_WasteStreamCharacterization.SuspendLayout()
         Me.SuspendLayout()
@@ -65,15 +65,15 @@ Partial Class frmWSC_WPD
         WSC_WasteGenerationLabel.TabIndex = 5
         WSC_WasteGenerationLabel.Text = "Process generating the waste:"
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'WSCBindingSource
         '
         Me.WSCBindingSource.DataMember = "WSC"
-        Me.WSCBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSCTableAdapter
         '
@@ -108,8 +108,8 @@ Partial Class frmWSC_WPD
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -250,7 +250,7 @@ Partial Class frmWSC_WPD
         Me.MinimumSize = New System.Drawing.Size(750, 600)
         Me.Name = "frmWSC_WPD"
         Me.Text = "A. Wate process and description"
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WSCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tStrip_WasteStreamCharacterization.ResumeLayout(False)
         Me.tStrip_WasteStreamCharacterization.PerformLayout()
@@ -259,10 +259,10 @@ Partial Class frmWSC_WPD
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents WSCBindingSource As BindingSource
-    Friend WithEvents WSCTableAdapter As EnviroHealthSafetyTableAdapters.WSCTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
+    Friend WithEvents WSCTableAdapter As EnviroHealthSafety_DataTableAdapters.WSCTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
     Friend WithEvents WSC_IDTextBox As TextBox
     Friend WithEvents WSC_DescriptionTextBox As TextBox
     Friend WithEvents WSC_WasteGenerationTextBox As TextBox

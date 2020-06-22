@@ -2,25 +2,25 @@
 
 
     Private Sub frmProduct_ResponsibleParty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Manufacturer' table. You can move, or remove it, as needed.
-        Me.Chemical_ManufacturerTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Manufacturer)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Product' table. You can move, or remove it, as needed.
-        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Product)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_ResponsibleParty' table. You can move, or remove it, as needed.
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Manufacturer' table. You can move, or remove it, as needed.
+        Me.Chemical_ManufacturerTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Manufacturer)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Product' table. You can move, or remove it, as needed.
+        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Product)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_ResponsibleParty' table. You can move, or remove it, as needed.
 
         Try
             If mod_ChemicalProduct.CP_ProductResponsibleParty = 0 Or
                 IsNothing(mod_ChemicalProduct.CP_ProductResponsibleParty) Then
 
                 If (mod_ChemicalProduct.CP_ProductID = 0 Or IsNothing(mod_ChemicalProduct.CP_ProductID)) Then
-                    Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_ResponsibleParty)
+                    Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty)
                     Me.Chemical_ResponsiblePartyBindingSource.AddNew()
                     Me.Product_IDComboBox.SelectedValue = mod_ChemicalProduct.CP_ProductID
                 Else
-                    Me.Chemical_ResponsiblePartyTableAdapter.FillByProductID(Me.EnviroHealthSafety.Chemical_ResponsibleParty, CP_ProductID)
+                    Me.Chemical_ResponsiblePartyTableAdapter.FillByProductID(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty, CP_ProductID)
 
                     If (Me.Manufacturer_IDComboBox.Text = "" Or IsNothing(Me.Manufacturer_IDComboBox.Text)) Then
-                        Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_ResponsibleParty)
+                        Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty)
                         Me.Chemical_ResponsiblePartyBindingSource.AddNew()
                         Me.Product_IDComboBox.SelectedValue = mod_ChemicalProduct.CP_ProductID
                     Else
@@ -28,7 +28,7 @@
                     End If
                 End If
             Else
-                Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_ResponsibleParty)
+                Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty)
                 Me.Chemical_ResponsiblePartyBindingSource.Position = Me.Chemical_ResponsiblePartyBindingSource.Find(
                     "ResponsibleParty_ID", mod_ChemicalProduct.CP_ProductResponsibleParty)
             End If
@@ -73,7 +73,7 @@
         Try
             Me.Validate()
             Me.Chemical_ResponsiblePartyBindingSource.EndEdit()
-            Me.Chemical_ResponsiblePartyTableAdapter.Update(Me.EnviroHealthSafety.Chemical_ResponsibleParty)
+            Me.Chemical_ResponsiblePartyTableAdapter.Update(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty)
             MsgBox("Save Record! - frmProduct_ResponsibleParty")
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show("Error Saving Product Detail " & vbCrLf & ex.Message)

@@ -29,12 +29,12 @@ Partial Class frmOffice_Building
         Dim Building_CreateDateLabel As System.Windows.Forms.Label
         Dim Building_ReviewDateLabel As System.Windows.Forms.Label
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety = New EnviroHealthSafety_Data()
         Me.TlkpOffice_BuildingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TlkpOffice_BuildingTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOffice_BuildingTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.TlkpOffice_PhysicalLocationTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOffice_PhysicalLocationTableAdapter()
-        Me.TlkpOfficeTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter()
+        Me.TlkpOffice_BuildingTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOffice_BuildingTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.TlkpOffice_PhysicalLocationTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOffice_PhysicalLocationTableAdapter()
+        Me.TlkpOfficeTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter()
         Me.OfficeBuilding_IDTextBox = New System.Windows.Forms.TextBox()
         Me.Office_IDComboBox = New System.Windows.Forms.ComboBox()
         Me.TlkpOfficeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -169,8 +169,8 @@ Partial Class frmOffice_Building
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -510,11 +510,11 @@ Partial Class frmOffice_Building
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety_Data
     Friend WithEvents TlkpOffice_BuildingBindingSource As BindingSource
-    Friend WithEvents TlkpOffice_BuildingTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOffice_BuildingTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter
+    Friend WithEvents TlkpOffice_BuildingTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOffice_BuildingTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter
     Friend WithEvents OfficeBuilding_IDTextBox As TextBox
     Friend WithEvents Office_IDComboBox As ComboBox
     Friend WithEvents Building_NameTextBox As TextBox
@@ -522,7 +522,7 @@ Partial Class frmOffice_Building
     Friend WithEvents Building_CreateDateDateTimePicker As DateTimePicker
     Friend WithEvents Building_ReviewDateDateTimePicker As DateTimePicker
     Friend WithEvents TlkpOfficeBindingSource As BindingSource
-    Friend WithEvents TlkpOffice_PhysicalLocationTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOffice_PhysicalLocationTableAdapter
+    Friend WithEvents TlkpOffice_PhysicalLocationTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOffice_PhysicalLocationTableAdapter
     Friend WithEvents dgv_PhysicalLocation As DataGridView
     Friend WithEvents TlkpOfficePhysicalLocationBindingSource As BindingSource
     Friend WithEvents PhysicalLocationIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

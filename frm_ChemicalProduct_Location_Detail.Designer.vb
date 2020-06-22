@@ -25,7 +25,7 @@ Partial Class frm_ChemicalProduct_Location_Detail
         Me.components = New System.ComponentModel.Container()
         Me.txt_PhysicalLocation = New System.Windows.Forms.ComboBox()
         Me.Chemical_LocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.TlkpOfficePhysicalLocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cmb_Product = New System.Windows.Forms.ComboBox()
         Me.Chemical_ProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -56,14 +56,14 @@ Partial Class frm_ChemicalProduct_Location_Detail
         Me.btn_EditProductDetails = New FontAwesome.Sharp.IconToolStripButton()
         Me.tStrip_lbl_Office = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.Chemical_ProductTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.Chemical_LocationTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_LocationTableAdapter()
-        Me.TlkpOffice_PhysicalLocationTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOffice_PhysicalLocationTableAdapter()
-        Me.Ztbl_EmployeeTableAdapter = New EnviroHealthSafetyTableAdapters.ztbl_EmployeeTableAdapter()
+        Me.Chemical_ProductTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.Chemical_LocationTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_LocationTableAdapter()
+        Me.TlkpOffice_PhysicalLocationTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOffice_PhysicalLocationTableAdapter()
+        Me.Ztbl_EmployeeTableAdapter = New EnviroHealthSafety_DataTableAdapters.ztbl_EmployeeTableAdapter()
         Me.ProductLocation_IDTextBox = New System.Windows.Forms.TextBox()
         CType(Me.Chemical_LocationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOfficePhysicalLocationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chemical_ProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZtblEmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,17 +88,17 @@ Partial Class frm_ChemicalProduct_Location_Detail
         'Chemical_LocationBindingSource
         '
         Me.Chemical_LocationBindingSource.DataMember = "Chemical_Location"
-        Me.Chemical_LocationBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.Chemical_LocationBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TlkpOfficePhysicalLocationBindingSource
         '
         Me.TlkpOfficePhysicalLocationBindingSource.DataMember = "tlkpOffice_PhysicalLocation"
-        Me.TlkpOfficePhysicalLocationBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpOfficePhysicalLocationBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'cmb_Product
         '
@@ -118,7 +118,7 @@ Partial Class frm_ChemicalProduct_Location_Detail
         'Chemical_ProductBindingSource
         '
         Me.Chemical_ProductBindingSource.DataMember = "Chemical_Product"
-        Me.Chemical_ProductBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.Chemical_ProductBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'txt_ActiveLocation
         '
@@ -149,7 +149,7 @@ Partial Class frm_ChemicalProduct_Location_Detail
         'ZtblEmployeeBindingSource
         '
         Me.ZtblEmployeeBindingSource.DataMember = "ztbl_Employee"
-        Me.ZtblEmployeeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ZtblEmployeeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'txt_Facility
         '
@@ -456,8 +456,8 @@ Partial Class frm_ChemicalProduct_Location_Detail
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -538,7 +538,7 @@ Partial Class frm_ChemicalProduct_Location_Detail
         Me.Name = "frm_ChemicalProduct_Location_Detail"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.Chemical_LocationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOfficePhysicalLocationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chemical_ProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZtblEmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -577,15 +577,15 @@ Partial Class frm_ChemicalProduct_Location_Detail
     Friend WithEvents btn_EditProductDetails As FontAwesome.Sharp.IconToolStripButton
     Friend WithEvents tStrip_lbl_Office As ToolStripLabel
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents Chemical_ProductBindingSource As BindingSource
-    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents TlkpOffice_PhysicalLocationTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOffice_PhysicalLocationTableAdapter
+    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents TlkpOffice_PhysicalLocationTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOffice_PhysicalLocationTableAdapter
     Friend WithEvents TlkpOfficePhysicalLocationBindingSource As BindingSource
-    Friend WithEvents Chemical_LocationTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_LocationTableAdapter
+    Friend WithEvents Chemical_LocationTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_LocationTableAdapter
     Friend WithEvents Chemical_LocationBindingSource As BindingSource
-    Friend WithEvents Ztbl_EmployeeTableAdapter As EnviroHealthSafetyTableAdapters.ztbl_EmployeeTableAdapter
+    Friend WithEvents Ztbl_EmployeeTableAdapter As EnviroHealthSafety_DataTableAdapters.ztbl_EmployeeTableAdapter
     Friend WithEvents ProductLocation_IDTextBox As TextBox
     Friend WithEvents ZtblEmployeeBindingSource As BindingSource
 End Class

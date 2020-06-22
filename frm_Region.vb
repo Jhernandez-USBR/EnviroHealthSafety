@@ -2,17 +2,17 @@
     Private Sub TlkpRegionBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.TlkpRegionBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
 
     End Sub
 
     Private Sub frm_Region_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety1.tlkpOffice_Type' table. You can move, or remove it, as needed.
-        Me.TlkpOffice_TypeTableAdapter.Fill(Me.EnviroHealthSafety1.tlkpOffice_Type)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice' table. You can move, or remove it, as needed.
-        Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpRegion' table. You can move, or remove it, as needed.
-        Me.TlkpRegionTableAdapter.Fill(Me.EnviroHealthSafety.tlkpRegion)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data1.tlkpOffice_Type' table. You can move, or remove it, as needed.
+        Me.TlkpOffice_TypeTableAdapter.Fill(Me.EnviroHealthSafety_Data1.tlkpOffice_Type)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice' table. You can move, or remove it, as needed.
+        Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpOffice)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpRegion' table. You can move, or remove it, as needed.
+        Me.TlkpRegionTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpRegion)
 
         DataGridView_OfficeRefresh()
 
@@ -22,7 +22,7 @@
 
     Private Sub DataGridView_OfficeRefresh()
         Try
-            Me.TlkpOfficeTableAdapter.FillBy(Me.EnviroHealthSafety.tlkpOffice, New System.Nullable(Of Integer)(CType(cmb_RegionName.SelectedValue.ToString, Integer)))
+            Me.TlkpOfficeTableAdapter.FillBy(Me.EnviroHealthSafety_Data.tlkpOffice, New System.Nullable(Of Integer)(CType(cmb_RegionName.SelectedValue.ToString, Integer)))
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

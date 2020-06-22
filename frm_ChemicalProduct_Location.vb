@@ -18,7 +18,7 @@
             Dim tempProductID As Integer
             tempProductID = mod_ChemicalProduct.GetCP_ProductID
             'MsgBox("General GetProductID: " & tempProductID)
-            Me.Qry_ChemicalProduct_CurrentLocationTableAdapter.Fill(Me.EnviroHealthSafety.qry_ChemicalProduct_CurrentLocation, tempProductID)
+            Me.Qry_ChemicalProduct_CurrentLocationTableAdapter.Fill(Me.EnviroHealthSafety_Data.qry_ChemicalProduct_CurrentLocation, tempProductID)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

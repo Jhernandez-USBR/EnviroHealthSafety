@@ -3,13 +3,13 @@
     Private Sub WSCBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.WSCBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
 
     End Sub
 
     Private Sub frmWSC_WPD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC' table. You can move, or remove it, as needed.
-        Me.WSCTableAdapter.Fill(Me.EnviroHealthSafety.WSC)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC' table. You can move, or remove it, as needed.
+        Me.WSCTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC)
 
         Try
             If Not IsNothing(mod_WasteStreamCharacterization.mod_WSC_ID) Then

@@ -26,7 +26,7 @@ Partial Class frm_ChemicalProduct
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_ChemicalProduct))
         Me.txt_ProductID = New System.Windows.Forms.TextBox()
         Me.ChemicalProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.txt_ProductName = New System.Windows.Forms.TextBox()
         Me.lbl_ProductName = New System.Windows.Forms.Label()
         Me.lbl_HazardousWaste = New System.Windows.Forms.Label()
@@ -41,17 +41,17 @@ Partial Class frm_ChemicalProduct
         Me.btn_LibraryCard = New System.Windows.Forms.Button()
         Me.Product_InputEmployeeComboBox = New System.Windows.Forms.ComboBox()
         Me.ZtblEmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.Chemical_ProductTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.Chemical_ProductTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter()
         Me.tStrip_Office = New System.Windows.Forms.ToolStrip()
         Me.btn_BackSearchProduct = New FontAwesome.Sharp.IconToolStripButton()
         Me.tStrip_lbl_FullPath = New System.Windows.Forms.ToolStripLabel()
         Me.btn_EditProductDetails = New FontAwesome.Sharp.IconToolStripButton()
         Me.tStrip_lbl_Office = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.Ztbl_EmployeeTableAdapter = New EnviroHealthSafetyTableAdapters.ztbl_EmployeeTableAdapter()
+        Me.Ztbl_EmployeeTableAdapter = New EnviroHealthSafety_DataTableAdapters.ztbl_EmployeeTableAdapter()
         CType(Me.ChemicalProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZtblEmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tStrip_Office.SuspendLayout()
         Me.SuspendLayout()
@@ -68,12 +68,12 @@ Partial Class frm_ChemicalProduct
         'ChemicalProductBindingSource
         '
         Me.ChemicalProductBindingSource.DataMember = "Chemical_Product"
-        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txt_ProductName
         '
@@ -236,7 +236,7 @@ Partial Class frm_ChemicalProduct
         'ZtblEmployeeBindingSource
         '
         Me.ZtblEmployeeBindingSource.DataMember = "ztbl_Employee"
-        Me.ZtblEmployeeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ZtblEmployeeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'TableAdapterManager
         '
@@ -267,8 +267,8 @@ Partial Class frm_ChemicalProduct
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -401,7 +401,7 @@ Partial Class frm_ChemicalProduct
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Chemical Product"
         CType(Me.ChemicalProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZtblEmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tStrip_Office.ResumeLayout(False)
         Me.tStrip_Office.PerformLayout()
@@ -424,9 +424,9 @@ Partial Class frm_ChemicalProduct
     Friend WithEvents btn_CurrentLocation As Button
     Friend WithEvents btn_LibraryCard As Button
     Friend WithEvents Product_InputEmployeeComboBox As ComboBox
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents ChemicalProductBindingSource As BindingSource
     Friend WithEvents tStrip_Office As ToolStrip
     Friend WithEvents btn_BackSearchProduct As FontAwesome.Sharp.IconToolStripButton
@@ -435,5 +435,5 @@ Partial Class frm_ChemicalProduct
     Friend WithEvents tStrip_lbl_Office As ToolStripLabel
     Friend WithEvents ToolStripLabel2 As ToolStripLabel
     Friend WithEvents ZtblEmployeeBindingSource As BindingSource
-    Friend WithEvents Ztbl_EmployeeTableAdapter As EnviroHealthSafetyTableAdapters.ztbl_EmployeeTableAdapter
+    Friend WithEvents Ztbl_EmployeeTableAdapter As EnviroHealthSafety_DataTableAdapters.ztbl_EmployeeTableAdapter
 End Class

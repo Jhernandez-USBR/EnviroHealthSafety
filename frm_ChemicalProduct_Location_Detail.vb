@@ -12,19 +12,19 @@
     Private Sub Chemical_ProductBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.Chemical_ProductBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
 
     End Sub
 
     Private Sub frm_ChemicalProduct_Location_Detail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.ztbl_Employee' table. You can move, or remove it, as needed.
-        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety.ztbl_Employee)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Location' table. You can move, or remove it, as needed.
-        Me.Chemical_LocationTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Location)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice_PhysicalLocation' table. You can move, or remove it, as needed.
-        Me.TlkpOffice_PhysicalLocationTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice_PhysicalLocation)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Product' table. You can move, or remove it, as needed.
-        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Product)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.ztbl_Employee' table. You can move, or remove it, as needed.
+        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety_Data.ztbl_Employee)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Location' table. You can move, or remove it, as needed.
+        Me.Chemical_LocationTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Location)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice_PhysicalLocation' table. You can move, or remove it, as needed.
+        Me.TlkpOffice_PhysicalLocationTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpOffice_PhysicalLocation)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Product' table. You can move, or remove it, as needed.
+        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Product)
 
         ChemicalProduct_SetPhysicalLocation()
 
@@ -38,7 +38,7 @@
                 Dim tempProductLocationID As Integer
                 tempProductLocationID = mod_ChemicalProduct.GetCP_ProductLocationID
                 'MsgBox("General GetProductID: " & tempProductID)
-                Me.Chemical_LocationTableAdapter.FillByFilterPhysicalLocationID(Me.EnviroHealthSafety.Chemical_Location, tempProductLocationID)
+                Me.Chemical_LocationTableAdapter.FillByFilterPhysicalLocationID(Me.EnviroHealthSafety_Data.Chemical_Location, tempProductLocationID)
             End If
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)

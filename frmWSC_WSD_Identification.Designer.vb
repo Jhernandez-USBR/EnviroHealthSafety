@@ -43,7 +43,7 @@ Partial Class frmWSC_WSD_Identification
         Dim WCS_CHW_ToxicLabel As System.Windows.Forms.Label
         Me.Solid261_2_IDTextBox = New System.Windows.Forms.TextBox()
         Me.WSC_SW_261_2BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety.EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.WSC_IDTextBox = New System.Windows.Forms.TextBox()
         Me.Solid_261_2CheckBox = New System.Windows.Forms.CheckBox()
         Me.Solid_261_2_NCitationTextBox = New System.Windows.Forms.TextBox()
@@ -127,16 +127,16 @@ Partial Class frmWSC_WSD_Identification
         Me.Excluded_S261_4vExempt_YDescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.Panel_SolidWaste_Details = New System.Windows.Forms.Panel()
         Me.Panel_ExcludedWaste_Detail = New System.Windows.Forms.Panel()
-        Me.WSC_SW_261_2TableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_SW_261_2TableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.WSC_LHWTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_LHWTableAdapter()
-        Me.WSC_SWE_261_4TableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_SWE_261_4TableAdapter()
-        Me.WSC_LHW_FListTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_LHW_FListTableAdapter()
-        Me.WSC_LHW_UListTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_LHW_UListTableAdapter()
+        Me.WSC_SW_261_2TableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_SW_261_2TableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.WSC_LHWTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_LHWTableAdapter()
+        Me.WSC_SWE_261_4TableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_SWE_261_4TableAdapter()
+        Me.WSC_LHW_FListTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_LHW_FListTableAdapter()
+        Me.WSC_LHW_UListTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_LHW_UListTableAdapter()
         Me.WSCLHWUListBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TlkpLHW_PUTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.tlkpLHW_PUTableAdapter()
-        Me.WSC_LHW_KListTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_LHW_KListTableAdapter()
-        Me.WSC_LHW_PListTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_LHW_PListTableAdapter()
+        Me.TlkpLHW_PUTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpLHW_PUTableAdapter()
+        Me.WSC_LHW_KListTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_LHW_KListTableAdapter()
+        Me.WSC_LHW_PListTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_LHW_PListTableAdapter()
         Me.Panel_CharacteristicWaste = New System.Windows.Forms.Panel()
         Me.RadioButton7 = New System.Windows.Forms.RadioButton()
         Me.RadioButton8 = New System.Windows.Forms.RadioButton()
@@ -168,10 +168,10 @@ Partial Class frmWSC_WSD_Identification
         Me.ToxicConstituent_Contaminant = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.ToxicConstituentDescriptionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.WSCCHWToxicConstituentBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.WSC_CHWTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_CHWTableAdapter()
-        Me.WSC_CHW_ToxicConstituentTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.WSC_CHW_ToxicConstituentTableAdapter()
-        Me.TlkpCHW_Toxic_ConstituentTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.tlkpCHW_Toxic_ConstituentTableAdapter()
-        Me.TlkpLHW_FKTableAdapter = New EnviroHealthSafety.EnviroHealthSafetyTableAdapters.tlkpLHW_FKTableAdapter()
+        Me.WSC_CHWTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_CHWTableAdapter()
+        Me.WSC_CHW_ToxicConstituentTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSC_CHW_ToxicConstituentTableAdapter()
+        Me.TlkpCHW_Toxic_ConstituentTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpCHW_Toxic_ConstituentTableAdapter()
+        Me.TlkpLHW_FKTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpLHW_FKTableAdapter()
         Solid_261_2_NCitationLabel = New System.Windows.Forms.Label()
         Solid_261_2_NDescriptionLabel = New System.Windows.Forms.Label()
         Solid_261_2_NTypeLabel = New System.Windows.Forms.Label()
@@ -191,7 +191,7 @@ Partial Class frmWSC_WSD_Identification
         WSC_CHW_ReactiveLabel = New System.Windows.Forms.Label()
         WCS_CHW_ToxicLabel = New System.Windows.Forms.Label()
         CType(Me.WSC_SW_261_2BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_SolidWaste.SuspendLayout()
         Me.Panel_ExcludedWaste.SuspendLayout()
         CType(Me.WSC_SWE_261_4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -408,12 +408,12 @@ Partial Class frmWSC_WSD_Identification
         'WSC_SW_261_2BindingSource
         '
         Me.WSC_SW_261_2BindingSource.DataMember = "WSC_SW_261_2"
-        Me.WSC_SW_261_2BindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSC_SW_261_2BindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'WSC_IDTextBox
         '
@@ -549,7 +549,7 @@ Partial Class frmWSC_WSD_Identification
         'WSC_SWE_261_4BindingSource
         '
         Me.WSC_SWE_261_4BindingSource.DataMember = "WSC_SWE_261_4"
-        Me.WSC_SWE_261_4BindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSC_SWE_261_4BindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'rbtn_261_4Yes
         '
@@ -684,7 +684,7 @@ Partial Class frmWSC_WSD_Identification
         'TlkpLHWPUBindingSource
         '
         Me.TlkpLHWPUBindingSource.DataMember = "tlkpLHW_PU"
-        Me.TlkpLHWPUBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpLHWPUBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'LHW_PUList_AbstractNo
         '
@@ -719,7 +719,7 @@ Partial Class frmWSC_WSD_Identification
         'WSCLHWUListBindingSource
         '
         Me.WSCLHWUListBindingSource.DataMember = "WSC_LHW_UList"
-        Me.WSCLHWUListBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCLHWUListBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Panel_Listed_UList
         '
@@ -778,7 +778,7 @@ Partial Class frmWSC_WSD_Identification
         'WSC_LHWBindingSource
         '
         Me.WSC_LHWBindingSource.DataMember = "WSC_LHW"
-        Me.WSC_LHWBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSC_LHWBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'rbtn_Listed_UNo
         '
@@ -911,7 +911,7 @@ Partial Class frmWSC_WSD_Identification
         'WSCLHWPListBindingSource
         '
         Me.WSCLHWPListBindingSource.DataMember = "WSC_LHW_PList"
-        Me.WSCLHWPListBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCLHWPListBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Panel_Listed_PList
         '
@@ -1069,7 +1069,7 @@ Partial Class frmWSC_WSD_Identification
         'TlkpLHWFKBindingSource
         '
         Me.TlkpLHWFKBindingSource.DataMember = "tlkpLHW_FK"
-        Me.TlkpLHWFKBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpLHWFKBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'LHW_KList_Description
         '
@@ -1088,7 +1088,7 @@ Partial Class frmWSC_WSD_Identification
         'WSCLHWKListBindingSource
         '
         Me.WSCLHWKListBindingSource.DataMember = "WSC_LHW_KList"
-        Me.WSCLHWKListBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCLHWKListBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Panel_Listed_KList
         '
@@ -1255,7 +1255,7 @@ Partial Class frmWSC_WSD_Identification
         'WSCLHWFListBindingSource
         '
         Me.WSCLHWFListBindingSource.DataMember = "WSC_LHW_FList"
-        Me.WSCLHWFListBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCLHWFListBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Panel_Listed_FList
         '
@@ -1450,8 +1450,8 @@ Partial Class frmWSC_WSD_Identification
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety.EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -1493,7 +1493,7 @@ Partial Class frmWSC_WSD_Identification
         'WSCLHWUListBindingSource1
         '
         Me.WSCLHWUListBindingSource1.DataMember = "WSC_LHW_UList"
-        Me.WSCLHWUListBindingSource1.DataSource = Me.EnviroHealthSafety
+        Me.WSCLHWUListBindingSource1.DataSource = Me.EnviroHealthSafety_Data
         '
         'TlkpLHW_PUTableAdapter
         '
@@ -1659,7 +1659,7 @@ Partial Class frmWSC_WSD_Identification
         'WSC_CHWBindingSource
         '
         Me.WSC_CHWBindingSource.DataMember = "WSC_CHW"
-        Me.WSC_CHWBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSC_CHWBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSC_CHW_IgnitableCheckBox
         '
@@ -1826,7 +1826,7 @@ Partial Class frmWSC_WSD_Identification
         'TlkpCHWToxicConstituentBindingSource
         '
         Me.TlkpCHWToxicConstituentBindingSource.DataMember = "tlkpCHW_Toxic_Constituent"
-        Me.TlkpCHWToxicConstituentBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpCHWToxicConstituentBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'ToxicConstituent_Contaminant
         '
@@ -1852,7 +1852,7 @@ Partial Class frmWSC_WSD_Identification
         'WSCCHWToxicConstituentBindingSource
         '
         Me.WSCCHWToxicConstituentBindingSource.DataMember = "WSC_CHW_ToxicConstituent"
-        Me.WSCCHWToxicConstituentBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCCHWToxicConstituentBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSC_CHWTableAdapter
         '
@@ -1890,7 +1890,7 @@ Partial Class frmWSC_WSD_Identification
         Me.Name = "frmWSC_WSD_Identification"
         Me.Text = "Hazardous Waste Identification Process"
         CType(Me.WSC_SW_261_2BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_SolidWaste.ResumeLayout(False)
         Me.Panel_SolidWaste.PerformLayout()
         Me.Panel_ExcludedWaste.ResumeLayout(False)
@@ -1938,10 +1938,10 @@ Partial Class frmWSC_WSD_Identification
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents WSC_SW_261_2BindingSource As BindingSource
-    Friend WithEvents WSC_SW_261_2TableAdapter As EnviroHealthSafetyTableAdapters.WSC_SW_261_2TableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
+    Friend WithEvents WSC_SW_261_2TableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_SW_261_2TableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
     Friend WithEvents Solid261_2_IDTextBox As TextBox
     Friend WithEvents WSC_IDTextBox As TextBox
     Friend WithEvents Solid_261_2CheckBox As CheckBox
@@ -1950,7 +1950,7 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents rbtn_261_2Yes As RadioButton
     Friend WithEvents rbtn_261_2No As RadioButton
     Friend WithEvents Label1 As Label
-    Friend WithEvents WSC_SWE_261_4TableAdapter As EnviroHealthSafetyTableAdapters.WSC_SWE_261_4TableAdapter
+    Friend WithEvents WSC_SWE_261_4TableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_SWE_261_4TableAdapter
     Friend WithEvents Panel_SolidWaste As Panel
     Friend WithEvents Panel_ExcludedWaste As Panel
     Friend WithEvents Panel_Listed_Control As Panel
@@ -1965,7 +1965,7 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents rbtn_261_4Yes As RadioButton
     Friend WithEvents WSC_IDTextBox1 As TextBox
     Friend WithEvents Excluded_S261_4vExemptCheckBox As CheckBox
-    Friend WithEvents WSC_LHWTableAdapter As EnviroHealthSafetyTableAdapters.WSC_LHWTableAdapter
+    Friend WithEvents WSC_LHWTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_LHWTableAdapter
     Friend WithEvents WSC_LHWBindingSource As BindingSource
     Friend WithEvents WSC_LHW_IDTextBox As TextBox
     Friend WithEvents WSC_LHW_FListCheckBox As CheckBox
@@ -1985,9 +1985,9 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents rbtn_Listed_PYes As RadioButton
     Friend WithEvents rbtn_Listed_PNo As RadioButton
     Friend WithEvents WSCLHWFListBindingSource As BindingSource
-    Friend WithEvents WSC_LHW_FListTableAdapter As EnviroHealthSafetyTableAdapters.WSC_LHW_FListTableAdapter
+    Friend WithEvents WSC_LHW_FListTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_LHW_FListTableAdapter
     Friend WithEvents TlkpLHWFKBindingSource As BindingSource
-    Friend WithEvents TlkpLHW_FKTableAdapter As EnviroHealthSafetyTableAdapters.tlkpLHW_FKTableAdapter
+    Friend WithEvents TlkpLHW_FKTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpLHW_FKTableAdapter
     Friend WithEvents Panel_Listed_KList As Panel
     Friend WithEvents rbtn_Listed_KYes As RadioButton
     Friend WithEvents rbtn_Listed_KNo As RadioButton
@@ -2005,10 +2005,10 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents Button1 As Button
     Friend WithEvents Panel_dgv_UListed As Panel
     Friend WithEvents WSCLHWUListBindingSource As BindingSource
-    Friend WithEvents WSC_LHW_UListTableAdapter As EnviroHealthSafetyTableAdapters.WSC_LHW_UListTableAdapter
+    Friend WithEvents WSC_LHW_UListTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_LHW_UListTableAdapter
     Friend WithEvents WSCLHWUListBindingSource1 As BindingSource
     Friend WithEvents TlkpLHWPUBindingSource As BindingSource
-    Friend WithEvents TlkpLHW_PUTableAdapter As EnviroHealthSafetyTableAdapters.tlkpLHW_PUTableAdapter
+    Friend WithEvents TlkpLHW_PUTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpLHW_PUTableAdapter
     Friend WithEvents WSCLHWUListIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents WSCLHWIDDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents LHWPUListIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -2019,7 +2019,7 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents Panel_dgv_KListed As Panel
     Friend WithEvents Panel_dgv_PListed As Panel
     Friend WithEvents WSCLHWKListBindingSource As BindingSource
-    Friend WithEvents WSC_LHW_KListTableAdapter As EnviroHealthSafetyTableAdapters.WSC_LHW_KListTableAdapter
+    Friend WithEvents WSC_LHW_KListTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_LHW_KListTableAdapter
     Friend WithEvents WSCLHWKListIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LHWKListIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents WSCLHWIDDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -2028,7 +2028,7 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents btn_dgvViewPListed As Button
     Friend WithEvents btn_dgvViewKListed As Button
     Friend WithEvents WSCLHWPListBindingSource As BindingSource
-    Friend WithEvents WSC_LHW_PListTableAdapter As EnviroHealthSafetyTableAdapters.WSC_LHW_PListTableAdapter
+    Friend WithEvents WSC_LHW_PListTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_LHW_PListTableAdapter
     Friend WithEvents WSCLHWPListIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LHWPUListIDDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents WSCLHWIDDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -2038,7 +2038,7 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents Panel_CharacteristicWaste As Panel
     Friend WithEvents Panel_ChacteristicWaste_Toxic As Panel
     Friend WithEvents WSC_CHWBindingSource As BindingSource
-    Friend WithEvents WSC_CHWTableAdapter As EnviroHealthSafetyTableAdapters.WSC_CHWTableAdapter
+    Friend WithEvents WSC_CHWTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_CHWTableAdapter
     Friend WithEvents RadioButton7 As RadioButton
     Friend WithEvents RadioButton8 As RadioButton
     Friend WithEvents RadioButton5 As RadioButton
@@ -2060,9 +2060,9 @@ Partial Class frmWSC_WSD_Identification
     Friend WithEvents WSC_IDTextBox3 As TextBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents WSCCHWToxicConstituentBindingSource As BindingSource
-    Friend WithEvents WSC_CHW_ToxicConstituentTableAdapter As EnviroHealthSafetyTableAdapters.WSC_CHW_ToxicConstituentTableAdapter
+    Friend WithEvents WSC_CHW_ToxicConstituentTableAdapter As EnviroHealthSafety_DataTableAdapters.WSC_CHW_ToxicConstituentTableAdapter
     Friend WithEvents TlkpCHWToxicConstituentBindingSource As BindingSource
-    Friend WithEvents TlkpCHW_Toxic_ConstituentTableAdapter As EnviroHealthSafetyTableAdapters.tlkpCHW_Toxic_ConstituentTableAdapter
+    Friend WithEvents TlkpCHW_Toxic_ConstituentTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpCHW_Toxic_ConstituentTableAdapter
     Friend WithEvents WSCToxicConstiuentIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents WSCCHWIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ToxicConstituentIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

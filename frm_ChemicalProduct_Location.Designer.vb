@@ -33,15 +33,15 @@ Partial Class frm_ChemicalProduct_Location
         Me.ProductLocationActiveDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ProductLocationApprovedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.QryChemicalProductCurrentLocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.FillByFilterProductIDToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.IconToolStripButton1 = New FontAwesome.Sharp.IconToolStripButton()
         Me.IconToolStripButton2 = New FontAwesome.Sharp.IconToolStripButton()
-        Me.Qry_ChemicalProduct_CurrentLocationTableAdapter = New EnviroHealthSafetyTableAdapters.qry_ChemicalProduct_CurrentLocationTableAdapter()
+        Me.Qry_ChemicalProduct_CurrentLocationTableAdapter = New EnviroHealthSafety_DataTableAdapters.qry_ChemicalProduct_CurrentLocationTableAdapter()
         CType(Me.dgv_ProductPhysicalLocation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QryChemicalProductCurrentLocationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FillByFilterProductIDToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -138,12 +138,12 @@ Partial Class frm_ChemicalProduct_Location
         'QryChemicalProductCurrentLocationBindingSource
         '
         Me.QryChemicalProductCurrentLocationBindingSource.DataMember = "qry_ChemicalProduct_CurrentLocation"
-        Me.QryChemicalProductCurrentLocationBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.QryChemicalProductCurrentLocationBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'FillByFilterProductIDToolStrip
         '
@@ -220,16 +220,16 @@ Partial Class frm_ChemicalProduct_Location
         Me.Text = "Current Product Locations"
         CType(Me.dgv_ProductPhysicalLocation, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QryChemicalProductCurrentLocationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FillByFilterProductIDToolStrip.ResumeLayout(False)
         Me.FillByFilterProductIDToolStrip.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents dgv_ProductPhysicalLocation As DataGridView
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents QryChemicalProductCurrentLocationBindingSource As BindingSource
-    Friend WithEvents Qry_ChemicalProduct_CurrentLocationTableAdapter As EnviroHealthSafetyTableAdapters.qry_ChemicalProduct_CurrentLocationTableAdapter
+    Friend WithEvents Qry_ChemicalProduct_CurrentLocationTableAdapter As EnviroHealthSafety_DataTableAdapters.qry_ChemicalProduct_CurrentLocationTableAdapter
     Friend WithEvents ProductLocationIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ProductIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents BuildingNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

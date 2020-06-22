@@ -2,10 +2,10 @@
 
     Private Sub frm_ChemicalProduct_SDS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            'TODO: This line of code loads data into the 'EnviroHealthSafety.SDS' table. You can move, or remove it, as needed.
-            Me.SDSTableAdapter.Fill(Me.EnviroHealthSafety.SDS)
-            'TODO: This line of code loads data into the 'EnviroHealthSafety1.Chemical_Product' table. You can move, or remove it, as needed.
-            Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Product)
+            'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.SDS' table. You can move, or remove it, as needed.
+            Me.SDSTableAdapter.Fill(Me.EnviroHealthSafety_Data.SDS)
+            'TODO: This line of code loads data into the 'EnviroHealthSafety_Data1.Chemical_Product' table. You can move, or remove it, as needed.
+            Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Product)
 
             ChemicalProduct_SetProductID()
 
@@ -19,7 +19,7 @@
             Dim tempProductID As Integer
             tempProductID = mod_ChemicalProduct.GetCP_ProductID
 
-            Me.SDSTableAdapter.FillByFilterProductID(Me.EnviroHealthSafety.SDS, tempProductID)
+            Me.SDSTableAdapter.FillByFilterProductID(Me.EnviroHealthSafety_Data.SDS, tempProductID)
 
             If Me.SDS_IDTextBox.Text = "" Or IsNothing(Me.SDS_IDTextBox.Text) Then
                 Me.SDSBindingSource1.AddNew()
@@ -58,7 +58,7 @@
             ValidateSDSCheckBox()
             Me.Validate()
             Me.SDSBindingSource1.EndEdit()
-            Me.SDSTableAdapter.Update(Me.EnviroHealthSafety.SDS)
+            Me.SDSTableAdapter.Update(Me.EnviroHealthSafety_Data.SDS)
             MsgBox("SDS Record Saved")
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)

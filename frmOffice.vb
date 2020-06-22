@@ -2,7 +2,7 @@
     Private Sub TlkpOfficeBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.TlkpOfficeBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
 
     End Sub
 
@@ -20,14 +20,14 @@
     End Sub
 
     Private Sub frm_Office_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice_Building' table. You can move, or remove it, as needed.
-        Me.TlkpOffice_BuildingTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice_Building)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice_Type' table. You can move, or remove it, as needed.
-        Me.TlkpOffice_TypeTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice_Type)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpRegion' table. You can move, or remove it, as needed.
-        Me.TlkpRegionTableAdapter.Fill(Me.EnviroHealthSafety.tlkpRegion)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice' table. You can move, or remove it, as needed.
-        Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice_Building' table. You can move, or remove it, as needed.
+        Me.TlkpOffice_BuildingTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpOffice_Building)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice_Type' table. You can move, or remove it, as needed.
+        Me.TlkpOffice_TypeTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpOffice_Type)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpRegion' table. You can move, or remove it, as needed.
+        Me.TlkpRegionTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpRegion)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice' table. You can move, or remove it, as needed.
+        Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpOffice)
 
         Try
             If Not IsNothing(mod_OfficeMaintenance.tempOfficeID) Then
@@ -46,7 +46,7 @@
     Private Sub DataGrid_OfficeBuildingRefresh()
         Try
 
-            Me.TlkpOffice_BuildingTableAdapter.FillBy_OfficeBuildingFilter(Me.EnviroHealthSafety.tlkpOffice_Building, New System.Nullable(Of Integer)(CType(txtOffice_ID.Text, Integer)))
+            Me.TlkpOffice_BuildingTableAdapter.FillBy_OfficeBuildingFilter(Me.EnviroHealthSafety_Data.tlkpOffice_Building, New System.Nullable(Of Integer)(CType(txtOffice_ID.Text, Integer)))
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

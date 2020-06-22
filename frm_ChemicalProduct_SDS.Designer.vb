@@ -34,11 +34,11 @@ Partial Class frm_ChemicalProduct_SDS
         Dim SDS_EmergencyPhoneLabel As System.Windows.Forms.Label
         Dim SDS_FirstAidLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_ChemicalProduct_SDS))
-        Me.SDSTableAdapter = New EnviroHealthSafetyTableAdapters.SDSTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
+        Me.SDSTableAdapter = New EnviroHealthSafety_DataTableAdapters.SDSTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
         Me.SDS_IDTextBox = New System.Windows.Forms.TextBox()
         Me.SDSBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.SDS_VersionTextBox = New System.Windows.Forms.TextBox()
         Me.SDS_DescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.SDS_ProductCodeTextBox = New System.Windows.Forms.TextBox()
@@ -53,7 +53,7 @@ Partial Class frm_ChemicalProduct_SDS
         Me.btn_SDSLink = New FontAwesome.Sharp.IconButton()
         Me.Product_IDComboBox = New System.Windows.Forms.ComboBox()
         Me.ChemicalProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Chemical_ProductTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter()
+        Me.Chemical_ProductTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter()
         Me.SDS_EmergencyPhoneTextBox = New System.Windows.Forms.TextBox()
         Me.SDS_FirstAidTextBox = New System.Windows.Forms.TextBox()
         SDS_VersionLabel = New System.Windows.Forms.Label()
@@ -67,7 +67,7 @@ Partial Class frm_ChemicalProduct_SDS
         SDS_EmergencyPhoneLabel = New System.Windows.Forms.Label()
         SDS_FirstAidLabel = New System.Windows.Forms.Label()
         CType(Me.SDSBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FillByFilterProductIDToolStrip.SuspendLayout()
         CType(Me.ChemicalProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -196,8 +196,8 @@ Partial Class frm_ChemicalProduct_SDS
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -232,12 +232,12 @@ Partial Class frm_ChemicalProduct_SDS
         'SDSBindingSource1
         '
         Me.SDSBindingSource1.DataMember = "SDS"
-        Me.SDSBindingSource1.DataSource = Me.EnviroHealthSafety
+        Me.SDSBindingSource1.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'SDS_VersionTextBox
         '
@@ -392,7 +392,7 @@ Partial Class frm_ChemicalProduct_SDS
         'ChemicalProductBindingSource
         '
         Me.ChemicalProductBindingSource.DataMember = "Chemical_Product"
-        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Chemical_ProductTableAdapter
         '
@@ -457,7 +457,7 @@ Partial Class frm_ChemicalProduct_SDS
         Me.Name = "frm_ChemicalProduct_SDS"
         Me.Text = "SDS Card"
         CType(Me.SDSBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FillByFilterProductIDToolStrip.ResumeLayout(False)
         Me.FillByFilterProductIDToolStrip.PerformLayout()
         CType(Me.ChemicalProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -465,8 +465,8 @@ Partial Class frm_ChemicalProduct_SDS
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents SDSTableAdapter As EnviroHealthSafetyTableAdapters.SDSTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
+    Friend WithEvents SDSTableAdapter As EnviroHealthSafety_DataTableAdapters.SDSTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
     Friend WithEvents SDS_IDTextBox As TextBox
     Friend WithEvents SDS_VersionTextBox As TextBox
     Friend WithEvents SDS_DescriptionTextBox As TextBox
@@ -481,9 +481,9 @@ Partial Class frm_ChemicalProduct_SDS
     Friend WithEvents btn_SDSLink As FontAwesome.Sharp.IconButton
     Friend WithEvents SaveToolStripButton As ToolStripButton
     Friend WithEvents Product_IDComboBox As ComboBox
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents ChemicalProductBindingSource As BindingSource
-    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter
+    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter
     Friend WithEvents SDSBindingSource1 As BindingSource
     Friend WithEvents SDS_EmergencyPhoneTextBox As TextBox
     Friend WithEvents SDS_FirstAidTextBox As TextBox

@@ -2,17 +2,17 @@
     Private Sub WSCBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.WSCBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety)
+        Me.TableAdapterManager.UpdateAll(Me.EnviroHealthSafety_Data)
 
     End Sub
 
     Private Sub frmWSC_WSD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC_WSD_WasteAnalysis' table. You can move, or remove it, as needed.
-        Me.WSC_WSD_WasteAnalysisTableAdapter.Fill(Me.EnviroHealthSafety.WSC_WSD_WasteAnalysis)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC_WSD_UserKnowledge' table. You can move, or remove it, as needed.
-        Me.WSC_WSD_UserKnowledgeTableAdapter.Fill(Me.EnviroHealthSafety.WSC_WSD_UserKnowledge)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC' table. You can move, or remove it, as needed.
-        Me.WSCTableAdapter.Fill(Me.EnviroHealthSafety.WSC)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC_WSD_WasteAnalysis' table. You can move, or remove it, as needed.
+        Me.WSC_WSD_WasteAnalysisTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_WSD_WasteAnalysis)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC_WSD_UserKnowledge' table. You can move, or remove it, as needed.
+        Me.WSC_WSD_UserKnowledgeTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_WSD_UserKnowledge)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC' table. You can move, or remove it, as needed.
+        Me.WSCTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC)
 
         If Not (IsNothing(mod_WasteStreamCharacterization.mod_WSC_ID) Or mod_WasteStreamCharacterization.mod_WSC_ID = 0) Then
 
@@ -43,7 +43,7 @@
 
     Private Sub Filterdgv_UserKnowledge()
         Try
-            Me.WSC_WSD_UserKnowledgeTableAdapter.FillByFilterWSCID(Me.EnviroHealthSafety.WSC_WSD_UserKnowledge, mod_WasteStreamCharacterization.mod_WSC_ID)
+            Me.WSC_WSD_UserKnowledgeTableAdapter.FillByFilterWSCID(Me.EnviroHealthSafety_Data.WSC_WSD_UserKnowledge, mod_WasteStreamCharacterization.mod_WSC_ID)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -52,7 +52,7 @@
 
     Private Sub Filterdgv_WasteAnalysis()
         Try
-            Me.WSC_WSD_WasteAnalysisTableAdapter.FillByFilterWSCID(Me.EnviroHealthSafety.WSC_WSD_WasteAnalysis, mod_WasteStreamCharacterization.mod_WSC_ID)
+            Me.WSC_WSD_WasteAnalysisTableAdapter.FillByFilterWSCID(Me.EnviroHealthSafety_Data.WSC_WSD_WasteAnalysis, mod_WasteStreamCharacterization.mod_WSC_ID)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

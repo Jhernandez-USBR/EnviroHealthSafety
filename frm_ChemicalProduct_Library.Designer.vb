@@ -26,7 +26,7 @@ Partial Class frm_ChemicalProduct_Library
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_DocumentActive = New System.Windows.Forms.TextBox()
         Me.LibraryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txt_Description = New System.Windows.Forms.TextBox()
@@ -54,16 +54,16 @@ Partial Class frm_ChemicalProduct_Library
         Me.btn_ViewSDS = New FontAwesome.Sharp.IconButton()
         Me.IconButton2 = New FontAwesome.Sharp.IconButton()
         Me.IconButton1 = New FontAwesome.Sharp.IconButton()
-        Me.LibraryTableAdapter = New EnviroHealthSafetyTableAdapters.LibraryTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.TlkpLibrary_DocumentTypeTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpLibrary_DocumentTypeTableAdapter()
-        Me.TlkpOfficeTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter()
+        Me.LibraryTableAdapter = New EnviroHealthSafety_DataTableAdapters.LibraryTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.TlkpLibrary_DocumentTypeTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpLibrary_DocumentTypeTableAdapter()
+        Me.TlkpOfficeTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter()
         Me.Office_IDComboBox = New System.Windows.Forms.ComboBox()
         Me.TlkpOfficeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Document_TypeComboBox = New System.Windows.Forms.ComboBox()
         Me.TlkpLibraryDocumentTypeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.LibraryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOfficeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpLibraryDocumentTypeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -92,12 +92,12 @@ Partial Class frm_ChemicalProduct_Library
         'LibraryBindingSource
         '
         Me.LibraryBindingSource.DataMember = "Library"
-        Me.LibraryBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.LibraryBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label2
         '
@@ -443,8 +443,8 @@ Partial Class frm_ChemicalProduct_Library
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -492,7 +492,7 @@ Partial Class frm_ChemicalProduct_Library
         'TlkpOfficeBindingSource
         '
         Me.TlkpOfficeBindingSource.DataMember = "tlkpOffice"
-        Me.TlkpOfficeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpOfficeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Document_TypeComboBox
         '
@@ -511,7 +511,7 @@ Partial Class frm_ChemicalProduct_Library
         'TlkpLibraryDocumentTypeBindingSource
         '
         Me.TlkpLibraryDocumentTypeBindingSource.DataMember = "tlkpLibrary_DocumentType"
-        Me.TlkpLibraryDocumentTypeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpLibraryDocumentTypeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'frm_ChemicalProduct_Library
         '
@@ -556,7 +556,7 @@ Partial Class frm_ChemicalProduct_Library
         Me.Name = "frm_ChemicalProduct_Library"
         Me.Text = "Library Record"
         CType(Me.LibraryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOfficeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpLibraryDocumentTypeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -593,14 +593,14 @@ Partial Class frm_ChemicalProduct_Library
     Friend WithEvents btn_ViewSDS As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents LibraryBindingSource As BindingSource
-    Friend WithEvents LibraryTableAdapter As EnviroHealthSafetyTableAdapters.LibraryTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
-    Friend WithEvents TlkpLibrary_DocumentTypeTableAdapter As EnviroHealthSafetyTableAdapters.tlkpLibrary_DocumentTypeTableAdapter
+    Friend WithEvents LibraryTableAdapter As EnviroHealthSafety_DataTableAdapters.LibraryTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
+    Friend WithEvents TlkpLibrary_DocumentTypeTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpLibrary_DocumentTypeTableAdapter
     Friend WithEvents Office_IDComboBox As ComboBox
     Friend WithEvents Document_TypeComboBox As ComboBox
     Friend WithEvents TlkpLibraryDocumentTypeBindingSource As BindingSource
-    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter
+    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter
     Friend WithEvents TlkpOfficeBindingSource As BindingSource
 End Class

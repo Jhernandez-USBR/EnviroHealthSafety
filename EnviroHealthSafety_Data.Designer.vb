@@ -20,9 +20,9 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("EnviroHealthSafety"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("EnviroHealthSafety_Data"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class EnviroHealthSafety
+Partial Public Class EnviroHealthSafety_Data
     Inherits Global.System.Data.DataSet
     
     Private tableChemical_Location As Chemical_LocationDataTable
@@ -34,6 +34,8 @@ Partial Public Class EnviroHealthSafety
     Private tableChemical_ResponsibleParty As Chemical_ResponsiblePartyDataTable
     
     Private tableChemical_WasteGenerator As Chemical_WasteGeneratorDataTable
+    
+    Private tableLibrary As LibraryDataTable
     
     Private tableSDS As SDSDataTable
     
@@ -48,6 +50,8 @@ Partial Public Class EnviroHealthSafety
     Private tabletlkpHazard_Class As tlkpHazard_ClassDataTable
     
     Private tabletlkpHazard_Type As tlkpHazard_TypeDataTable
+    
+    Private tabletlkpHSC_HealthHazard As tlkpHSC_HealthHazardDataTable
     
     Private tabletlkpHSC_PhysicalHazard As tlkpHSC_PhysicalHazardDataTable
     
@@ -77,8 +81,6 @@ Partial Public Class EnviroHealthSafety
     
     Private tabletrace_xe_action_map As trace_xe_action_mapDataTable
     
-    Private tabletrace_xe_event_map As trace_xe_event_mapDataTable
-    
     Private tableWSC As WSCDataTable
     
     Private tableWSC_CHW As WSC_CHWDataTable
@@ -96,6 +98,8 @@ Partial Public Class EnviroHealthSafety
     Private tableWSC_LHW_UList As WSC_LHW_UListDataTable
     
     Private tableWSC_RCRA_Determination As WSC_RCRA_DeterminationDataTable
+    
+    Private tableWSC_SupportingDocument As WSC_SupportingDocumentDataTable
     
     Private tableWSC_SW_261_2 As WSC_SW_261_2DataTable
     
@@ -118,12 +122,6 @@ Partial Public Class EnviroHealthSafety
     Private tableztbl_Dev_TableManager As ztbl_Dev_TableManagerDataTable
     
     Private tableztbl_Employee As ztbl_EmployeeDataTable
-    
-    Private tableLibrary As LibraryDataTable
-    
-    Private tabletlkpHSC_HealthHazard As tlkpHSC_HealthHazardDataTable
-    
-    Private tableWSC_SupportingDocument As WSC_SupportingDocumentDataTable
     
     Private tableqry_SearchProductManufacturer As qry_SearchProductManufacturerDataTable
     
@@ -175,6 +173,9 @@ Partial Public Class EnviroHealthSafety
             If (Not (ds.Tables("Chemical_WasteGenerator")) Is Nothing) Then
                 MyBase.Tables.Add(New Chemical_WasteGeneratorDataTable(ds.Tables("Chemical_WasteGenerator")))
             End If
+            If (Not (ds.Tables("Library")) Is Nothing) Then
+                MyBase.Tables.Add(New LibraryDataTable(ds.Tables("Library")))
+            End If
             If (Not (ds.Tables("SDS")) Is Nothing) Then
                 MyBase.Tables.Add(New SDSDataTable(ds.Tables("SDS")))
             End If
@@ -195,6 +196,9 @@ Partial Public Class EnviroHealthSafety
             End If
             If (Not (ds.Tables("tlkpHazard_Type")) Is Nothing) Then
                 MyBase.Tables.Add(New tlkpHazard_TypeDataTable(ds.Tables("tlkpHazard_Type")))
+            End If
+            If (Not (ds.Tables("tlkpHSC_HealthHazard")) Is Nothing) Then
+                MyBase.Tables.Add(New tlkpHSC_HealthHazardDataTable(ds.Tables("tlkpHSC_HealthHazard")))
             End If
             If (Not (ds.Tables("tlkpHSC_PhysicalHazard")) Is Nothing) Then
                 MyBase.Tables.Add(New tlkpHSC_PhysicalHazardDataTable(ds.Tables("tlkpHSC_PhysicalHazard")))
@@ -238,9 +242,6 @@ Partial Public Class EnviroHealthSafety
             If (Not (ds.Tables("trace_xe_action_map")) Is Nothing) Then
                 MyBase.Tables.Add(New trace_xe_action_mapDataTable(ds.Tables("trace_xe_action_map")))
             End If
-            If (Not (ds.Tables("trace_xe_event_map")) Is Nothing) Then
-                MyBase.Tables.Add(New trace_xe_event_mapDataTable(ds.Tables("trace_xe_event_map")))
-            End If
             If (Not (ds.Tables("WSC")) Is Nothing) Then
                 MyBase.Tables.Add(New WSCDataTable(ds.Tables("WSC")))
             End If
@@ -267,6 +268,9 @@ Partial Public Class EnviroHealthSafety
             End If
             If (Not (ds.Tables("WSC_RCRA_Determination")) Is Nothing) Then
                 MyBase.Tables.Add(New WSC_RCRA_DeterminationDataTable(ds.Tables("WSC_RCRA_Determination")))
+            End If
+            If (Not (ds.Tables("WSC_SupportingDocument")) Is Nothing) Then
+                MyBase.Tables.Add(New WSC_SupportingDocumentDataTable(ds.Tables("WSC_SupportingDocument")))
             End If
             If (Not (ds.Tables("WSC_SW_261_2")) Is Nothing) Then
                 MyBase.Tables.Add(New WSC_SW_261_2DataTable(ds.Tables("WSC_SW_261_2")))
@@ -300,15 +304,6 @@ Partial Public Class EnviroHealthSafety
             End If
             If (Not (ds.Tables("ztbl_Employee")) Is Nothing) Then
                 MyBase.Tables.Add(New ztbl_EmployeeDataTable(ds.Tables("ztbl_Employee")))
-            End If
-            If (Not (ds.Tables("Library")) Is Nothing) Then
-                MyBase.Tables.Add(New LibraryDataTable(ds.Tables("Library")))
-            End If
-            If (Not (ds.Tables("tlkpHSC_HealthHazard")) Is Nothing) Then
-                MyBase.Tables.Add(New tlkpHSC_HealthHazardDataTable(ds.Tables("tlkpHSC_HealthHazard")))
-            End If
-            If (Not (ds.Tables("WSC_SupportingDocument")) Is Nothing) Then
-                MyBase.Tables.Add(New WSC_SupportingDocumentDataTable(ds.Tables("WSC_SupportingDocument")))
             End If
             If (Not (ds.Tables("qry_SearchProductManufacturer")) Is Nothing) Then
                 MyBase.Tables.Add(New qry_SearchProductManufacturerDataTable(ds.Tables("qry_SearchProductManufacturer")))
@@ -390,6 +385,16 @@ Partial Public Class EnviroHealthSafety
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Library() As LibraryDataTable
+        Get
+            Return Me.tableLibrary
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property SDS() As SDSDataTable
         Get
             Return Me.tableSDS
@@ -453,6 +458,16 @@ Partial Public Class EnviroHealthSafety
     Public ReadOnly Property tlkpHazard_Type() As tlkpHazard_TypeDataTable
         Get
             Return Me.tabletlkpHazard_Type
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property tlkpHSC_HealthHazard() As tlkpHSC_HealthHazardDataTable
+        Get
+            Return Me.tabletlkpHSC_HealthHazard
         End Get
     End Property
     
@@ -600,16 +615,6 @@ Partial Public Class EnviroHealthSafety
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property trace_xe_event_map() As trace_xe_event_mapDataTable
-        Get
-            Return Me.tabletrace_xe_event_map
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property WSC() As WSCDataTable
         Get
             Return Me.tableWSC
@@ -693,6 +698,16 @@ Partial Public Class EnviroHealthSafety
     Public ReadOnly Property WSC_RCRA_Determination() As WSC_RCRA_DeterminationDataTable
         Get
             Return Me.tableWSC_RCRA_Determination
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property WSC_SupportingDocument() As WSC_SupportingDocumentDataTable
+        Get
+            Return Me.tableWSC_SupportingDocument
         End Get
     End Property
     
@@ -810,36 +825,6 @@ Partial Public Class EnviroHealthSafety
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Library() As LibraryDataTable
-        Get
-            Return Me.tableLibrary
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property tlkpHSC_HealthHazard() As tlkpHSC_HealthHazardDataTable
-        Get
-            Return Me.tabletlkpHSC_HealthHazard
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property WSC_SupportingDocument() As WSC_SupportingDocumentDataTable
-        Get
-            Return Me.tableWSC_SupportingDocument
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property qry_SearchProductManufacturer() As qry_SearchProductManufacturerDataTable
         Get
             Return Me.tableqry_SearchProductManufacturer
@@ -908,7 +893,7 @@ Partial Public Class EnviroHealthSafety
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As EnviroHealthSafety = CType(MyBase.Clone,EnviroHealthSafety)
+        Dim cln As EnviroHealthSafety_Data = CType(MyBase.Clone,EnviroHealthSafety_Data)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -948,6 +933,9 @@ Partial Public Class EnviroHealthSafety
             If (Not (ds.Tables("Chemical_WasteGenerator")) Is Nothing) Then
                 MyBase.Tables.Add(New Chemical_WasteGeneratorDataTable(ds.Tables("Chemical_WasteGenerator")))
             End If
+            If (Not (ds.Tables("Library")) Is Nothing) Then
+                MyBase.Tables.Add(New LibraryDataTable(ds.Tables("Library")))
+            End If
             If (Not (ds.Tables("SDS")) Is Nothing) Then
                 MyBase.Tables.Add(New SDSDataTable(ds.Tables("SDS")))
             End If
@@ -968,6 +956,9 @@ Partial Public Class EnviroHealthSafety
             End If
             If (Not (ds.Tables("tlkpHazard_Type")) Is Nothing) Then
                 MyBase.Tables.Add(New tlkpHazard_TypeDataTable(ds.Tables("tlkpHazard_Type")))
+            End If
+            If (Not (ds.Tables("tlkpHSC_HealthHazard")) Is Nothing) Then
+                MyBase.Tables.Add(New tlkpHSC_HealthHazardDataTable(ds.Tables("tlkpHSC_HealthHazard")))
             End If
             If (Not (ds.Tables("tlkpHSC_PhysicalHazard")) Is Nothing) Then
                 MyBase.Tables.Add(New tlkpHSC_PhysicalHazardDataTable(ds.Tables("tlkpHSC_PhysicalHazard")))
@@ -1011,9 +1002,6 @@ Partial Public Class EnviroHealthSafety
             If (Not (ds.Tables("trace_xe_action_map")) Is Nothing) Then
                 MyBase.Tables.Add(New trace_xe_action_mapDataTable(ds.Tables("trace_xe_action_map")))
             End If
-            If (Not (ds.Tables("trace_xe_event_map")) Is Nothing) Then
-                MyBase.Tables.Add(New trace_xe_event_mapDataTable(ds.Tables("trace_xe_event_map")))
-            End If
             If (Not (ds.Tables("WSC")) Is Nothing) Then
                 MyBase.Tables.Add(New WSCDataTable(ds.Tables("WSC")))
             End If
@@ -1040,6 +1028,9 @@ Partial Public Class EnviroHealthSafety
             End If
             If (Not (ds.Tables("WSC_RCRA_Determination")) Is Nothing) Then
                 MyBase.Tables.Add(New WSC_RCRA_DeterminationDataTable(ds.Tables("WSC_RCRA_Determination")))
+            End If
+            If (Not (ds.Tables("WSC_SupportingDocument")) Is Nothing) Then
+                MyBase.Tables.Add(New WSC_SupportingDocumentDataTable(ds.Tables("WSC_SupportingDocument")))
             End If
             If (Not (ds.Tables("WSC_SW_261_2")) Is Nothing) Then
                 MyBase.Tables.Add(New WSC_SW_261_2DataTable(ds.Tables("WSC_SW_261_2")))
@@ -1073,15 +1064,6 @@ Partial Public Class EnviroHealthSafety
             End If
             If (Not (ds.Tables("ztbl_Employee")) Is Nothing) Then
                 MyBase.Tables.Add(New ztbl_EmployeeDataTable(ds.Tables("ztbl_Employee")))
-            End If
-            If (Not (ds.Tables("Library")) Is Nothing) Then
-                MyBase.Tables.Add(New LibraryDataTable(ds.Tables("Library")))
-            End If
-            If (Not (ds.Tables("tlkpHSC_HealthHazard")) Is Nothing) Then
-                MyBase.Tables.Add(New tlkpHSC_HealthHazardDataTable(ds.Tables("tlkpHSC_HealthHazard")))
-            End If
-            If (Not (ds.Tables("WSC_SupportingDocument")) Is Nothing) Then
-                MyBase.Tables.Add(New WSC_SupportingDocumentDataTable(ds.Tables("WSC_SupportingDocument")))
             End If
             If (Not (ds.Tables("qry_SearchProductManufacturer")) Is Nothing) Then
                 MyBase.Tables.Add(New qry_SearchProductManufacturerDataTable(ds.Tables("qry_SearchProductManufacturer")))
@@ -1154,6 +1136,12 @@ Partial Public Class EnviroHealthSafety
                 Me.tableChemical_WasteGenerator.InitVars
             End If
         End If
+        Me.tableLibrary = CType(MyBase.Tables("Library"),LibraryDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableLibrary) Is Nothing) Then
+                Me.tableLibrary.InitVars
+            End If
+        End If
         Me.tableSDS = CType(MyBase.Tables("SDS"),SDSDataTable)
         If (initTable = true) Then
             If (Not (Me.tableSDS) Is Nothing) Then
@@ -1194,6 +1182,12 @@ Partial Public Class EnviroHealthSafety
         If (initTable = true) Then
             If (Not (Me.tabletlkpHazard_Type) Is Nothing) Then
                 Me.tabletlkpHazard_Type.InitVars
+            End If
+        End If
+        Me.tabletlkpHSC_HealthHazard = CType(MyBase.Tables("tlkpHSC_HealthHazard"),tlkpHSC_HealthHazardDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tabletlkpHSC_HealthHazard) Is Nothing) Then
+                Me.tabletlkpHSC_HealthHazard.InitVars
             End If
         End If
         Me.tabletlkpHSC_PhysicalHazard = CType(MyBase.Tables("tlkpHSC_PhysicalHazard"),tlkpHSC_PhysicalHazardDataTable)
@@ -1280,12 +1274,6 @@ Partial Public Class EnviroHealthSafety
                 Me.tabletrace_xe_action_map.InitVars
             End If
         End If
-        Me.tabletrace_xe_event_map = CType(MyBase.Tables("trace_xe_event_map"),trace_xe_event_mapDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tabletrace_xe_event_map) Is Nothing) Then
-                Me.tabletrace_xe_event_map.InitVars
-            End If
-        End If
         Me.tableWSC = CType(MyBase.Tables("WSC"),WSCDataTable)
         If (initTable = true) Then
             If (Not (Me.tableWSC) Is Nothing) Then
@@ -1338,6 +1326,12 @@ Partial Public Class EnviroHealthSafety
         If (initTable = true) Then
             If (Not (Me.tableWSC_RCRA_Determination) Is Nothing) Then
                 Me.tableWSC_RCRA_Determination.InitVars
+            End If
+        End If
+        Me.tableWSC_SupportingDocument = CType(MyBase.Tables("WSC_SupportingDocument"),WSC_SupportingDocumentDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableWSC_SupportingDocument) Is Nothing) Then
+                Me.tableWSC_SupportingDocument.InitVars
             End If
         End If
         Me.tableWSC_SW_261_2 = CType(MyBase.Tables("WSC_SW_261_2"),WSC_SW_261_2DataTable)
@@ -1406,24 +1400,6 @@ Partial Public Class EnviroHealthSafety
                 Me.tableztbl_Employee.InitVars
             End If
         End If
-        Me.tableLibrary = CType(MyBase.Tables("Library"),LibraryDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableLibrary) Is Nothing) Then
-                Me.tableLibrary.InitVars
-            End If
-        End If
-        Me.tabletlkpHSC_HealthHazard = CType(MyBase.Tables("tlkpHSC_HealthHazard"),tlkpHSC_HealthHazardDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tabletlkpHSC_HealthHazard) Is Nothing) Then
-                Me.tabletlkpHSC_HealthHazard.InitVars
-            End If
-        End If
-        Me.tableWSC_SupportingDocument = CType(MyBase.Tables("WSC_SupportingDocument"),WSC_SupportingDocumentDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableWSC_SupportingDocument) Is Nothing) Then
-                Me.tableWSC_SupportingDocument.InitVars
-            End If
-        End If
         Me.tableqry_SearchProductManufacturer = CType(MyBase.Tables("qry_SearchProductManufacturer"),qry_SearchProductManufacturerDataTable)
         If (initTable = true) Then
             If (Not (Me.tableqry_SearchProductManufacturer) Is Nothing) Then
@@ -1447,9 +1423,9 @@ Partial Public Class EnviroHealthSafety
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "EnviroHealthSafety"
+        Me.DataSetName = "EnviroHealthSafety_Data"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/EnviroHealthSafety.xsd"
+        Me.Namespace = "http://tempuri.org/EnviroHealthSafety_Data.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableChemical_Location = New Chemical_LocationDataTable()
@@ -1462,6 +1438,8 @@ Partial Public Class EnviroHealthSafety
         MyBase.Tables.Add(Me.tableChemical_ResponsibleParty)
         Me.tableChemical_WasteGenerator = New Chemical_WasteGeneratorDataTable()
         MyBase.Tables.Add(Me.tableChemical_WasteGenerator)
+        Me.tableLibrary = New LibraryDataTable()
+        MyBase.Tables.Add(Me.tableLibrary)
         Me.tableSDS = New SDSDataTable()
         MyBase.Tables.Add(Me.tableSDS)
         Me.tablesysdiagrams = New sysdiagramsDataTable()
@@ -1476,6 +1454,8 @@ Partial Public Class EnviroHealthSafety
         MyBase.Tables.Add(Me.tabletlkpHazard_Class)
         Me.tabletlkpHazard_Type = New tlkpHazard_TypeDataTable()
         MyBase.Tables.Add(Me.tabletlkpHazard_Type)
+        Me.tabletlkpHSC_HealthHazard = New tlkpHSC_HealthHazardDataTable()
+        MyBase.Tables.Add(Me.tabletlkpHSC_HealthHazard)
         Me.tabletlkpHSC_PhysicalHazard = New tlkpHSC_PhysicalHazardDataTable()
         MyBase.Tables.Add(Me.tabletlkpHSC_PhysicalHazard)
         Me.tabletlkpLHW_FK = New tlkpLHW_FKDataTable()
@@ -1504,8 +1484,6 @@ Partial Public Class EnviroHealthSafety
         MyBase.Tables.Add(Me.tabletlkpUTS_Constituent)
         Me.tabletrace_xe_action_map = New trace_xe_action_mapDataTable()
         MyBase.Tables.Add(Me.tabletrace_xe_action_map)
-        Me.tabletrace_xe_event_map = New trace_xe_event_mapDataTable()
-        MyBase.Tables.Add(Me.tabletrace_xe_event_map)
         Me.tableWSC = New WSCDataTable()
         MyBase.Tables.Add(Me.tableWSC)
         Me.tableWSC_CHW = New WSC_CHWDataTable()
@@ -1524,6 +1502,8 @@ Partial Public Class EnviroHealthSafety
         MyBase.Tables.Add(Me.tableWSC_LHW_UList)
         Me.tableWSC_RCRA_Determination = New WSC_RCRA_DeterminationDataTable()
         MyBase.Tables.Add(Me.tableWSC_RCRA_Determination)
+        Me.tableWSC_SupportingDocument = New WSC_SupportingDocumentDataTable()
+        MyBase.Tables.Add(Me.tableWSC_SupportingDocument)
         Me.tableWSC_SW_261_2 = New WSC_SW_261_2DataTable()
         MyBase.Tables.Add(Me.tableWSC_SW_261_2)
         Me.tableWSC_SWE_261_4 = New WSC_SWE_261_4DataTable()
@@ -1546,12 +1526,6 @@ Partial Public Class EnviroHealthSafety
         MyBase.Tables.Add(Me.tableztbl_Dev_TableManager)
         Me.tableztbl_Employee = New ztbl_EmployeeDataTable()
         MyBase.Tables.Add(Me.tableztbl_Employee)
-        Me.tableLibrary = New LibraryDataTable()
-        MyBase.Tables.Add(Me.tableLibrary)
-        Me.tabletlkpHSC_HealthHazard = New tlkpHSC_HealthHazardDataTable()
-        MyBase.Tables.Add(Me.tabletlkpHSC_HealthHazard)
-        Me.tableWSC_SupportingDocument = New WSC_SupportingDocumentDataTable()
-        MyBase.Tables.Add(Me.tableWSC_SupportingDocument)
         Me.tableqry_SearchProductManufacturer = New qry_SearchProductManufacturerDataTable()
         MyBase.Tables.Add(Me.tableqry_SearchProductManufacturer)
         Me.tableqry_ChemicalProduct_SDSGeneral = New qry_ChemicalProduct_SDSGeneralDataTable()
@@ -1587,6 +1561,12 @@ Partial Public Class EnviroHealthSafety
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializeChemical_WasteGenerator() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeLibrary() As Boolean
         Return false
     End Function
     
@@ -1629,6 +1609,12 @@ Partial Public Class EnviroHealthSafety
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializetlkpHazard_Type() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializetlkpHSC_HealthHazard() As Boolean
         Return false
     End Function
     
@@ -1718,12 +1704,6 @@ Partial Public Class EnviroHealthSafety
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializetrace_xe_event_map() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializeWSC() As Boolean
         Return false
     End Function
@@ -1773,6 +1753,12 @@ Partial Public Class EnviroHealthSafety
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializeWSC_RCRA_Determination() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeWSC_SupportingDocument() As Boolean
         Return false
     End Function
     
@@ -1844,24 +1830,6 @@ Partial Public Class EnviroHealthSafety
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeLibrary() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializetlkpHSC_HealthHazard() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeWSC_SupportingDocument() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializeqry_SearchProductManufacturer() As Boolean
         Return false
     End Function
@@ -1889,7 +1857,7 @@ Partial Public Class EnviroHealthSafety
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+        Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -1952,6 +1920,9 @@ Partial Public Class EnviroHealthSafety
     Public Delegate Sub Chemical_WasteGeneratorRowChangeEventHandler(ByVal sender As Object, ByVal e As Chemical_WasteGeneratorRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub LibraryRowChangeEventHandler(ByVal sender As Object, ByVal e As LibraryRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub SDSRowChangeEventHandler(ByVal sender As Object, ByVal e As SDSRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -1971,6 +1942,9 @@ Partial Public Class EnviroHealthSafety
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub tlkpHazard_TypeRowChangeEventHandler(ByVal sender As Object, ByVal e As tlkpHazard_TypeRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub tlkpHSC_HealthHazardRowChangeEventHandler(ByVal sender As Object, ByVal e As tlkpHSC_HealthHazardRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub tlkpHSC_PhysicalHazardRowChangeEventHandler(ByVal sender As Object, ByVal e As tlkpHSC_PhysicalHazardRowChangeEvent)
@@ -2015,9 +1989,6 @@ Partial Public Class EnviroHealthSafety
     Public Delegate Sub trace_xe_action_mapRowChangeEventHandler(ByVal sender As Object, ByVal e As trace_xe_action_mapRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub trace_xe_event_mapRowChangeEventHandler(ByVal sender As Object, ByVal e As trace_xe_event_mapRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub WSCRowChangeEventHandler(ByVal sender As Object, ByVal e As WSCRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -2043,6 +2014,9 @@ Partial Public Class EnviroHealthSafety
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub WSC_RCRA_DeterminationRowChangeEventHandler(ByVal sender As Object, ByVal e As WSC_RCRA_DeterminationRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub WSC_SupportingDocumentRowChangeEventHandler(ByVal sender As Object, ByVal e As WSC_SupportingDocumentRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub WSC_SW_261_2RowChangeEventHandler(ByVal sender As Object, ByVal e As WSC_SW_261_2RowChangeEvent)
@@ -2076,15 +2050,6 @@ Partial Public Class EnviroHealthSafety
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub ztbl_EmployeeRowChangeEventHandler(ByVal sender As Object, ByVal e As ztbl_EmployeeRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub LibraryRowChangeEventHandler(ByVal sender As Object, ByVal e As LibraryRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub tlkpHSC_HealthHazardRowChangeEventHandler(ByVal sender As Object, ByVal e As tlkpHSC_HealthHazardRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub WSC_SupportingDocumentRowChangeEventHandler(ByVal sender As Object, ByVal e As WSC_SupportingDocumentRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub qry_SearchProductManufacturerRowChangeEventHandler(ByVal sender As Object, ByVal e As qry_SearchProductManufacturerRowChangeEvent)
@@ -2404,7 +2369,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -2795,7 +2760,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -3167,7 +3132,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -3458,7 +3423,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -3901,7 +3866,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -3920,6 +3885,449 @@ Partial Public Class EnviroHealthSafety
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "Chemical_WasteGeneratorDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class LibraryDataTable
+        Inherits Global.System.Data.TypedTableBase(Of LibraryRow)
+        
+        Private columnLibrary_ID As Global.System.Data.DataColumn
+        
+        Private columnDocument_Active As Global.System.Data.DataColumn
+        
+        Private columnDocument_Type As Global.System.Data.DataColumn
+        
+        Private columnDocument_Name As Global.System.Data.DataColumn
+        
+        Private columnDocument_Description As Global.System.Data.DataColumn
+        
+        Private columnDocument_Version As Global.System.Data.DataColumn
+        
+        Private columnDocument_Notes As Global.System.Data.DataColumn
+        
+        Private columnDocument_Owner As Global.System.Data.DataColumn
+        
+        Private columnDocument_DateCreate As Global.System.Data.DataColumn
+        
+        Private columnDocument_DateUpload As Global.System.Data.DataColumn
+        
+        Private columnUSBR_ERDMS_Link As Global.System.Data.DataColumn
+        
+        Private columnDocument_WebsiteLink As Global.System.Data.DataColumn
+        
+        Private columnDocument_NetworkLocation As Global.System.Data.DataColumn
+        
+        Private columnOffice_ID As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Library"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Library_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLibrary_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_ActiveColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Active
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_TypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Type
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_NameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Name
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_DescriptionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Description
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_VersionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Version
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_NotesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Notes
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_OwnerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_Owner
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_DateCreateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_DateCreate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_DateUploadColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_DateUpload
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property USBR_ERDMS_LinkColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUSBR_ERDMS_Link
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_WebsiteLinkColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_WebsiteLink
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Document_NetworkLocationColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDocument_NetworkLocation
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Office_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOffice_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As LibraryRow
+            Get
+                Return CType(Me.Rows(index),LibraryRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event LibraryRowChanging As LibraryRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event LibraryRowChanged As LibraryRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event LibraryRowDeleting As LibraryRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event LibraryRowDeleted As LibraryRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddLibraryRow(ByVal row As LibraryRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddLibraryRow(ByVal Document_Active As Boolean, ByVal Document_Type As Integer, ByVal Document_Name As String, ByVal Document_Description As String, ByVal Document_Version As String, ByVal Document_Notes As String, ByVal Document_Owner As Integer, ByVal Document_DateCreate As Date, ByVal Document_DateUpload As Date, ByVal USBR_ERDMS_Link As String, ByVal Document_WebsiteLink As String, ByVal Document_NetworkLocation As String, ByVal Office_ID As Integer) As LibraryRow
+            Dim rowLibraryRow As LibraryRow = CType(Me.NewRow,LibraryRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, Document_Active, Document_Type, Document_Name, Document_Description, Document_Version, Document_Notes, Document_Owner, Document_DateCreate, Document_DateUpload, USBR_ERDMS_Link, Document_WebsiteLink, Document_NetworkLocation, Office_ID}
+            rowLibraryRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowLibraryRow)
+            Return rowLibraryRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByLibrary_ID(ByVal Library_ID As Integer) As LibraryRow
+            Return CType(Me.Rows.Find(New Object() {Library_ID}),LibraryRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As LibraryDataTable = CType(MyBase.Clone,LibraryDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New LibraryDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnLibrary_ID = MyBase.Columns("Library_ID")
+            Me.columnDocument_Active = MyBase.Columns("Document_Active")
+            Me.columnDocument_Type = MyBase.Columns("Document_Type")
+            Me.columnDocument_Name = MyBase.Columns("Document_Name")
+            Me.columnDocument_Description = MyBase.Columns("Document_Description")
+            Me.columnDocument_Version = MyBase.Columns("Document_Version")
+            Me.columnDocument_Notes = MyBase.Columns("Document_Notes")
+            Me.columnDocument_Owner = MyBase.Columns("Document_Owner")
+            Me.columnDocument_DateCreate = MyBase.Columns("Document_DateCreate")
+            Me.columnDocument_DateUpload = MyBase.Columns("Document_DateUpload")
+            Me.columnUSBR_ERDMS_Link = MyBase.Columns("USBR_ERDMS_Link")
+            Me.columnDocument_WebsiteLink = MyBase.Columns("Document_WebsiteLink")
+            Me.columnDocument_NetworkLocation = MyBase.Columns("Document_NetworkLocation")
+            Me.columnOffice_ID = MyBase.Columns("Office_ID")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnLibrary_ID = New Global.System.Data.DataColumn("Library_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLibrary_ID)
+            Me.columnDocument_Active = New Global.System.Data.DataColumn("Document_Active", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Active)
+            Me.columnDocument_Type = New Global.System.Data.DataColumn("Document_Type", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Type)
+            Me.columnDocument_Name = New Global.System.Data.DataColumn("Document_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Name)
+            Me.columnDocument_Description = New Global.System.Data.DataColumn("Document_Description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Description)
+            Me.columnDocument_Version = New Global.System.Data.DataColumn("Document_Version", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Version)
+            Me.columnDocument_Notes = New Global.System.Data.DataColumn("Document_Notes", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Notes)
+            Me.columnDocument_Owner = New Global.System.Data.DataColumn("Document_Owner", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_Owner)
+            Me.columnDocument_DateCreate = New Global.System.Data.DataColumn("Document_DateCreate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_DateCreate)
+            Me.columnDocument_DateUpload = New Global.System.Data.DataColumn("Document_DateUpload", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_DateUpload)
+            Me.columnUSBR_ERDMS_Link = New Global.System.Data.DataColumn("USBR_ERDMS_Link", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUSBR_ERDMS_Link)
+            Me.columnDocument_WebsiteLink = New Global.System.Data.DataColumn("Document_WebsiteLink", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_WebsiteLink)
+            Me.columnDocument_NetworkLocation = New Global.System.Data.DataColumn("Document_NetworkLocation", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDocument_NetworkLocation)
+            Me.columnOffice_ID = New Global.System.Data.DataColumn("Office_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOffice_ID)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLibrary_ID}, true))
+            Me.columnLibrary_ID.AutoIncrement = true
+            Me.columnLibrary_ID.AutoIncrementSeed = -1
+            Me.columnLibrary_ID.AutoIncrementStep = -1
+            Me.columnLibrary_ID.AllowDBNull = false
+            Me.columnLibrary_ID.ReadOnly = true
+            Me.columnLibrary_ID.Unique = true
+            Me.columnDocument_Active.AllowDBNull = false
+            Me.columnDocument_Name.MaxLength = 255
+            Me.columnDocument_Description.MaxLength = 1073741823
+            Me.columnDocument_Version.MaxLength = 255
+            Me.columnDocument_Notes.MaxLength = 1073741823
+            Me.columnDocument_Owner.AllowDBNull = false
+            Me.columnUSBR_ERDMS_Link.MaxLength = 1073741823
+            Me.columnDocument_WebsiteLink.MaxLength = 1073741823
+            Me.columnDocument_NetworkLocation.MaxLength = 1073741823
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewLibraryRow() As LibraryRow
+            Return CType(Me.NewRow,LibraryRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New LibraryRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(LibraryRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.LibraryRowChangedEvent) Is Nothing) Then
+                RaiseEvent LibraryRowChanged(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.LibraryRowChangingEvent) Is Nothing) Then
+                RaiseEvent LibraryRowChanging(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.LibraryRowDeletedEvent) Is Nothing) Then
+                RaiseEvent LibraryRowDeleted(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.LibraryRowDeletingEvent) Is Nothing) Then
+                RaiseEvent LibraryRowDeleting(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveLibraryRow(ByVal row As LibraryRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "LibraryDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -4357,7 +4765,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -4677,7 +5085,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -4970,7 +5378,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -5290,7 +5698,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -5569,7 +5977,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -5861,7 +6269,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -6196,7 +6604,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -6215,6 +6623,313 @@ Partial Public Class EnviroHealthSafety
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "tlkpHazard_TypeDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class tlkpHSC_HealthHazardDataTable
+        Inherits Global.System.Data.TypedTableBase(Of tlkpHSC_HealthHazardRow)
+        
+        Private columnHSC_Environmental_ID As Global.System.Data.DataColumn
+        
+        Private columnHSC_Environmental_HCode As Global.System.Data.DataColumn
+        
+        Private columnHSC_Environmental_Statement As Global.System.Data.DataColumn
+        
+        Private columnHSC_Environmental_Category As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "tlkpHSC_HealthHazard"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property HSC_Environmental_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHSC_Environmental_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property HSC_Environmental_HCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHSC_Environmental_HCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property HSC_Environmental_StatementColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHSC_Environmental_Statement
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property HSC_Environmental_CategoryColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHSC_Environmental_Category
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As tlkpHSC_HealthHazardRow
+            Get
+                Return CType(Me.Rows(index),tlkpHSC_HealthHazardRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event tlkpHSC_HealthHazardRowChanging As tlkpHSC_HealthHazardRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event tlkpHSC_HealthHazardRowChanged As tlkpHSC_HealthHazardRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event tlkpHSC_HealthHazardRowDeleting As tlkpHSC_HealthHazardRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event tlkpHSC_HealthHazardRowDeleted As tlkpHSC_HealthHazardRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddtlkpHSC_HealthHazardRow(ByVal row As tlkpHSC_HealthHazardRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddtlkpHSC_HealthHazardRow(ByVal HSC_Environmental_HCode As String, ByVal HSC_Environmental_Statement As String, ByVal HSC_Environmental_Category As String) As tlkpHSC_HealthHazardRow
+            Dim rowtlkpHSC_HealthHazardRow As tlkpHSC_HealthHazardRow = CType(Me.NewRow,tlkpHSC_HealthHazardRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, HSC_Environmental_HCode, HSC_Environmental_Statement, HSC_Environmental_Category}
+            rowtlkpHSC_HealthHazardRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowtlkpHSC_HealthHazardRow)
+            Return rowtlkpHSC_HealthHazardRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByHSC_Environmental_ID(ByVal HSC_Environmental_ID As Integer) As tlkpHSC_HealthHazardRow
+            Return CType(Me.Rows.Find(New Object() {HSC_Environmental_ID}),tlkpHSC_HealthHazardRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As tlkpHSC_HealthHazardDataTable = CType(MyBase.Clone,tlkpHSC_HealthHazardDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New tlkpHSC_HealthHazardDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnHSC_Environmental_ID = MyBase.Columns("HSC_Environmental_ID")
+            Me.columnHSC_Environmental_HCode = MyBase.Columns("HSC_Environmental_HCode")
+            Me.columnHSC_Environmental_Statement = MyBase.Columns("HSC_Environmental_Statement")
+            Me.columnHSC_Environmental_Category = MyBase.Columns("HSC_Environmental_Category")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnHSC_Environmental_ID = New Global.System.Data.DataColumn("HSC_Environmental_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHSC_Environmental_ID)
+            Me.columnHSC_Environmental_HCode = New Global.System.Data.DataColumn("HSC_Environmental_HCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHSC_Environmental_HCode)
+            Me.columnHSC_Environmental_Statement = New Global.System.Data.DataColumn("HSC_Environmental_Statement", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHSC_Environmental_Statement)
+            Me.columnHSC_Environmental_Category = New Global.System.Data.DataColumn("HSC_Environmental_Category", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHSC_Environmental_Category)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnHSC_Environmental_ID}, true))
+            Me.columnHSC_Environmental_ID.AutoIncrement = true
+            Me.columnHSC_Environmental_ID.AutoIncrementSeed = -1
+            Me.columnHSC_Environmental_ID.AutoIncrementStep = -1
+            Me.columnHSC_Environmental_ID.AllowDBNull = false
+            Me.columnHSC_Environmental_ID.ReadOnly = true
+            Me.columnHSC_Environmental_ID.Unique = true
+            Me.columnHSC_Environmental_HCode.MaxLength = 255
+            Me.columnHSC_Environmental_Statement.MaxLength = 255
+            Me.columnHSC_Environmental_Category.MaxLength = 255
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewtlkpHSC_HealthHazardRow() As tlkpHSC_HealthHazardRow
+            Return CType(Me.NewRow,tlkpHSC_HealthHazardRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New tlkpHSC_HealthHazardRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(tlkpHSC_HealthHazardRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.tlkpHSC_HealthHazardRowChangedEvent) Is Nothing) Then
+                RaiseEvent tlkpHSC_HealthHazardRowChanged(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.tlkpHSC_HealthHazardRowChangingEvent) Is Nothing) Then
+                RaiseEvent tlkpHSC_HealthHazardRowChanging(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.tlkpHSC_HealthHazardRowDeletedEvent) Is Nothing) Then
+                RaiseEvent tlkpHSC_HealthHazardRowDeleted(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.tlkpHSC_HealthHazardRowDeletingEvent) Is Nothing) Then
+                RaiseEvent tlkpHSC_HealthHazardRowDeleting(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemovetlkpHSC_HealthHazardRow(ByVal row As tlkpHSC_HealthHazardRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "tlkpHSC_HealthHazardDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -6461,7 +7176,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -6860,7 +7575,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -7195,7 +7910,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -7488,7 +8203,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -7862,7 +8577,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -8194,7 +8909,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -8513,7 +9228,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -8819,7 +9534,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -9165,7 +9880,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -9458,7 +10173,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -9751,7 +10466,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -10086,7 +10801,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -10448,7 +11163,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -10738,7 +11453,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -10757,296 +11472,6 @@ Partial Public Class EnviroHealthSafety
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "trace_xe_action_mapDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class trace_xe_event_mapDataTable
-        Inherits Global.System.Data.TypedTableBase(Of trace_xe_event_mapRow)
-        
-        Private columntrace_event_id As Global.System.Data.DataColumn
-        
-        Private columnpackage_name As Global.System.Data.DataColumn
-        
-        Private columnxe_event_name As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "trace_xe_event_map"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property trace_event_idColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columntrace_event_id
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property package_nameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnpackage_name
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property xe_event_nameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnxe_event_name
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As trace_xe_event_mapRow
-            Get
-                Return CType(Me.Rows(index),trace_xe_event_mapRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event trace_xe_event_mapRowChanging As trace_xe_event_mapRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event trace_xe_event_mapRowChanged As trace_xe_event_mapRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event trace_xe_event_mapRowDeleting As trace_xe_event_mapRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event trace_xe_event_mapRowDeleted As trace_xe_event_mapRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub Addtrace_xe_event_mapRow(ByVal row As trace_xe_event_mapRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addtrace_xe_event_mapRow(ByVal trace_event_id As Short, ByVal package_name As String, ByVal xe_event_name As String) As trace_xe_event_mapRow
-            Dim rowtrace_xe_event_mapRow As trace_xe_event_mapRow = CType(Me.NewRow,trace_xe_event_mapRow)
-            Dim columnValuesArray() As Object = New Object() {trace_event_id, package_name, xe_event_name}
-            rowtrace_xe_event_mapRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowtrace_xe_event_mapRow)
-            Return rowtrace_xe_event_mapRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindBytrace_event_idpackage_namexe_event_name(ByVal trace_event_id As Short, ByVal package_name As String, ByVal xe_event_name As String) As trace_xe_event_mapRow
-            Return CType(Me.Rows.Find(New Object() {trace_event_id, package_name, xe_event_name}),trace_xe_event_mapRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As trace_xe_event_mapDataTable = CType(MyBase.Clone,trace_xe_event_mapDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New trace_xe_event_mapDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columntrace_event_id = MyBase.Columns("trace_event_id")
-            Me.columnpackage_name = MyBase.Columns("package_name")
-            Me.columnxe_event_name = MyBase.Columns("xe_event_name")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columntrace_event_id = New Global.System.Data.DataColumn("trace_event_id", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntrace_event_id)
-            Me.columnpackage_name = New Global.System.Data.DataColumn("package_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnpackage_name)
-            Me.columnxe_event_name = New Global.System.Data.DataColumn("xe_event_name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnxe_event_name)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columntrace_event_id, Me.columnpackage_name, Me.columnxe_event_name}, true))
-            Me.columntrace_event_id.AllowDBNull = false
-            Me.columnpackage_name.AllowDBNull = false
-            Me.columnpackage_name.MaxLength = 60
-            Me.columnxe_event_name.AllowDBNull = false
-            Me.columnxe_event_name.MaxLength = 60
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Newtrace_xe_event_mapRow() As trace_xe_event_mapRow
-            Return CType(Me.NewRow,trace_xe_event_mapRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New trace_xe_event_mapRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(trace_xe_event_mapRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.trace_xe_event_mapRowChangedEvent) Is Nothing) Then
-                RaiseEvent trace_xe_event_mapRowChanged(Me, New trace_xe_event_mapRowChangeEvent(CType(e.Row,trace_xe_event_mapRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.trace_xe_event_mapRowChangingEvent) Is Nothing) Then
-                RaiseEvent trace_xe_event_mapRowChanging(Me, New trace_xe_event_mapRowChangeEvent(CType(e.Row,trace_xe_event_mapRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.trace_xe_event_mapRowDeletedEvent) Is Nothing) Then
-                RaiseEvent trace_xe_event_mapRowDeleted(Me, New trace_xe_event_mapRowChangeEvent(CType(e.Row,trace_xe_event_mapRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.trace_xe_event_mapRowDeletingEvent) Is Nothing) Then
-                RaiseEvent trace_xe_event_mapRowDeleting(Me, New trace_xe_event_mapRowChangeEvent(CType(e.Row,trace_xe_event_mapRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Removetrace_xe_event_mapRow(ByVal row As trace_xe_event_mapRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "trace_xe_event_mapDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -11495,7 +11920,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -11885,7 +12310,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -12190,7 +12615,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -12580,7 +13005,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -12871,7 +13296,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -13162,7 +13587,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -13453,7 +13878,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -13744,7 +14169,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -14049,7 +14474,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -14068,6 +14493,311 @@ Partial Public Class EnviroHealthSafety
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "WSC_RCRA_DeterminationDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class WSC_SupportingDocumentDataTable
+        Inherits Global.System.Data.TypedTableBase(Of WSC_SupportingDocumentRow)
+        
+        Private columnWSC_Document_ID As Global.System.Data.DataColumn
+        
+        Private columnWSC_ID As Global.System.Data.DataColumn
+        
+        Private columnLibrary_ID As Global.System.Data.DataColumn
+        
+        Private columnWSC_Description As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "WSC_SupportingDocument"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WSC_Document_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWSC_Document_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WSC_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWSC_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Library_IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLibrary_ID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WSC_DescriptionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWSC_Description
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As WSC_SupportingDocumentRow
+            Get
+                Return CType(Me.Rows(index),WSC_SupportingDocumentRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event WSC_SupportingDocumentRowChanging As WSC_SupportingDocumentRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event WSC_SupportingDocumentRowChanged As WSC_SupportingDocumentRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event WSC_SupportingDocumentRowDeleting As WSC_SupportingDocumentRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event WSC_SupportingDocumentRowDeleted As WSC_SupportingDocumentRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddWSC_SupportingDocumentRow(ByVal row As WSC_SupportingDocumentRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddWSC_SupportingDocumentRow(ByVal WSC_ID As Integer, ByVal Library_ID As Integer, ByVal WSC_Description As String) As WSC_SupportingDocumentRow
+            Dim rowWSC_SupportingDocumentRow As WSC_SupportingDocumentRow = CType(Me.NewRow,WSC_SupportingDocumentRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, WSC_ID, Library_ID, WSC_Description}
+            rowWSC_SupportingDocumentRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowWSC_SupportingDocumentRow)
+            Return rowWSC_SupportingDocumentRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByWSC_Document_ID(ByVal WSC_Document_ID As Integer) As WSC_SupportingDocumentRow
+            Return CType(Me.Rows.Find(New Object() {WSC_Document_ID}),WSC_SupportingDocumentRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As WSC_SupportingDocumentDataTable = CType(MyBase.Clone,WSC_SupportingDocumentDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New WSC_SupportingDocumentDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnWSC_Document_ID = MyBase.Columns("WSC_Document_ID")
+            Me.columnWSC_ID = MyBase.Columns("WSC_ID")
+            Me.columnLibrary_ID = MyBase.Columns("Library_ID")
+            Me.columnWSC_Description = MyBase.Columns("WSC_Description")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnWSC_Document_ID = New Global.System.Data.DataColumn("WSC_Document_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWSC_Document_ID)
+            Me.columnWSC_ID = New Global.System.Data.DataColumn("WSC_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWSC_ID)
+            Me.columnLibrary_ID = New Global.System.Data.DataColumn("Library_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLibrary_ID)
+            Me.columnWSC_Description = New Global.System.Data.DataColumn("WSC_Description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWSC_Description)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnWSC_Document_ID}, true))
+            Me.columnWSC_Document_ID.AutoIncrement = true
+            Me.columnWSC_Document_ID.AutoIncrementSeed = -1
+            Me.columnWSC_Document_ID.AutoIncrementStep = -1
+            Me.columnWSC_Document_ID.AllowDBNull = false
+            Me.columnWSC_Document_ID.ReadOnly = true
+            Me.columnWSC_Document_ID.Unique = true
+            Me.columnWSC_Description.MaxLength = 255
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewWSC_SupportingDocumentRow() As WSC_SupportingDocumentRow
+            Return CType(Me.NewRow,WSC_SupportingDocumentRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New WSC_SupportingDocumentRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(WSC_SupportingDocumentRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.WSC_SupportingDocumentRowChangedEvent) Is Nothing) Then
+                RaiseEvent WSC_SupportingDocumentRowChanged(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.WSC_SupportingDocumentRowChangingEvent) Is Nothing) Then
+                RaiseEvent WSC_SupportingDocumentRowChanging(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.WSC_SupportingDocumentRowDeletedEvent) Is Nothing) Then
+                RaiseEvent WSC_SupportingDocumentRowDeleted(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.WSC_SupportingDocumentRowDeletingEvent) Is Nothing) Then
+                RaiseEvent WSC_SupportingDocumentRowDeleting(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveWSC_SupportingDocumentRow(ByVal row As WSC_SupportingDocumentRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "WSC_SupportingDocumentDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -14382,7 +15112,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -14716,7 +15446,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -15048,7 +15778,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -15367,7 +16097,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -15743,7 +16473,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -16034,7 +16764,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -16382,7 +17112,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -16814,7 +17544,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -17118,7 +17848,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -17425,7 +18155,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -17856,7 +18586,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -17875,1061 +18605,6 @@ Partial Public Class EnviroHealthSafety
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "ztbl_EmployeeDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class LibraryDataTable
-        Inherits Global.System.Data.TypedTableBase(Of LibraryRow)
-        
-        Private columnLibrary_ID As Global.System.Data.DataColumn
-        
-        Private columnDocument_Active As Global.System.Data.DataColumn
-        
-        Private columnDocument_Type As Global.System.Data.DataColumn
-        
-        Private columnDocument_Name As Global.System.Data.DataColumn
-        
-        Private columnDocument_Description As Global.System.Data.DataColumn
-        
-        Private columnDocument_Version As Global.System.Data.DataColumn
-        
-        Private columnDocument_Notes As Global.System.Data.DataColumn
-        
-        Private columnDocument_Owner As Global.System.Data.DataColumn
-        
-        Private columnDocument_DateCreate As Global.System.Data.DataColumn
-        
-        Private columnDocument_DateUpload As Global.System.Data.DataColumn
-        
-        Private columnUSBR_ERDMS_Link As Global.System.Data.DataColumn
-        
-        Private columnDocument_WebsiteLink As Global.System.Data.DataColumn
-        
-        Private columnDocument_NetworkLocation As Global.System.Data.DataColumn
-        
-        Private columnOffice_ID As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "Library"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Library_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnLibrary_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_ActiveColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Active
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_TypeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Type
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_NameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Name
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_DescriptionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Description
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_VersionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Version
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_NotesColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Notes
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_OwnerColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_Owner
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_DateCreateColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_DateCreate
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_DateUploadColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_DateUpload
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property USBR_ERDMS_LinkColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUSBR_ERDMS_Link
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_WebsiteLinkColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_WebsiteLink
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Document_NetworkLocationColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDocument_NetworkLocation
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Office_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOffice_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As LibraryRow
-            Get
-                Return CType(Me.Rows(index),LibraryRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event LibraryRowChanging As LibraryRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event LibraryRowChanged As LibraryRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event LibraryRowDeleting As LibraryRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event LibraryRowDeleted As LibraryRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddLibraryRow(ByVal row As LibraryRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddLibraryRow(ByVal Document_Active As Boolean, ByVal Document_Type As Integer, ByVal Document_Name As String, ByVal Document_Description As String, ByVal Document_Version As String, ByVal Document_Notes As String, ByVal Document_Owner As Integer, ByVal Document_DateCreate As Date, ByVal Document_DateUpload As Date, ByVal USBR_ERDMS_Link As String, ByVal Document_WebsiteLink As String, ByVal Document_NetworkLocation As String, ByVal Office_ID As Integer) As LibraryRow
-            Dim rowLibraryRow As LibraryRow = CType(Me.NewRow,LibraryRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Document_Active, Document_Type, Document_Name, Document_Description, Document_Version, Document_Notes, Document_Owner, Document_DateCreate, Document_DateUpload, USBR_ERDMS_Link, Document_WebsiteLink, Document_NetworkLocation, Office_ID}
-            rowLibraryRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowLibraryRow)
-            Return rowLibraryRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByLibrary_ID(ByVal Library_ID As Integer) As LibraryRow
-            Return CType(Me.Rows.Find(New Object() {Library_ID}),LibraryRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As LibraryDataTable = CType(MyBase.Clone,LibraryDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New LibraryDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnLibrary_ID = MyBase.Columns("Library_ID")
-            Me.columnDocument_Active = MyBase.Columns("Document_Active")
-            Me.columnDocument_Type = MyBase.Columns("Document_Type")
-            Me.columnDocument_Name = MyBase.Columns("Document_Name")
-            Me.columnDocument_Description = MyBase.Columns("Document_Description")
-            Me.columnDocument_Version = MyBase.Columns("Document_Version")
-            Me.columnDocument_Notes = MyBase.Columns("Document_Notes")
-            Me.columnDocument_Owner = MyBase.Columns("Document_Owner")
-            Me.columnDocument_DateCreate = MyBase.Columns("Document_DateCreate")
-            Me.columnDocument_DateUpload = MyBase.Columns("Document_DateUpload")
-            Me.columnUSBR_ERDMS_Link = MyBase.Columns("USBR_ERDMS_Link")
-            Me.columnDocument_WebsiteLink = MyBase.Columns("Document_WebsiteLink")
-            Me.columnDocument_NetworkLocation = MyBase.Columns("Document_NetworkLocation")
-            Me.columnOffice_ID = MyBase.Columns("Office_ID")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnLibrary_ID = New Global.System.Data.DataColumn("Library_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnLibrary_ID)
-            Me.columnDocument_Active = New Global.System.Data.DataColumn("Document_Active", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Active)
-            Me.columnDocument_Type = New Global.System.Data.DataColumn("Document_Type", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Type)
-            Me.columnDocument_Name = New Global.System.Data.DataColumn("Document_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Name)
-            Me.columnDocument_Description = New Global.System.Data.DataColumn("Document_Description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Description)
-            Me.columnDocument_Version = New Global.System.Data.DataColumn("Document_Version", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Version)
-            Me.columnDocument_Notes = New Global.System.Data.DataColumn("Document_Notes", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Notes)
-            Me.columnDocument_Owner = New Global.System.Data.DataColumn("Document_Owner", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_Owner)
-            Me.columnDocument_DateCreate = New Global.System.Data.DataColumn("Document_DateCreate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_DateCreate)
-            Me.columnDocument_DateUpload = New Global.System.Data.DataColumn("Document_DateUpload", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_DateUpload)
-            Me.columnUSBR_ERDMS_Link = New Global.System.Data.DataColumn("USBR_ERDMS_Link", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUSBR_ERDMS_Link)
-            Me.columnDocument_WebsiteLink = New Global.System.Data.DataColumn("Document_WebsiteLink", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_WebsiteLink)
-            Me.columnDocument_NetworkLocation = New Global.System.Data.DataColumn("Document_NetworkLocation", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDocument_NetworkLocation)
-            Me.columnOffice_ID = New Global.System.Data.DataColumn("Office_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOffice_ID)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLibrary_ID}, true))
-            Me.columnLibrary_ID.AutoIncrement = true
-            Me.columnLibrary_ID.AutoIncrementSeed = -1
-            Me.columnLibrary_ID.AutoIncrementStep = -1
-            Me.columnLibrary_ID.AllowDBNull = false
-            Me.columnLibrary_ID.ReadOnly = true
-            Me.columnLibrary_ID.Unique = true
-            Me.columnDocument_Active.AllowDBNull = false
-            Me.columnDocument_Name.MaxLength = 255
-            Me.columnDocument_Description.MaxLength = 1073741823
-            Me.columnDocument_Version.MaxLength = 255
-            Me.columnDocument_Notes.MaxLength = 1073741823
-            Me.columnDocument_Owner.AllowDBNull = false
-            Me.columnUSBR_ERDMS_Link.MaxLength = 1073741823
-            Me.columnDocument_WebsiteLink.MaxLength = 1073741823
-            Me.columnDocument_NetworkLocation.MaxLength = 1073741823
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewLibraryRow() As LibraryRow
-            Return CType(Me.NewRow,LibraryRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New LibraryRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(LibraryRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.LibraryRowChangedEvent) Is Nothing) Then
-                RaiseEvent LibraryRowChanged(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.LibraryRowChangingEvent) Is Nothing) Then
-                RaiseEvent LibraryRowChanging(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.LibraryRowDeletedEvent) Is Nothing) Then
-                RaiseEvent LibraryRowDeleted(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.LibraryRowDeletingEvent) Is Nothing) Then
-                RaiseEvent LibraryRowDeleting(Me, New LibraryRowChangeEvent(CType(e.Row,LibraryRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveLibraryRow(ByVal row As LibraryRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "LibraryDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class tlkpHSC_HealthHazardDataTable
-        Inherits Global.System.Data.TypedTableBase(Of tlkpHSC_HealthHazardRow)
-        
-        Private columnHSC_Environmental_ID As Global.System.Data.DataColumn
-        
-        Private columnHSC_Environmental_HCode As Global.System.Data.DataColumn
-        
-        Private columnHSC_Environmental_Statement As Global.System.Data.DataColumn
-        
-        Private columnHSC_Environmental_Category As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "tlkpHSC_HealthHazard"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property HSC_Environmental_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnHSC_Environmental_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property HSC_Environmental_HCodeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnHSC_Environmental_HCode
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property HSC_Environmental_StatementColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnHSC_Environmental_Statement
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property HSC_Environmental_CategoryColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnHSC_Environmental_Category
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As tlkpHSC_HealthHazardRow
-            Get
-                Return CType(Me.Rows(index),tlkpHSC_HealthHazardRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event tlkpHSC_HealthHazardRowChanging As tlkpHSC_HealthHazardRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event tlkpHSC_HealthHazardRowChanged As tlkpHSC_HealthHazardRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event tlkpHSC_HealthHazardRowDeleting As tlkpHSC_HealthHazardRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event tlkpHSC_HealthHazardRowDeleted As tlkpHSC_HealthHazardRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddtlkpHSC_HealthHazardRow(ByVal row As tlkpHSC_HealthHazardRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddtlkpHSC_HealthHazardRow(ByVal HSC_Environmental_HCode As String, ByVal HSC_Environmental_Statement As String, ByVal HSC_Environmental_Category As String) As tlkpHSC_HealthHazardRow
-            Dim rowtlkpHSC_HealthHazardRow As tlkpHSC_HealthHazardRow = CType(Me.NewRow,tlkpHSC_HealthHazardRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, HSC_Environmental_HCode, HSC_Environmental_Statement, HSC_Environmental_Category}
-            rowtlkpHSC_HealthHazardRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowtlkpHSC_HealthHazardRow)
-            Return rowtlkpHSC_HealthHazardRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByHSC_Environmental_ID(ByVal HSC_Environmental_ID As Integer) As tlkpHSC_HealthHazardRow
-            Return CType(Me.Rows.Find(New Object() {HSC_Environmental_ID}),tlkpHSC_HealthHazardRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As tlkpHSC_HealthHazardDataTable = CType(MyBase.Clone,tlkpHSC_HealthHazardDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New tlkpHSC_HealthHazardDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnHSC_Environmental_ID = MyBase.Columns("HSC_Environmental_ID")
-            Me.columnHSC_Environmental_HCode = MyBase.Columns("HSC_Environmental_HCode")
-            Me.columnHSC_Environmental_Statement = MyBase.Columns("HSC_Environmental_Statement")
-            Me.columnHSC_Environmental_Category = MyBase.Columns("HSC_Environmental_Category")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnHSC_Environmental_ID = New Global.System.Data.DataColumn("HSC_Environmental_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnHSC_Environmental_ID)
-            Me.columnHSC_Environmental_HCode = New Global.System.Data.DataColumn("HSC_Environmental_HCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnHSC_Environmental_HCode)
-            Me.columnHSC_Environmental_Statement = New Global.System.Data.DataColumn("HSC_Environmental_Statement", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnHSC_Environmental_Statement)
-            Me.columnHSC_Environmental_Category = New Global.System.Data.DataColumn("HSC_Environmental_Category", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnHSC_Environmental_Category)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnHSC_Environmental_ID}, true))
-            Me.columnHSC_Environmental_ID.AutoIncrement = true
-            Me.columnHSC_Environmental_ID.AutoIncrementSeed = -1
-            Me.columnHSC_Environmental_ID.AutoIncrementStep = -1
-            Me.columnHSC_Environmental_ID.AllowDBNull = false
-            Me.columnHSC_Environmental_ID.ReadOnly = true
-            Me.columnHSC_Environmental_ID.Unique = true
-            Me.columnHSC_Environmental_HCode.MaxLength = 255
-            Me.columnHSC_Environmental_Statement.MaxLength = 255
-            Me.columnHSC_Environmental_Category.MaxLength = 255
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewtlkpHSC_HealthHazardRow() As tlkpHSC_HealthHazardRow
-            Return CType(Me.NewRow,tlkpHSC_HealthHazardRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New tlkpHSC_HealthHazardRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(tlkpHSC_HealthHazardRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.tlkpHSC_HealthHazardRowChangedEvent) Is Nothing) Then
-                RaiseEvent tlkpHSC_HealthHazardRowChanged(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.tlkpHSC_HealthHazardRowChangingEvent) Is Nothing) Then
-                RaiseEvent tlkpHSC_HealthHazardRowChanging(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.tlkpHSC_HealthHazardRowDeletedEvent) Is Nothing) Then
-                RaiseEvent tlkpHSC_HealthHazardRowDeleted(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.tlkpHSC_HealthHazardRowDeletingEvent) Is Nothing) Then
-                RaiseEvent tlkpHSC_HealthHazardRowDeleting(Me, New tlkpHSC_HealthHazardRowChangeEvent(CType(e.Row,tlkpHSC_HealthHazardRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemovetlkpHSC_HealthHazardRow(ByVal row As tlkpHSC_HealthHazardRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "tlkpHSC_HealthHazardDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class WSC_SupportingDocumentDataTable
-        Inherits Global.System.Data.TypedTableBase(Of WSC_SupportingDocumentRow)
-        
-        Private columnWSC_Document_ID As Global.System.Data.DataColumn
-        
-        Private columnWSC_ID As Global.System.Data.DataColumn
-        
-        Private columnLibrary_ID As Global.System.Data.DataColumn
-        
-        Private columnWSC_Description As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "WSC_SupportingDocument"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property WSC_Document_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnWSC_Document_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property WSC_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnWSC_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Library_IDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnLibrary_ID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property WSC_DescriptionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnWSC_Description
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As WSC_SupportingDocumentRow
-            Get
-                Return CType(Me.Rows(index),WSC_SupportingDocumentRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event WSC_SupportingDocumentRowChanging As WSC_SupportingDocumentRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event WSC_SupportingDocumentRowChanged As WSC_SupportingDocumentRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event WSC_SupportingDocumentRowDeleting As WSC_SupportingDocumentRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event WSC_SupportingDocumentRowDeleted As WSC_SupportingDocumentRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddWSC_SupportingDocumentRow(ByVal row As WSC_SupportingDocumentRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddWSC_SupportingDocumentRow(ByVal WSC_ID As Integer, ByVal Library_ID As Integer, ByVal WSC_Description As String) As WSC_SupportingDocumentRow
-            Dim rowWSC_SupportingDocumentRow As WSC_SupportingDocumentRow = CType(Me.NewRow,WSC_SupportingDocumentRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, WSC_ID, Library_ID, WSC_Description}
-            rowWSC_SupportingDocumentRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowWSC_SupportingDocumentRow)
-            Return rowWSC_SupportingDocumentRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByWSC_Document_ID(ByVal WSC_Document_ID As Integer) As WSC_SupportingDocumentRow
-            Return CType(Me.Rows.Find(New Object() {WSC_Document_ID}),WSC_SupportingDocumentRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As WSC_SupportingDocumentDataTable = CType(MyBase.Clone,WSC_SupportingDocumentDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New WSC_SupportingDocumentDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnWSC_Document_ID = MyBase.Columns("WSC_Document_ID")
-            Me.columnWSC_ID = MyBase.Columns("WSC_ID")
-            Me.columnLibrary_ID = MyBase.Columns("Library_ID")
-            Me.columnWSC_Description = MyBase.Columns("WSC_Description")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnWSC_Document_ID = New Global.System.Data.DataColumn("WSC_Document_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnWSC_Document_ID)
-            Me.columnWSC_ID = New Global.System.Data.DataColumn("WSC_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnWSC_ID)
-            Me.columnLibrary_ID = New Global.System.Data.DataColumn("Library_ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnLibrary_ID)
-            Me.columnWSC_Description = New Global.System.Data.DataColumn("WSC_Description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnWSC_Description)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnWSC_Document_ID}, true))
-            Me.columnWSC_Document_ID.AutoIncrement = true
-            Me.columnWSC_Document_ID.AutoIncrementSeed = -1
-            Me.columnWSC_Document_ID.AutoIncrementStep = -1
-            Me.columnWSC_Document_ID.AllowDBNull = false
-            Me.columnWSC_Document_ID.ReadOnly = true
-            Me.columnWSC_Document_ID.Unique = true
-            Me.columnWSC_Description.MaxLength = 255
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewWSC_SupportingDocumentRow() As WSC_SupportingDocumentRow
-            Return CType(Me.NewRow,WSC_SupportingDocumentRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New WSC_SupportingDocumentRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(WSC_SupportingDocumentRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.WSC_SupportingDocumentRowChangedEvent) Is Nothing) Then
-                RaiseEvent WSC_SupportingDocumentRowChanged(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.WSC_SupportingDocumentRowChangingEvent) Is Nothing) Then
-                RaiseEvent WSC_SupportingDocumentRowChanging(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.WSC_SupportingDocumentRowDeletedEvent) Is Nothing) Then
-                RaiseEvent WSC_SupportingDocumentRowDeleted(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.WSC_SupportingDocumentRowDeletingEvent) Is Nothing) Then
-                RaiseEvent WSC_SupportingDocumentRowDeleting(Me, New WSC_SupportingDocumentRowChangeEvent(CType(e.Row,WSC_SupportingDocumentRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveWSC_SupportingDocumentRow(ByVal row As WSC_SupportingDocumentRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "WSC_SupportingDocumentDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -19250,7 +18925,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -19573,7 +19248,6 @@ Partial Public Class EnviroHealthSafety
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overloads Function Addqry_ChemicalProduct_SDSGeneralRow( _
-                    ByVal Product_ID As Integer,  _
                     ByVal Product_Name As String,  _
                     ByVal SDS_Number As String,  _
                     ByVal SDS_Link As String,  _
@@ -19592,7 +19266,7 @@ Partial Public Class EnviroHealthSafety
                     ByVal SDS_ProductCode As String,  _
                     ByVal Document_Name As String) As qry_ChemicalProduct_SDSGeneralRow
             Dim rowqry_ChemicalProduct_SDSGeneralRow As qry_ChemicalProduct_SDSGeneralRow = CType(Me.NewRow,qry_ChemicalProduct_SDSGeneralRow)
-            Dim columnValuesArray() As Object = New Object() {Product_ID, Product_Name, SDS_Number, SDS_Link, Document_NetworkLocation, SDS_DateCreated, SDS_DateLastReviewed, Product_VerifiedDate, Manufacturer_Name, Manufacturer_Address1, Manufacturer_Address2, Manufacturer_Phone, Manufacturer_City, Manufacturer_State, Manufacturer_AreaCode, Manufacturer_Website, SDS_ProductCode, Document_Name}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Product_Name, SDS_Number, SDS_Link, Document_NetworkLocation, SDS_DateCreated, SDS_DateLastReviewed, Product_VerifiedDate, Manufacturer_Name, Manufacturer_Address1, Manufacturer_Address2, Manufacturer_Phone, Manufacturer_City, Manufacturer_State, Manufacturer_AreaCode, Manufacturer_Website, SDS_ProductCode, Document_Name}
             rowqry_ChemicalProduct_SDSGeneralRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowqry_ChemicalProduct_SDSGeneralRow)
             Return rowqry_ChemicalProduct_SDSGeneralRow
@@ -19674,9 +19348,11 @@ Partial Public Class EnviroHealthSafety
             MyBase.Columns.Add(Me.columnSDS_ProductCode)
             Me.columnDocument_Name = New Global.System.Data.DataColumn("Document_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDocument_Name)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnProduct_ID}, false))
+            Me.columnProduct_ID.AutoIncrement = true
+            Me.columnProduct_ID.AutoIncrementSeed = -1
+            Me.columnProduct_ID.AutoIncrementStep = -1
             Me.columnProduct_ID.AllowDBNull = false
-            Me.columnProduct_ID.Unique = true
+            Me.columnProduct_ID.ReadOnly = true
             Me.columnProduct_Name.MaxLength = 1073741823
             Me.columnSDS_Number.MaxLength = 255
             Me.columnSDS_Link.MaxLength = 255
@@ -19758,7 +19434,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -20101,7 +19777,7 @@ Partial Public Class EnviroHealthSafety
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As EnviroHealthSafety = New EnviroHealthSafety()
+            Dim ds As EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -21349,6 +21025,352 @@ Partial Public Class EnviroHealthSafety
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
+    Partial Public Class LibraryRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableLibrary As LibraryDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableLibrary = CType(Me.Table,LibraryDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Library_ID() As Integer
+            Get
+                Return CType(Me(Me.tableLibrary.Library_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableLibrary.Library_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Active() As Boolean
+            Get
+                Return CType(Me(Me.tableLibrary.Document_ActiveColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_ActiveColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Type() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_TypeColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Type' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_TypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Name() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_NameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Name' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_NameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Description() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_DescriptionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Description' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_DescriptionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Version() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_VersionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Version' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_VersionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Notes() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_NotesColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Notes' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_NotesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_Owner() As Integer
+            Get
+                Return CType(Me(Me.tableLibrary.Document_OwnerColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_OwnerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_DateCreate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_DateCreateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_DateCreate' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_DateCreateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_DateUpload() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_DateUploadColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_DateUpload' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_DateUploadColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property USBR_ERDMS_Link() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.USBR_ERDMS_LinkColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'USBR_ERDMS_Link' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.USBR_ERDMS_LinkColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_WebsiteLink() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_WebsiteLinkColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_WebsiteLink' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_WebsiteLinkColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Document_NetworkLocation() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Document_NetworkLocationColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_NetworkLocation' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Document_NetworkLocationColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Office_ID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableLibrary.Office_IDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Office_ID' in table 'Library' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLibrary.Office_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_TypeNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_TypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_TypeNull()
+            Me(Me.tableLibrary.Document_TypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_NameNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_NameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_NameNull()
+            Me(Me.tableLibrary.Document_NameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_DescriptionNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_DescriptionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_DescriptionNull()
+            Me(Me.tableLibrary.Document_DescriptionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_VersionNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_VersionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_VersionNull()
+            Me(Me.tableLibrary.Document_VersionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_NotesNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_NotesColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_NotesNull()
+            Me(Me.tableLibrary.Document_NotesColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_DateCreateNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_DateCreateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_DateCreateNull()
+            Me(Me.tableLibrary.Document_DateCreateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_DateUploadNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_DateUploadColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_DateUploadNull()
+            Me(Me.tableLibrary.Document_DateUploadColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsUSBR_ERDMS_LinkNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.USBR_ERDMS_LinkColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetUSBR_ERDMS_LinkNull()
+            Me(Me.tableLibrary.USBR_ERDMS_LinkColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_WebsiteLinkNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_WebsiteLinkColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_WebsiteLinkNull()
+            Me(Me.tableLibrary.Document_WebsiteLinkColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDocument_NetworkLocationNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Document_NetworkLocationColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDocument_NetworkLocationNull()
+            Me(Me.tableLibrary.Document_NetworkLocationColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOffice_IDNull() As Boolean
+            Return Me.IsNull(Me.tableLibrary.Office_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOffice_IDNull()
+            Me(Me.tableLibrary.Office_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
     Partial Public Class SDSRow
         Inherits Global.System.Data.DataRow
         
@@ -22359,6 +22381,117 @@ Partial Public Class EnviroHealthSafety
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetHazardType_PictogramFullPathNull()
             Me(Me.tabletlkpHazard_Type.HazardType_PictogramFullPathColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class tlkpHSC_HealthHazardRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tabletlkpHSC_HealthHazard As tlkpHSC_HealthHazardDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tabletlkpHSC_HealthHazard = CType(Me.Table,tlkpHSC_HealthHazardDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property HSC_Environmental_ID() As Integer
+            Get
+                Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property HSC_Environmental_HCode() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'HSC_Environmental_HCode' in table 'tlkpHSC_HealthHazard' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property HSC_Environmental_Statement() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'HSC_Environmental_Statement' in table 'tlkpHSC_HealthHazard"& _ 
+                            "' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property HSC_Environmental_Category() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'HSC_Environmental_Category' in table 'tlkpHSC_HealthHazard'"& _ 
+                            " is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsHSC_Environmental_HCodeNull() As Boolean
+            Return Me.IsNull(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetHSC_Environmental_HCodeNull()
+            Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsHSC_Environmental_StatementNull() As Boolean
+            Return Me.IsNull(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetHSC_Environmental_StatementNull()
+            Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsHSC_Environmental_CategoryNull() As Boolean
+            Return Me.IsNull(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetHSC_Environmental_CategoryNull()
+            Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -24373,55 +24506,6 @@ Partial Public Class EnviroHealthSafety
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class trace_xe_event_mapRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tabletrace_xe_event_map As trace_xe_event_mapDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tabletrace_xe_event_map = CType(Me.Table,trace_xe_event_mapDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property trace_event_id() As Short
-            Get
-                Return CType(Me(Me.tabletrace_xe_event_map.trace_event_idColumn),Short)
-            End Get
-            Set
-                Me(Me.tabletrace_xe_event_map.trace_event_idColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property package_name() As String
-            Get
-                Return CType(Me(Me.tabletrace_xe_event_map.package_nameColumn),String)
-            End Get
-            Set
-                Me(Me.tabletrace_xe_event_map.package_nameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property xe_event_name() As String
-            Get
-                Return CType(Me(Me.tabletrace_xe_event_map.xe_event_nameColumn),String)
-            End Get
-            Set
-                Me(Me.tabletrace_xe_event_map.xe_event_nameColumn) = value
-            End Set
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class WSCRow
         Inherits Global.System.Data.DataRow
         
@@ -25739,6 +25823,115 @@ Partial Public Class EnviroHealthSafety
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetDetermination_DescriptionNull()
             Me(Me.tableWSC_RCRA_Determination.Determination_DescriptionColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class WSC_SupportingDocumentRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableWSC_SupportingDocument As WSC_SupportingDocumentDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableWSC_SupportingDocument = CType(Me.Table,WSC_SupportingDocumentDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WSC_Document_ID() As Integer
+            Get
+                Return CType(Me(Me.tableWSC_SupportingDocument.WSC_Document_IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableWSC_SupportingDocument.WSC_Document_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WSC_ID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableWSC_SupportingDocument.WSC_IDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WSC_ID' in table 'WSC_SupportingDocument' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableWSC_SupportingDocument.WSC_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Library_ID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableWSC_SupportingDocument.Library_IDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Library_ID' in table 'WSC_SupportingDocument' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableWSC_SupportingDocument.Library_IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WSC_Description() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WSC_Description' in table 'WSC_SupportingDocument' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWSC_IDNull() As Boolean
+            Return Me.IsNull(Me.tableWSC_SupportingDocument.WSC_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWSC_IDNull()
+            Me(Me.tableWSC_SupportingDocument.WSC_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLibrary_IDNull() As Boolean
+            Return Me.IsNull(Me.tableWSC_SupportingDocument.Library_IDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLibrary_IDNull()
+            Me(Me.tableWSC_SupportingDocument.Library_IDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWSC_DescriptionNull() As Boolean
+            Return Me.IsNull(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWSC_DescriptionNull()
+            Me(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -27713,572 +27906,6 @@ Partial Public Class EnviroHealthSafety
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class LibraryRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableLibrary As LibraryDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableLibrary = CType(Me.Table,LibraryDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Library_ID() As Integer
-            Get
-                Return CType(Me(Me.tableLibrary.Library_IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableLibrary.Library_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Active() As Boolean
-            Get
-                Return CType(Me(Me.tableLibrary.Document_ActiveColumn),Boolean)
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_ActiveColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Type() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_TypeColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Type' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_TypeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Name() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_NameColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Name' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_NameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Description() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_DescriptionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Description' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_DescriptionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Version() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_VersionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Version' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_VersionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Notes() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_NotesColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_Notes' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_NotesColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_Owner() As Integer
-            Get
-                Return CType(Me(Me.tableLibrary.Document_OwnerColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_OwnerColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_DateCreate() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_DateCreateColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_DateCreate' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_DateCreateColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_DateUpload() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_DateUploadColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_DateUpload' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_DateUploadColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property USBR_ERDMS_Link() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.USBR_ERDMS_LinkColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'USBR_ERDMS_Link' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.USBR_ERDMS_LinkColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_WebsiteLink() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_WebsiteLinkColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_WebsiteLink' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_WebsiteLinkColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Document_NetworkLocation() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Document_NetworkLocationColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Document_NetworkLocation' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Document_NetworkLocationColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Office_ID() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableLibrary.Office_IDColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Office_ID' in table 'Library' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLibrary.Office_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_TypeNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_TypeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_TypeNull()
-            Me(Me.tableLibrary.Document_TypeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_NameNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_NameColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_NameNull()
-            Me(Me.tableLibrary.Document_NameColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_DescriptionNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_DescriptionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_DescriptionNull()
-            Me(Me.tableLibrary.Document_DescriptionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_VersionNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_VersionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_VersionNull()
-            Me(Me.tableLibrary.Document_VersionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_NotesNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_NotesColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_NotesNull()
-            Me(Me.tableLibrary.Document_NotesColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_DateCreateNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_DateCreateColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_DateCreateNull()
-            Me(Me.tableLibrary.Document_DateCreateColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_DateUploadNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_DateUploadColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_DateUploadNull()
-            Me(Me.tableLibrary.Document_DateUploadColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsUSBR_ERDMS_LinkNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.USBR_ERDMS_LinkColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetUSBR_ERDMS_LinkNull()
-            Me(Me.tableLibrary.USBR_ERDMS_LinkColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_WebsiteLinkNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_WebsiteLinkColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_WebsiteLinkNull()
-            Me(Me.tableLibrary.Document_WebsiteLinkColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDocument_NetworkLocationNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Document_NetworkLocationColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDocument_NetworkLocationNull()
-            Me(Me.tableLibrary.Document_NetworkLocationColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsOffice_IDNull() As Boolean
-            Return Me.IsNull(Me.tableLibrary.Office_IDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetOffice_IDNull()
-            Me(Me.tableLibrary.Office_IDColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class tlkpHSC_HealthHazardRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tabletlkpHSC_HealthHazard As tlkpHSC_HealthHazardDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tabletlkpHSC_HealthHazard = CType(Me.Table,tlkpHSC_HealthHazardDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property HSC_Environmental_ID() As Integer
-            Get
-                Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property HSC_Environmental_HCode() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'HSC_Environmental_HCode' in table 'tlkpHSC_HealthHazard' is"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property HSC_Environmental_Statement() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'HSC_Environmental_Statement' in table 'tlkpHSC_HealthHazard"& _ 
-                            "' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property HSC_Environmental_Category() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'HSC_Environmental_Category' in table 'tlkpHSC_HealthHazard'"& _ 
-                            " is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsHSC_Environmental_HCodeNull() As Boolean
-            Return Me.IsNull(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetHSC_Environmental_HCodeNull()
-            Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_HCodeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsHSC_Environmental_StatementNull() As Boolean
-            Return Me.IsNull(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetHSC_Environmental_StatementNull()
-            Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_StatementColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsHSC_Environmental_CategoryNull() As Boolean
-            Return Me.IsNull(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetHSC_Environmental_CategoryNull()
-            Me(Me.tabletlkpHSC_HealthHazard.HSC_Environmental_CategoryColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class WSC_SupportingDocumentRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableWSC_SupportingDocument As WSC_SupportingDocumentDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableWSC_SupportingDocument = CType(Me.Table,WSC_SupportingDocumentDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property WSC_Document_ID() As Integer
-            Get
-                Return CType(Me(Me.tableWSC_SupportingDocument.WSC_Document_IDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableWSC_SupportingDocument.WSC_Document_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property WSC_ID() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableWSC_SupportingDocument.WSC_IDColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'WSC_ID' in table 'WSC_SupportingDocument' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableWSC_SupportingDocument.WSC_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Library_ID() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableWSC_SupportingDocument.Library_IDColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Library_ID' in table 'WSC_SupportingDocument' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableWSC_SupportingDocument.Library_IDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property WSC_Description() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'WSC_Description' in table 'WSC_SupportingDocument' is DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsWSC_IDNull() As Boolean
-            Return Me.IsNull(Me.tableWSC_SupportingDocument.WSC_IDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetWSC_IDNull()
-            Me(Me.tableWSC_SupportingDocument.WSC_IDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsLibrary_IDNull() As Boolean
-            Return Me.IsNull(Me.tableWSC_SupportingDocument.Library_IDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetLibrary_IDNull()
-            Me(Me.tableWSC_SupportingDocument.Library_IDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsWSC_DescriptionNull() As Boolean
-            Return Me.IsNull(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetWSC_DescriptionNull()
-            Me(Me.tableWSC_SupportingDocument.WSC_DescriptionColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class qry_SearchProductManufacturerRow
         Inherits Global.System.Data.DataRow
         
@@ -29285,6 +28912,42 @@ Partial Public Class EnviroHealthSafety
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class LibraryRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As LibraryRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As LibraryRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As LibraryRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Class SDSRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -29519,6 +29182,42 @@ Partial Public Class EnviroHealthSafety
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As tlkpHazard_TypeRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class tlkpHSC_HealthHazardRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As tlkpHSC_HealthHazardRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As tlkpHSC_HealthHazardRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As tlkpHSC_HealthHazardRow
             Get
                 Return Me.eventRow
             End Get
@@ -30041,42 +29740,6 @@ Partial Public Class EnviroHealthSafety
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class trace_xe_event_mapRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As trace_xe_event_mapRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As trace_xe_event_mapRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As trace_xe_event_mapRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Class WSCRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -30383,6 +30046,42 @@ Partial Public Class EnviroHealthSafety
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As WSC_RCRA_DeterminationRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class WSC_SupportingDocumentRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As WSC_SupportingDocumentRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As WSC_SupportingDocumentRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As WSC_SupportingDocumentRow
             Get
                 Return Me.eventRow
             End Get
@@ -30797,114 +30496,6 @@ Partial Public Class EnviroHealthSafety
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class LibraryRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As LibraryRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As LibraryRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As LibraryRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class tlkpHSC_HealthHazardRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As tlkpHSC_HealthHazardRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As tlkpHSC_HealthHazardRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As tlkpHSC_HealthHazardRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class WSC_SupportingDocumentRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As WSC_SupportingDocumentRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As WSC_SupportingDocumentRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As WSC_SupportingDocumentRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Class qry_SearchProductManufacturerRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -31010,7 +30601,7 @@ Partial Public Class EnviroHealthSafety
     End Class
 End Class
 
-Namespace EnviroHealthSafetyTableAdapters
+Namespace EnviroHealthSafety_DataTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -31237,7 +30828,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ProductLocation_ID, PhysicalLocation_ID, Product_ID, ProductLocation_Input"& _ 
@@ -31247,27 +30838,32 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ProductLocation_ID, PhysicalLocation_ID, Product_ID, ProductLocation_Input"& _ 
-                "Date, ProductLocation_Active, ProductLocation_Notes, ProductLocation_VerifiedDat"& _ 
-                "e, ProductLocation_Approved, ProductLocation_ApprovedBy FROM dbo.Chemical_Locati"& _ 
-                "on"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where PhysicalLocation_ID = ?"
+            Me._commandCollection(1).CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[Chemical_Location] WHERE Product_ID = ?"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("PhysicalLocation_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PhysicalLocation_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT ProductLocation_ID, PhysicalLocation_ID, Product_ID, ProductLocation_Input"& _ 
                 "Date, ProductLocation_Active, ProductLocation_Notes, ProductLocation_VerifiedDat"& _ 
                 "e, ProductLocation_Approved, ProductLocation_ApprovedBy FROM dbo.Chemical_Locati"& _ 
-                "on"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHere PhysicalLocation_ID = ?"
+                "on"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where PhysicalLocation_ID = ?"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("PhysicalLocation_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PhysicalLocation_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT ProductLocation_ID, PhysicalLocation_ID, Product_ID, ProductLocation_Input"& _ 
+                "Date, ProductLocation_Active, ProductLocation_Notes, ProductLocation_VerifiedDat"& _ 
+                "e, ProductLocation_Approved, ProductLocation_ApprovedBy FROM dbo.Chemical_Locati"& _ 
+                "on"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHere PhysicalLocation_ID = ?"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("PhysicalLocation_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PhysicalLocation_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.Chemical_LocationDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -31280,9 +30876,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.Chemical_LocationDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.Chemical_LocationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.Chemical_LocationDataTable = New EnviroHealthSafety.Chemical_LocationDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable = New EnviroHealthSafety_Data.Chemical_LocationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -31291,41 +30887,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByFilterPhysicalLocationID(ByVal dataTable As EnviroHealthSafety.Chemical_LocationDataTable, ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (PhysicalLocation_ID.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(PhysicalLocation_ID.Value,Integer)
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByFilterPhysicalLocationID(ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.Chemical_LocationDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (PhysicalLocation_ID.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(PhysicalLocation_ID.Value,Integer)
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            Dim dataTable As EnviroHealthSafety.Chemical_LocationDataTable = New EnviroHealthSafety.Chemical_LocationDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByPhysicalLocationFilter(ByVal dataTable As EnviroHealthSafety.Chemical_LocationDataTable, ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillByFilterPhysicalLocationID(ByVal dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable, ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (PhysicalLocation_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(PhysicalLocation_ID.Value,Integer)
@@ -31343,14 +30905,48 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByPhysicalLocationFilter(ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.Chemical_LocationDataTable
+        Public Overloads Overridable Function GetDataByFilterPhysicalLocationID(ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.Chemical_LocationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (PhysicalLocation_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(PhysicalLocation_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.Chemical_LocationDataTable = New EnviroHealthSafety.Chemical_LocationDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable = New EnviroHealthSafety_Data.Chemical_LocationDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByPhysicalLocationFilter(ByVal dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable, ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (PhysicalLocation_ID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(PhysicalLocation_ID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByPhysicalLocationFilter(ByVal PhysicalLocation_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.Chemical_LocationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (PhysicalLocation_ID.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(PhysicalLocation_ID.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable = New EnviroHealthSafety_Data.Chemical_LocationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -31358,14 +30954,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.Chemical_LocationDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.Chemical_LocationDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "Chemical_Location")
         End Function
         
@@ -31618,6 +31214,33 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByProductID(ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (Product_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(Product_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -31852,7 +31475,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Manufacturer_ID, Manufacturer_Name, Manufacturer_Description, Manufacturer"& _ 
@@ -31860,13 +31483,19 @@ Namespace EnviroHealthSafetyTableAdapters
                 "facturer_City, Manufacturer_State, Manufacturer_AreaCode FROM dbo.Chemical_Manuf"& _ 
                 "acturer"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[Chemical_Manufacturer] WHERE Manufacture"& _ 
+                "r_ID = ?"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Manufacturer_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Manufacturer_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.Chemical_ManufacturerDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ManufacturerDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -31879,9 +31508,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.Chemical_ManufacturerDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.Chemical_ManufacturerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.Chemical_ManufacturerDataTable = New EnviroHealthSafety.Chemical_ManufacturerDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_ManufacturerDataTable = New EnviroHealthSafety_Data.Chemical_ManufacturerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -31889,14 +31518,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.Chemical_ManufacturerDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ManufacturerDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "Chemical_Manufacturer")
         End Function
         
@@ -32180,6 +31809,29 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByManufacturerID(ByVal Manufacturer_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(Manufacturer_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -32403,7 +32055,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Product_ID, Product_Name, Product_IssueDate, Product_RevisedDate, Product_"& _ 
@@ -32412,27 +32064,32 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT Product_ID, Product_Name, Product_IssueDate, Product_RevisedDate, Product_"& _ 
-                "VerifiedDate, Product_InputDate, Product_InputEmployee, Product_Approved, Produc"& _ 
-                "t_HazWaste"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (CONVERT([VARCHAR], Product_Na"& _ 
-                "me) LIKE '%' + ? + '%')"
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Product_ID = ?)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Param1", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Product_ID, Product_Name, Product_IssueDate, Product_RevisedDate, Product_"& _ 
                 "VerifiedDate, Product_InputDate, Product_InputEmployee, Product_Approved, Produc"& _ 
-                "t_HazWaste"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (Product_Name LIKE '%' + ? + '"& _ 
-                "%')"
+                "t_HazWaste"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (CONVERT([VARCHAR], Product_Na"& _ 
+                "me) LIKE '%' + ? + '%')"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_Name", Global.System.Data.Odbc.OdbcType.NText, 2147483647, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Param1", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT Product_ID, Product_Name, Product_IssueDate, Product_RevisedDate, Product_"& _ 
+                "VerifiedDate, Product_InputDate, Product_InputEmployee, Product_Approved, Produc"& _ 
+                "t_HazWaste"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (CONVERT([VARCHAR], Product_Na"& _ 
+                "me) LIKE '%' + ? + '%')"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Param1", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.Chemical_ProductDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -32445,9 +32102,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.Chemical_ProductDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.Chemical_ProductDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.Chemical_ProductDataTable = New EnviroHealthSafety.Chemical_ProductDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable = New EnviroHealthSafety_Data.Chemical_ProductDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -32456,8 +32113,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByProductNameExact(ByVal dataTable As EnviroHealthSafety.Chemical_ProductDataTable, ByVal Param1 As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillByProductNameExact(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable, ByVal Param1 As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
             Else
@@ -32474,14 +32131,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByFillByProductNameExact(ByVal Param1 As String) As EnviroHealthSafety.Chemical_ProductDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataByFillByProductNameExact(ByVal Param1 As String) As EnviroHealthSafety_Data.Chemical_ProductDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
             End If
-            Dim dataTable As EnviroHealthSafety.Chemical_ProductDataTable = New EnviroHealthSafety.Chemical_ProductDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable = New EnviroHealthSafety_Data.Chemical_ProductDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -32490,12 +32147,12 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBySearchProduct(ByVal dataTable As EnviroHealthSafety.Chemical_ProductDataTable, ByVal Product_Name As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (Product_Name Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+        Public Overloads Overridable Function FillBySearchProduct(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable, ByVal Param1 As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Param1 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Param1")
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_Name,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -32508,14 +32165,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBySearchProduct(ByVal Product_Name As String) As EnviroHealthSafety.Chemical_ProductDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (Product_Name Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+        Public Overloads Overridable Function GetDataBySearchProduct(ByVal Param1 As String) As EnviroHealthSafety_Data.Chemical_ProductDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Param1 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Param1")
             Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_Name,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
             End If
-            Dim dataTable As EnviroHealthSafety.Chemical_ProductDataTable = New EnviroHealthSafety.Chemical_ProductDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable = New EnviroHealthSafety_Data.Chemical_ProductDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -32523,14 +32180,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.Chemical_ProductDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ProductDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "Chemical_Product")
         End Function
         
@@ -32763,6 +32420,29 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByProductID(ByVal Product_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(Product_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -32940,7 +32620,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ResponsibleParty_ID, Product_ID, Manufacturer_ID FROM dbo.Chemical_Respons"& _ 
@@ -32948,17 +32628,22 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ResponsibleParty_ID, Product_ID, Manufacturer_ID FROM dbo.Chemical_Respons"& _ 
-                "ibleParty"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where Product_ID = ?"
+            Me._commandCollection(1).CommandText = "DELETE FROM [Chemical_ResponsibleParty] WHERE Product_ID = ?"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT ResponsibleParty_ID, Product_ID, Manufacturer_ID FROM dbo.Chemical_Respons"& _ 
+                "ibleParty"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where Product_ID = ?"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -32971,9 +32656,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable = New EnviroHealthSafety.Chemical_ResponsiblePartyDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable = New EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -32982,8 +32667,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByProductID(ByVal dataTable As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable, ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillByProductID(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable, ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Product_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID.Value,Integer)
             Else
@@ -33000,14 +32685,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal Product_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataBy1(ByVal Product_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Product_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable = New EnviroHealthSafety.Chemical_ResponsiblePartyDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable = New EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -33015,14 +32700,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.Chemical_ResponsiblePartyDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.Chemical_ResponsiblePartyDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "Chemical_ResponsibleParty")
         End Function
         
@@ -33148,6 +32833,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByProductID(ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (Product_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(Product_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -33442,7 +33154,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.Chemical_WasteGeneratorDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.Chemical_WasteGeneratorDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -33455,9 +33167,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.Chemical_WasteGeneratorDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.Chemical_WasteGeneratorDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.Chemical_WasteGeneratorDataTable = New EnviroHealthSafety.Chemical_WasteGeneratorDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.Chemical_WasteGeneratorDataTable = New EnviroHealthSafety_Data.Chemical_WasteGeneratorDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -33465,14 +33177,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.Chemical_WasteGeneratorDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.Chemical_WasteGeneratorDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "Chemical_WasteGenerator")
         End Function
         
@@ -33866,6 +33578,625 @@ Namespace EnviroHealthSafetyTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class LibraryTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
+        
+        Private _connection As Global.System.Data.Odbc.OdbcConnection
+        
+        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
+        
+        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "Library"
+            tableMapping.ColumnMappings.Add("Library_ID", "Library_ID")
+            tableMapping.ColumnMappings.Add("Document_Active", "Document_Active")
+            tableMapping.ColumnMappings.Add("Document_Type", "Document_Type")
+            tableMapping.ColumnMappings.Add("Document_Name", "Document_Name")
+            tableMapping.ColumnMappings.Add("Document_Description", "Document_Description")
+            tableMapping.ColumnMappings.Add("Document_Version", "Document_Version")
+            tableMapping.ColumnMappings.Add("Document_Notes", "Document_Notes")
+            tableMapping.ColumnMappings.Add("Document_Owner", "Document_Owner")
+            tableMapping.ColumnMappings.Add("Document_DateCreate", "Document_DateCreate")
+            tableMapping.ColumnMappings.Add("Document_DateUpload", "Document_DateUpload")
+            tableMapping.ColumnMappings.Add("USBR_ERDMS_Link", "USBR_ERDMS_Link")
+            tableMapping.ColumnMappings.Add("Document_WebsiteLink", "Document_WebsiteLink")
+            tableMapping.ColumnMappings.Add("Document_NetworkLocation", "Document_NetworkLocation")
+            tableMapping.ColumnMappings.Add("Office_ID", "Office_ID")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[Library] WHERE (([Library_ID] = ?) AND ("& _ 
+                "[Document_Active] = ?) AND ((? = 1 AND [Document_Type] IS NULL) OR ([Document_Ty"& _ 
+                "pe] = ?)) AND ((? = 1 AND [Document_Name] IS NULL) OR ([Document_Name] = ?)) AND"& _ 
+                " ((? = 1 AND [Document_Version] IS NULL) OR ([Document_Version] = ?)) AND ([Docu"& _ 
+                "ment_Owner] = ?) AND ((? = 1 AND [Document_DateCreate] IS NULL) OR ([Document_Da"& _ 
+                "teCreate] = ?)) AND ((? = 1 AND [Document_DateUpload] IS NULL) OR ([Document_Dat"& _ 
+                "eUpload] = ?)) AND ((? = 1 AND [Office_ID] IS NULL) OR ([Office_ID] = ?)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Name", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Version", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateCreate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateUpload", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[dbo].[Library] ([Document_Active], [Document_T"& _ 
+                "ype], [Document_Name], [Document_Description], [Document_Version], [Document_Not"& _ 
+                "es], [Document_Owner], [Document_DateCreate], [Document_DateUpload], [USBR_ERDMS"& _ 
+                "_Link], [Document_WebsiteLink], [Document_NetworkLocation], [Office_ID]) VALUES "& _ 
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Description", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Notes", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Notes", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("USBR_ERDMS_Link", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "USBR_ERDMS_Link", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_WebsiteLink", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_WebsiteLink", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_NetworkLocation", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_NetworkLocation", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [EnvroHealthSafetydb].[dbo].[Library] SET [Document_Active] = ?, [Document"& _ 
+                "_Type] = ?, [Document_Name] = ?, [Document_Description] = ?, [Document_Version] "& _ 
+                "= ?, [Document_Notes] = ?, [Document_Owner] = ?, [Document_DateCreate] = ?, [Doc"& _ 
+                "ument_DateUpload] = ?, [USBR_ERDMS_Link] = ?, [Document_WebsiteLink] = ?, [Docum"& _ 
+                "ent_NetworkLocation] = ?, [Office_ID] = ? WHERE (([Library_ID] = ?) AND ([Docume"& _ 
+                "nt_Active] = ?) AND ((? = 1 AND [Document_Type] IS NULL) OR ([Document_Type] = ?"& _ 
+                ")) AND ((? = 1 AND [Document_Name] IS NULL) OR ([Document_Name] = ?)) AND ((? = "& _ 
+                "1 AND [Document_Version] IS NULL) OR ([Document_Version] = ?)) AND ([Document_Ow"& _ 
+                "ner] = ?) AND ((? = 1 AND [Document_DateCreate] IS NULL) OR ([Document_DateCreat"& _ 
+                "e] = ?)) AND ((? = 1 AND [Document_DateUpload] IS NULL) OR ([Document_DateUpload"& _ 
+                "] = ?)) AND ((? = 1 AND [Office_ID] IS NULL) OR ([Office_ID] = ?)))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Description", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Notes", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Notes", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("USBR_ERDMS_Link", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "USBR_ERDMS_Link", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_WebsiteLink", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_WebsiteLink", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_NetworkLocation", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_NetworkLocation", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Name", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Version", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateCreate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateUpload", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
+            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT Library_ID, Document_Active, Document_Type, Document_Name, Document_Descri"& _ 
+                "ption, Document_Version, Document_Notes, Document_Owner, Document_DateCreate, Do"& _ 
+                "cument_DateUpload, USBR_ERDMS_Link, Document_WebsiteLink, Document_NetworkLocati"& _ 
+                "on, Office_ID FROM dbo.Library"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.Library"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Library_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.LibraryDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.LibraryDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As EnviroHealthSafety_Data.LibraryDataTable = New EnviroHealthSafety_Data.LibraryDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.LibraryDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
+            Return Me.Adapter.Update(dataSet, "Library")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Library_ID As Integer, ByVal Original_Document_Active As Boolean, ByVal Original_Document_Type As Global.System.Nullable(Of Integer), ByVal Original_Document_Name As String, ByVal Original_Document_Version As String, ByVal Original_Document_Owner As Integer, ByVal Original_Document_DateCreate As Global.System.Nullable(Of Date), ByVal Original_Document_DateUpload As Global.System.Nullable(Of Date), ByVal Original_Office_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Library_ID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Document_Active,Boolean)
+            If (Original_Document_Type.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Document_Type.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Document_Name Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Document_Name,String)
+            End If
+            If (Original_Document_Version Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Document_Version,String)
+            End If
+            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Document_Owner,Integer)
+            If (Original_Document_DateCreate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Document_DateCreate.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Document_DateUpload.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Document_DateUpload.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Office_ID.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Office_ID.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal Document_Active As Boolean, ByVal Document_Type As Global.System.Nullable(Of Integer), ByVal Document_Name As String, ByVal Document_Description As String, ByVal Document_Version As String, ByVal Document_Notes As String, ByVal Document_Owner As Integer, ByVal Document_DateCreate As Global.System.Nullable(Of Date), ByVal Document_DateUpload As Global.System.Nullable(Of Date), ByVal USBR_ERDMS_Link As String, ByVal Document_WebsiteLink As String, ByVal Document_NetworkLocation As String, ByVal Office_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Document_Active,Boolean)
+            If (Document_Type.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Document_Type.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (Document_Name Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Document_Name,String)
+            End If
+            If (Document_Description Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Document_Description,String)
+            End If
+            If (Document_Version Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Document_Version,String)
+            End If
+            If (Document_Notes Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Document_Notes,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Document_Owner,Integer)
+            If (Document_DateCreate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(Document_DateCreate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (Document_DateUpload.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Document_DateUpload.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (USBR_ERDMS_Link Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(USBR_ERDMS_Link,String)
+            End If
+            If (Document_WebsiteLink Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Document_WebsiteLink,String)
+            End If
+            If (Document_NetworkLocation Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(Document_NetworkLocation,String)
+            End If
+            If (Office_ID.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(Office_ID.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Document_Active As Boolean,  _
+                    ByVal Document_Type As Global.System.Nullable(Of Integer),  _
+                    ByVal Document_Name As String,  _
+                    ByVal Document_Description As String,  _
+                    ByVal Document_Version As String,  _
+                    ByVal Document_Notes As String,  _
+                    ByVal Document_Owner As Integer,  _
+                    ByVal Document_DateCreate As Global.System.Nullable(Of Date),  _
+                    ByVal Document_DateUpload As Global.System.Nullable(Of Date),  _
+                    ByVal USBR_ERDMS_Link As String,  _
+                    ByVal Document_WebsiteLink As String,  _
+                    ByVal Document_NetworkLocation As String,  _
+                    ByVal Office_ID As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Library_ID As Integer,  _
+                    ByVal Original_Document_Active As Boolean,  _
+                    ByVal Original_Document_Type As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Document_Name As String,  _
+                    ByVal Original_Document_Version As String,  _
+                    ByVal Original_Document_Owner As Integer,  _
+                    ByVal Original_Document_DateCreate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Document_DateUpload As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Office_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Document_Active,Boolean)
+            If (Document_Type.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Document_Type.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (Document_Name Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Document_Name,String)
+            End If
+            If (Document_Description Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Document_Description,String)
+            End If
+            If (Document_Version Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Document_Version,String)
+            End If
+            If (Document_Notes Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Document_Notes,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Document_Owner,Integer)
+            If (Document_DateCreate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Document_DateCreate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (Document_DateUpload.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Document_DateUpload.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (USBR_ERDMS_Link Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(USBR_ERDMS_Link,String)
+            End If
+            If (Document_WebsiteLink Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Document_WebsiteLink,String)
+            End If
+            If (Document_NetworkLocation Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Document_NetworkLocation,String)
+            End If
+            If (Office_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Office_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Library_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Document_Active,Boolean)
+            If (Original_Document_Type.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Document_Type.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Document_Name Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Document_Name,String)
+            End If
+            If (Original_Document_Version Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Document_Version,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Document_Owner,Integer)
+            If (Original_Document_DateCreate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Document_DateCreate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Document_DateUpload.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Document_DateUpload.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Office_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Office_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteQuery(ByVal Library_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(Library_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
     Partial Public Class SDSTableAdapter
         Inherits Global.System.ComponentModel.Component
         
@@ -34116,7 +34447,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT SDS_ID, Product_ID, SDS_Version, SDS_Description, SDS_ProductCode, SDS_Num"& _ 
@@ -34125,19 +34456,29 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT SDS_ID, Product_ID, SDS_Version, SDS_Description, SDS_ProductCode, SDS_Num"& _ 
+            Me._commandCollection(1).CommandText = "DELETE FROM [SDS] WHERE Product_ID = ?"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "DELETE FROM [SDS] WHERE SDS_ID = ?"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("SDS_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SDS_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(3) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT SDS_ID, Product_ID, SDS_Version, SDS_Description, SDS_ProductCode, SDS_Num"& _ 
                 "ber, SDS_Link, SDS_EmergencyOverview, SDS_FirstAid, SDS_Notes, SDS_DateLastRevie"& _ 
                 "wed, SDS_DateCreated, SDS_Active, Library_ID, SDS_EmergencyPhone FROM dbo.SDS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
                 "Here Product_ID = ?"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Product_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Product_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.SDSDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.SDSDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -34150,9 +34491,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.SDSDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.SDSDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.SDSDataTable = New EnviroHealthSafety.SDSDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.SDSDataTable = New EnviroHealthSafety_Data.SDSDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -34161,8 +34502,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByFilterProductID(ByVal dataTable As EnviroHealthSafety.SDSDataTable, ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillByFilterProductID(ByVal dataTable As EnviroHealthSafety_Data.SDSDataTable, ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Product_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID.Value,Integer)
             Else
@@ -34179,14 +34520,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByProductID(ByVal Product_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.SDSDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataByProductID(ByVal Product_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.SDSDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Product_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.SDSDataTable = New EnviroHealthSafety.SDSDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.SDSDataTable = New EnviroHealthSafety_Data.SDSDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -34194,14 +34535,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.SDSDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.SDSDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "SDS")
         End Function
         
@@ -34565,6 +34906,56 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByProductID(ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (Product_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(Product_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteBySDS_ID(ByVal SDS_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(2)
+            command.Parameters(0).Value = CType(SDS_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -34758,7 +35149,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.sysdiagramsDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.sysdiagramsDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -34771,9 +35162,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.sysdiagramsDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.sysdiagramsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.sysdiagramsDataTable = New EnviroHealthSafety.sysdiagramsDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.sysdiagramsDataTable = New EnviroHealthSafety_Data.sysdiagramsDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -34781,14 +35172,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.sysdiagramsDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.sysdiagramsDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "sysdiagrams")
         End Function
         
@@ -35115,7 +35506,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpCHW_Toxic_CategoryDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpCHW_Toxic_CategoryDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -35128,9 +35519,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpCHW_Toxic_CategoryDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpCHW_Toxic_CategoryDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpCHW_Toxic_CategoryDataTable = New EnviroHealthSafety.tlkpCHW_Toxic_CategoryDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpCHW_Toxic_CategoryDataTable = New EnviroHealthSafety_Data.tlkpCHW_Toxic_CategoryDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -35138,14 +35529,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpCHW_Toxic_CategoryDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpCHW_Toxic_CategoryDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpCHW_Toxic_Category")
         End Function
         
@@ -35484,7 +35875,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpCHW_Toxic_ConstituentDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpCHW_Toxic_ConstituentDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -35497,9 +35888,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpCHW_Toxic_ConstituentDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpCHW_Toxic_ConstituentDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpCHW_Toxic_ConstituentDataTable = New EnviroHealthSafety.tlkpCHW_Toxic_ConstituentDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpCHW_Toxic_ConstituentDataTable = New EnviroHealthSafety_Data.tlkpCHW_Toxic_ConstituentDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -35507,14 +35898,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpCHW_Toxic_ConstituentDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpCHW_Toxic_ConstituentDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpCHW_Toxic_Constituent")
         End Function
         
@@ -35867,7 +36258,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpEmployee_TitleDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpEmployee_TitleDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -35880,9 +36271,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpEmployee_TitleDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpEmployee_TitleDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpEmployee_TitleDataTable = New EnviroHealthSafety.tlkpEmployee_TitleDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpEmployee_TitleDataTable = New EnviroHealthSafety_Data.tlkpEmployee_TitleDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -35890,14 +36281,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpEmployee_TitleDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpEmployee_TitleDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpEmployee_Title")
         End Function
         
@@ -36190,7 +36581,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpHazard_ClassDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpHazard_ClassDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -36203,9 +36594,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpHazard_ClassDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpHazard_ClassDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpHazard_ClassDataTable = New EnviroHealthSafety.tlkpHazard_ClassDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpHazard_ClassDataTable = New EnviroHealthSafety_Data.tlkpHazard_ClassDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -36213,14 +36604,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpHazard_ClassDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpHazard_ClassDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpHazard_Class")
         End Function
         
@@ -36562,7 +36953,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpHazard_TypeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpHazard_TypeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -36575,9 +36966,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpHazard_TypeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpHazard_TypeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpHazard_TypeDataTable = New EnviroHealthSafety.tlkpHazard_TypeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpHazard_TypeDataTable = New EnviroHealthSafety_Data.tlkpHazard_TypeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -36585,14 +36976,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpHazard_TypeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpHazard_TypeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpHazard_Type")
         End Function
         
@@ -36788,6 +37179,388 @@ Namespace EnviroHealthSafetyTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class tlkpHSC_HealthHazardTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
+        
+        Private _connection As Global.System.Data.Odbc.OdbcConnection
+        
+        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
+        
+        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "tlkpHSC_HealthHazard"
+            tableMapping.ColumnMappings.Add("HSC_Environmental_ID", "HSC_Environmental_ID")
+            tableMapping.ColumnMappings.Add("HSC_Environmental_HCode", "HSC_Environmental_HCode")
+            tableMapping.ColumnMappings.Add("HSC_Environmental_Statement", "HSC_Environmental_Statement")
+            tableMapping.ColumnMappings.Add("HSC_Environmental_Category", "HSC_Environmental_Category")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[tlkpHSC_HealthHazard] WHERE (([HSC_Envir"& _ 
+                "onmental_ID] = ?) AND ((? = 1 AND [HSC_Environmental_HCode] IS NULL) OR ([HSC_En"& _ 
+                "vironmental_HCode] = ?)) AND ((? = 1 AND [HSC_Environmental_Statement] IS NULL) "& _ 
+                "OR ([HSC_Environmental_Statement] = ?)) AND ((? = 1 AND [HSC_Environmental_Categ"& _ 
+                "ory] IS NULL) OR ([HSC_Environmental_Category] = ?)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[dbo].[tlkpHSC_HealthHazard] ([HSC_Environmenta"& _ 
+                "l_HCode], [HSC_Environmental_Statement], [HSC_Environmental_Category]) VALUES (?"& _ 
+                ", ?, ?)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [EnvroHealthSafetydb].[dbo].[tlkpHSC_HealthHazard] SET [HSC_Environmental_"& _ 
+                "HCode] = ?, [HSC_Environmental_Statement] = ?, [HSC_Environmental_Category] = ? "& _ 
+                "WHERE (([HSC_Environmental_ID] = ?) AND ((? = 1 AND [HSC_Environmental_HCode] IS"& _ 
+                " NULL) OR ([HSC_Environmental_HCode] = ?)) AND ((? = 1 AND [HSC_Environmental_St"& _ 
+                "atement] IS NULL) OR ([HSC_Environmental_Statement] = ?)) AND ((? = 1 AND [HSC_E"& _ 
+                "nvironmental_Category] IS NULL) OR ([HSC_Environmental_Category] = ?)))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, false, Nothing))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
+            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT HSC_Environmental_ID, HSC_Environmental_HCode, HSC_Environmental_Statement"& _ 
+                ", HSC_Environmental_Category FROM dbo.tlkpHSC_HealthHazard"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpHSC_HealthHazardDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpHSC_HealthHazardDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As EnviroHealthSafety_Data.tlkpHSC_HealthHazardDataTable = New EnviroHealthSafety_Data.tlkpHSC_HealthHazardDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpHSC_HealthHazardDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
+            Return Me.Adapter.Update(dataSet, "tlkpHSC_HealthHazard")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_HSC_Environmental_ID As Integer, ByVal Original_HSC_Environmental_HCode As String, ByVal Original_HSC_Environmental_Statement As String, ByVal Original_HSC_Environmental_Category As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_HSC_Environmental_ID,Integer)
+            If (Original_HSC_Environmental_HCode Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_HSC_Environmental_HCode,String)
+            End If
+            If (Original_HSC_Environmental_Statement Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_HSC_Environmental_Statement,String)
+            End If
+            If (Original_HSC_Environmental_Category Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_HSC_Environmental_Category,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal HSC_Environmental_HCode As String, ByVal HSC_Environmental_Statement As String, ByVal HSC_Environmental_Category As String) As Integer
+            If (HSC_Environmental_HCode Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(HSC_Environmental_HCode,String)
+            End If
+            If (HSC_Environmental_Statement Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(HSC_Environmental_Statement,String)
+            End If
+            If (HSC_Environmental_Category Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(HSC_Environmental_Category,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal HSC_Environmental_HCode As String, ByVal HSC_Environmental_Statement As String, ByVal HSC_Environmental_Category As String, ByVal Original_HSC_Environmental_ID As Integer, ByVal Original_HSC_Environmental_HCode As String, ByVal Original_HSC_Environmental_Statement As String, ByVal Original_HSC_Environmental_Category As String) As Integer
+            If (HSC_Environmental_HCode Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(HSC_Environmental_HCode,String)
+            End If
+            If (HSC_Environmental_Statement Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(HSC_Environmental_Statement,String)
+            End If
+            If (HSC_Environmental_Category Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(HSC_Environmental_Category,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_HSC_Environmental_ID,Integer)
+            If (Original_HSC_Environmental_HCode Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_HSC_Environmental_HCode,String)
+            End If
+            If (Original_HSC_Environmental_Statement Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_HSC_Environmental_Statement,String)
+            End If
+            If (Original_HSC_Environmental_Category Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_HSC_Environmental_Category,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
     Partial Public Class tlkpHSC_PhysicalHazardTableAdapter
         Inherits Global.System.ComponentModel.Component
         
@@ -36946,7 +37719,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpHSC_PhysicalHazardDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpHSC_PhysicalHazardDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -36959,9 +37732,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpHSC_PhysicalHazardDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpHSC_PhysicalHazardDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpHSC_PhysicalHazardDataTable = New EnviroHealthSafety.tlkpHSC_PhysicalHazardDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpHSC_PhysicalHazardDataTable = New EnviroHealthSafety_Data.tlkpHSC_PhysicalHazardDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -36969,14 +37742,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpHSC_PhysicalHazardDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpHSC_PhysicalHazardDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpHSC_PhysicalHazard")
         End Function
         
@@ -37319,7 +38092,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpLHW_FKDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpLHW_FKDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37332,9 +38105,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpLHW_FKDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpLHW_FKDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpLHW_FKDataTable = New EnviroHealthSafety.tlkpLHW_FKDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpLHW_FKDataTable = New EnviroHealthSafety_Data.tlkpLHW_FKDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -37342,14 +38115,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpLHW_FKDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpLHW_FKDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpLHW_FK")
         End Function
         
@@ -37886,7 +38659,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpLHW_PUDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpLHW_PUDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37899,9 +38672,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpLHW_PUDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpLHW_PUDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpLHW_PUDataTable = New EnviroHealthSafety.tlkpLHW_PUDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpLHW_PUDataTable = New EnviroHealthSafety_Data.tlkpLHW_PUDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -37909,14 +38682,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpLHW_PUDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpLHW_PUDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpLHW_PU")
         End Function
         
@@ -38291,7 +39064,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpLibrary_DocumentTypeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpLibrary_DocumentTypeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -38304,9 +39077,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpLibrary_DocumentTypeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpLibrary_DocumentTypeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpLibrary_DocumentTypeDataTable = New EnviroHealthSafety.tlkpLibrary_DocumentTypeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpLibrary_DocumentTypeDataTable = New EnviroHealthSafety_Data.tlkpLibrary_DocumentTypeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -38314,14 +39087,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpLibrary_DocumentTypeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpLibrary_DocumentTypeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpLibrary_DocumentType")
         End Function
         
@@ -38692,7 +39465,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpOfficeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpOfficeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -38705,9 +39478,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpOfficeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpOfficeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpOfficeDataTable = New EnviroHealthSafety.tlkpOfficeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOfficeDataTable = New EnviroHealthSafety_Data.tlkpOfficeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -38716,7 +39489,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy(ByVal dataTable As EnviroHealthSafety.tlkpOfficeDataTable, ByVal Region_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillBy(ByVal dataTable As EnviroHealthSafety_Data.tlkpOfficeDataTable, ByVal Region_ID As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Region_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Region_ID.Value,Integer)
@@ -38734,14 +39507,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal Region_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.tlkpOfficeDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal Region_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.tlkpOfficeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Region_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Region_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.tlkpOfficeDataTable = New EnviroHealthSafety.tlkpOfficeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOfficeDataTable = New EnviroHealthSafety_Data.tlkpOfficeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -38749,14 +39522,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpOfficeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpOfficeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpOffice")
         End Function
         
@@ -39253,7 +40026,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpOffice_BuildingDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -39266,9 +40039,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpOffice_BuildingDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_BuildingDataTable = New EnviroHealthSafety.tlkpOffice_BuildingDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable = New EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -39277,7 +40050,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy_OfficeBuildingFilter(ByVal dataTable As EnviroHealthSafety.tlkpOffice_BuildingDataTable, ByVal Office_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function FillBy_OfficeBuildingFilter(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable, ByVal Office_ID As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Office_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Office_ID.Value,Integer)
@@ -39295,14 +40068,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal Office_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.tlkpOffice_BuildingDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal Office_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Office_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Office_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_BuildingDataTable = New EnviroHealthSafety.tlkpOffice_BuildingDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable = New EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -39310,14 +40083,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpOffice_BuildingDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_BuildingDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpOffice_Building")
         End Function
         
@@ -39726,7 +40499,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpOffice_DivisionDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_DivisionDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -39739,9 +40512,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpOffice_DivisionDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpOffice_DivisionDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_DivisionDataTable = New EnviroHealthSafety.tlkpOffice_DivisionDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_DivisionDataTable = New EnviroHealthSafety_Data.tlkpOffice_DivisionDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -39749,14 +40522,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpOffice_DivisionDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_DivisionDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpOffice_Division")
         End Function
         
@@ -40131,7 +40904,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpOffice_GroupDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_GroupDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -40144,9 +40917,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpOffice_GroupDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpOffice_GroupDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_GroupDataTable = New EnviroHealthSafety.tlkpOffice_GroupDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_GroupDataTable = New EnviroHealthSafety_Data.tlkpOffice_GroupDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -40154,14 +40927,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpOffice_GroupDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_GroupDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpOffice_Group")
         End Function
         
@@ -40525,7 +41298,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT PhysicalLocation_ID, OfficeBuilding_ID, PhysicalLocation_Name, PhysicalLoc"& _ 
@@ -40534,19 +41307,24 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT PhysicalLocation_ID, OfficeBuilding_ID, PhysicalLocation_Name, PhysicalLoc"& _ 
+            Me._commandCollection(1).CommandText = "DELETE FROM [tlkpOffice_PhysicalLocation] WHERE PhysicalLocation_ID = ?"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("PhysicalLocation_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PhysicalLocation_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT PhysicalLocation_ID, OfficeBuilding_ID, PhysicalLocation_Name, PhysicalLoc"& _ 
                 "ation_Description, PhysicalLocation_Type, PhysicalLocation_ReviewDate, PhysicalL"& _ 
                 "ocation_CreateDate FROM dbo.tlkpOffice_PhysicalLocation"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHere OfficeBuilding_ID"& _ 
                 " = ?"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("OfficeBuilding_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OfficeBuilding_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("OfficeBuilding_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OfficeBuilding_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -40559,9 +41337,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable = New EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable = New EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -40570,8 +41348,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy(ByVal dataTable As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable, ByVal OfficeBuilding_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillBy(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable, ByVal OfficeBuilding_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (OfficeBuilding_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(OfficeBuilding_ID.Value,Integer)
             Else
@@ -40588,14 +41366,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal OfficeBuilding_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataBy1(ByVal OfficeBuilding_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (OfficeBuilding_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(OfficeBuilding_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable = New EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable = New EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -40603,14 +41381,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpOffice_PhysicalLocationDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_PhysicalLocationDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpOffice_PhysicalLocation")
         End Function
         
@@ -40819,6 +41597,29 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByPhysicalLocation_ID(ByVal PhysicalLocation_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(PhysicalLocation_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -41007,7 +41808,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpOffice_TypeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_TypeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -41020,9 +41821,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpOffice_TypeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpOffice_TypeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpOffice_TypeDataTable = New EnviroHealthSafety.tlkpOffice_TypeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpOffice_TypeDataTable = New EnviroHealthSafety_Data.tlkpOffice_TypeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -41030,14 +41831,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpOffice_TypeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpOffice_TypeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpOffice_Type")
         End Function
         
@@ -41352,7 +42153,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpRCRA_TypeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpRCRA_TypeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -41365,9 +42166,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpRCRA_TypeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpRCRA_TypeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpRCRA_TypeDataTable = New EnviroHealthSafety.tlkpRCRA_TypeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpRCRA_TypeDataTable = New EnviroHealthSafety_Data.tlkpRCRA_TypeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -41375,14 +42176,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpRCRA_TypeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpRCRA_TypeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpRCRA_Type")
         End Function
         
@@ -41719,7 +42520,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpRegionDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpRegionDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -41732,9 +42533,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpRegionDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpRegionDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpRegionDataTable = New EnviroHealthSafety.tlkpRegionDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpRegionDataTable = New EnviroHealthSafety_Data.tlkpRegionDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -41742,14 +42543,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpRegionDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpRegionDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpRegion")
         End Function
         
@@ -42168,7 +42969,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpUTS_ConstituentDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.tlkpUTS_ConstituentDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -42181,9 +42982,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpUTS_ConstituentDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.tlkpUTS_ConstituentDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpUTS_ConstituentDataTable = New EnviroHealthSafety.tlkpUTS_ConstituentDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.tlkpUTS_ConstituentDataTable = New EnviroHealthSafety_Data.tlkpUTS_ConstituentDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -42191,14 +42992,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpUTS_ConstituentDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.tlkpUTS_ConstituentDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "tlkpUTS_Constituent")
         End Function
         
@@ -42610,7 +43411,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.trace_xe_action_mapDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.trace_xe_action_mapDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -42623,9 +43424,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.trace_xe_action_mapDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.trace_xe_action_mapDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.trace_xe_action_mapDataTable = New EnviroHealthSafety.trace_xe_action_mapDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.trace_xe_action_mapDataTable = New EnviroHealthSafety_Data.trace_xe_action_mapDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -42633,14 +43434,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.trace_xe_action_mapDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.trace_xe_action_mapDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "trace_xe_action_map")
         End Function
         
@@ -42673,248 +43474,6 @@ Namespace EnviroHealthSafetyTableAdapters
                 Throw New Global.System.ArgumentNullException("xe_action_name")
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(xe_action_name,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class trace_xe_event_mapTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
-        
-        Private _connection As Global.System.Data.Odbc.OdbcConnection
-        
-        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
-        
-        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "trace_xe_event_map"
-            tableMapping.ColumnMappings.Add("trace_event_id", "trace_event_id")
-            tableMapping.ColumnMappings.Add("package_name", "package_name")
-            tableMapping.ColumnMappings.Add("xe_event_name", "xe_event_name")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[sys].[trace_xe_event_map] ([trace_event_id], ["& _ 
-                "package_name], [xe_event_name]) VALUES (?, ?, ?)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("trace_event_id", Global.System.Data.Odbc.OdbcType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "trace_event_id", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("package_name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "package_name", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("xe_event_name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "xe_event_name", Global.System.Data.DataRowVersion.Current, false, Nothing))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
-            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT trace_event_id, package_name, xe_event_name FROM sys.trace_xe_event_map"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.trace_xe_event_mapDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.trace_xe_event_mapDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.trace_xe_event_mapDataTable = New EnviroHealthSafety.trace_xe_event_mapDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.trace_xe_event_mapDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
-            Return Me.Adapter.Update(dataSet, "trace_xe_event_map")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal trace_event_id As Short, ByVal package_name As String, ByVal xe_event_name As String) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(trace_event_id,Short)
-            If (package_name Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("package_name")
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(package_name,String)
-            End If
-            If (xe_event_name Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("xe_event_name")
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(xe_event_name,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -43204,7 +43763,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_ID, WSC_Name, WSC_Description, Office_ID, WSC_EmployeeReviewer, WSC_Da"& _ 
@@ -43214,20 +43773,25 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT WSC_ID, WSC_Name, WSC_Description, Office_ID, WSC_EmployeeReviewer, WSC_Da"& _ 
+            Me._commandCollection(1).CommandText = "DELETE FROM [WSC] WHERE WSC_ID =?"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT WSC_ID, WSC_Name, WSC_Description, Office_ID, WSC_EmployeeReviewer, WSC_Da"& _ 
                 "teCreated, WSC_DateLastReviewed, WSC_Active, WSC_WDB_UKnowledge, WSC_WDB_WAnalys"& _ 
                 "is, WCS_PCB_Contaminated, WCS_Approver, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  WCS_Reviewer, WCS_Ap"& _ 
                 "proverDate, WCS_ReviewerDate, WSC_WasteGeneration"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     dbo.WSC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (WSC"& _ 
                 "_Name = ?)"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSCDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSCDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -43240,9 +43804,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSCDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSCDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSCDataTable = New EnviroHealthSafety.WSCDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSCDataTable = New EnviroHealthSafety_Data.WSCDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -43251,8 +43815,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBySearchWSC(ByVal dataTable As EnviroHealthSafety.WSCDataTable, ByVal WSC_Name As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillBySearchWSC(ByVal dataTable As EnviroHealthSafety_Data.WSCDataTable, ByVal WSC_Name As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_Name Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -43269,14 +43833,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBySearchWSCName(ByVal WSC_Name As String) As EnviroHealthSafety.WSCDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataBySearchWSC(ByVal WSC_Name As String) As EnviroHealthSafety_Data.WSCDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_Name Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_Name,String)
             End If
-            Dim dataTable As EnviroHealthSafety.WSCDataTable = New EnviroHealthSafety.WSCDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSCDataTable = New EnviroHealthSafety_Data.WSCDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -43284,14 +43848,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSCDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSCDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC")
         End Function
         
@@ -43651,6 +44215,29 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            command.Parameters(0).Value = CType(WSC_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -43858,20 +44445,25 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_CHW_ID, WSC_CHW_Ignitable, WSC_CHW_Ignitable_Note, WSC_CHW_Corrosive, "& _ 
                 "WSC_CHW_Corrosive_Note, WSC_CHW_Reactive, WSC_CHW_Reactive_Note, WCS_CHW_Toxic, "& _ 
                 "WCS_CHW_Toxic_Note, WSC_ID FROM dbo.WSC_CHW"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM [WSC_CHW] WHERE WSC_ID = ?"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_CHWDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_CHWDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -43884,9 +44476,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_CHWDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_CHWDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_CHWDataTable = New EnviroHealthSafety.WSC_CHWDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_CHWDataTable = New EnviroHealthSafety_Data.WSC_CHWDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -43894,14 +44486,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_CHWDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_CHWDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_CHW")
         End Function
         
@@ -44059,6 +44651,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -44242,19 +44861,24 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_ToxicConstiuent_ID, WSC_CHW_ID, ToxicConstituent_ID, ToxicConstituent_"& _ 
                 "Description FROM dbo.WSC_CHW_ToxicConstituent"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_CHW_ToxicConstituent"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_CHW_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_CHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_CHW_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_CHW_ToxicConstituentDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_CHW_ToxicConstituentDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -44267,9 +44891,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_CHW_ToxicConstituentDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_CHW_ToxicConstituentDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_CHW_ToxicConstituentDataTable = New EnviroHealthSafety.WSC_CHW_ToxicConstituentDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_CHW_ToxicConstituentDataTable = New EnviroHealthSafety_Data.WSC_CHW_ToxicConstituentDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -44277,14 +44901,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_CHW_ToxicConstituentDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_CHW_ToxicConstituentDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_CHW_ToxicConstituent")
         End Function
         
@@ -44420,6 +45044,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_CHW_ID(ByVal WSC_CHW_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_CHW_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_CHW_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -44627,20 +45278,25 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_LHW_ID, WSC_LHW_FList, WSC_LHW_FList_Note, WSC_LHW_KList, WSC_LHW_KLis"& _ 
                 "t_Note, WSC_LHW_PList, WSC_LHW_PList_Note, WSC_LHW_UList, WSC_LHW_UList_Note, WS"& _ 
                 "C_ID FROM dbo.WSC_LHW"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_LHW"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_LHWDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHWDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -44653,9 +45309,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_LHWDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_LHWDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_LHWDataTable = New EnviroHealthSafety.WSC_LHWDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_LHWDataTable = New EnviroHealthSafety_Data.WSC_LHWDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -44663,14 +45319,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_LHWDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHWDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_LHW")
         End Function
         
@@ -44828,6 +45484,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -45006,24 +45689,29 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_LHW_FList_ID, LHW_FList_ID, WSC_LHW_ID FROM dbo.WSC_LHW_FList"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT WSC_LHW_FList_ID, LHW_FList_ID, WSC_LHW_ID FROM dbo.WSC_LHW_FList"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where W"& _ 
-                "SC_LHW_ID = ?"
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_LHW_FList"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_LHW_ID = ?)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_LHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_LHW_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_LHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_LHW_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT WSC_LHW_FList_ID, LHW_FList_ID, WSC_LHW_ID FROM dbo.WSC_LHW_FList"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where W"& _ 
+                "SC_LHW_ID = ?"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_LHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_LHW_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_LHW_FListDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_FListDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -45036,9 +45724,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_LHW_FListDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_LHW_FListDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_LHW_FListDataTable = New EnviroHealthSafety.WSC_LHW_FListDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_LHW_FListDataTable = New EnviroHealthSafety_Data.WSC_LHW_FListDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -45047,8 +45735,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByFilterWSCID(ByVal dataTable As EnviroHealthSafety.WSC_LHW_FListDataTable, ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillByFilterWSCID(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_FListDataTable, ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_LHW_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_LHW_ID.Value,Integer)
             Else
@@ -45065,14 +45753,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByFilterWSCID(ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.WSC_LHW_FListDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataByFilterWSCID(ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.WSC_LHW_FListDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_LHW_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_LHW_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.WSC_LHW_FListDataTable = New EnviroHealthSafety.WSC_LHW_FListDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_LHW_FListDataTable = New EnviroHealthSafety_Data.WSC_LHW_FListDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -45080,14 +45768,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_LHW_FListDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_FListDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_LHW_FList")
         End Function
         
@@ -45213,6 +45901,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_LHW_ID(ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_LHW_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_LHW_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -45391,18 +46106,23 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_LHW_KList_ID, LHW_KList_ID, WSC_LHW_ID FROM dbo.WSC_LHW_KList"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM [WSC_LHW_KList] WHERE WSC_LHW_ID =?"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_LHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_LHW_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_LHW_KListDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_KListDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -45415,9 +46135,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_LHW_KListDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_LHW_KListDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_LHW_KListDataTable = New EnviroHealthSafety.WSC_LHW_KListDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_LHW_KListDataTable = New EnviroHealthSafety_Data.WSC_LHW_KListDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -45425,14 +46145,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_LHW_KListDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_KListDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_LHW_KList")
         End Function
         
@@ -45558,6 +46278,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_LHW_ID(ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_LHW_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_LHW_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -45736,18 +46483,23 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_LHW_PList_ID, LHW_PUList_ID, WSC_LHW_ID FROM dbo.WSC_LHW_PList"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_LHW_PList"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_LHW_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_LHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_LHW_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_LHW_PListDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_PListDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -45760,9 +46512,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_LHW_PListDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_LHW_PListDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_LHW_PListDataTable = New EnviroHealthSafety.WSC_LHW_PListDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_LHW_PListDataTable = New EnviroHealthSafety_Data.WSC_LHW_PListDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -45770,14 +46522,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_LHW_PListDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_PListDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_LHW_PList")
         End Function
         
@@ -45903,6 +46655,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_LHW_ID(ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_LHW_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_LHW_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -46081,18 +46860,23 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_LHW_UList_ID, LHW_PUList_ID, WSC_LHW_ID FROM dbo.WSC_LHW_UList"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_LHW_UList"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_LHW_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_LHW_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_LHW_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_LHW_UListDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_UListDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -46105,9 +46889,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_LHW_UListDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_LHW_UListDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_LHW_UListDataTable = New EnviroHealthSafety.WSC_LHW_UListDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_LHW_UListDataTable = New EnviroHealthSafety_Data.WSC_LHW_UListDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -46115,14 +46899,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_LHW_UListDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_LHW_UListDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_LHW_UList")
         End Function
         
@@ -46248,6 +47032,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteWSC_LHW_ID(ByVal WSC_LHW_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_LHW_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_LHW_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -46435,19 +47246,24 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT RCRA_Determination, WSC_ID, RCRA_Type, Determination_Description FROM dbo."& _ 
                 "WSC_RCRA_Determination"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_RCRA_Determination"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_RCRA_DeterminationDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_RCRA_DeterminationDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -46460,9 +47276,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_RCRA_DeterminationDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_RCRA_DeterminationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_RCRA_DeterminationDataTable = New EnviroHealthSafety.WSC_RCRA_DeterminationDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_RCRA_DeterminationDataTable = New EnviroHealthSafety_Data.WSC_RCRA_DeterminationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -46470,14 +47286,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_RCRA_DeterminationDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_RCRA_DeterminationDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_RCRA_Determination")
         End Function
         
@@ -46613,6 +47429,412 @@ Namespace EnviroHealthSafetyTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Determination_Description,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class WSC_SupportingDocumentTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
+        
+        Private _connection As Global.System.Data.Odbc.OdbcConnection
+        
+        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
+        
+        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "WSC_SupportingDocument"
+            tableMapping.ColumnMappings.Add("WSC_Document_ID", "WSC_Document_ID")
+            tableMapping.ColumnMappings.Add("WSC_ID", "WSC_ID")
+            tableMapping.ColumnMappings.Add("Library_ID", "Library_ID")
+            tableMapping.ColumnMappings.Add("WSC_Description", "WSC_Description")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[WSC_SupportingDocument] WHERE (([WSC_Doc"& _ 
+                "ument_ID] = ?) AND ((? = 1 AND [WSC_ID] IS NULL) OR ([WSC_ID] = ?)) AND ((? = 1 "& _ 
+                "AND [Library_ID] IS NULL) OR ([Library_ID] = ?)) AND ((? = 1 AND [WSC_Descriptio"& _ 
+                "n] IS NULL) OR ([WSC_Description] = ?)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Document_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Document_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_Description", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[dbo].[WSC_SupportingDocument] ([WSC_ID], [Libr"& _ 
+                "ary_ID], [WSC_Description]) VALUES (?, ?, ?)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [EnvroHealthSafetydb].[dbo].[WSC_SupportingDocument] SET [WSC_ID] = ?, [Li"& _ 
+                "brary_ID] = ?, [WSC_Description] = ? WHERE (([WSC_Document_ID] = ?) AND ((? = 1 "& _ 
+                "AND [WSC_ID] IS NULL) OR ([WSC_ID] = ?)) AND ((? = 1 AND [Library_ID] IS NULL) O"& _ 
+                "R ([Library_ID] = ?)) AND ((? = 1 AND [WSC_Description] IS NULL) OR ([WSC_Descri"& _ 
+                "ption] = ?)))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Document_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Document_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_Description", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, false, Nothing))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
+            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT WSC_Document_ID, WSC_ID, Library_ID, WSC_Description FROM dbo.WSC_Supporti"& _ 
+                "ngDocument"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_SupportingDocumentDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_SupportingDocumentDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As EnviroHealthSafety_Data.WSC_SupportingDocumentDataTable = New EnviroHealthSafety_Data.WSC_SupportingDocumentDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_SupportingDocumentDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
+            Return Me.Adapter.Update(dataSet, "WSC_SupportingDocument")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_WSC_Document_ID As Integer, ByVal Original_WSC_ID As Global.System.Nullable(Of Integer), ByVal Original_Library_ID As Global.System.Nullable(Of Integer), ByVal Original_WSC_Description As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_WSC_Document_ID,Integer)
+            If (Original_WSC_ID.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_WSC_ID.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Library_ID.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Library_ID.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_WSC_Description Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_WSC_Description,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal WSC_ID As Global.System.Nullable(Of Integer), ByVal Library_ID As Global.System.Nullable(Of Integer), ByVal WSC_Description As String) As Integer
+            If (WSC_ID.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Library_ID.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Library_ID.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (WSC_Description Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(WSC_Description,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal WSC_ID As Global.System.Nullable(Of Integer), ByVal Library_ID As Global.System.Nullable(Of Integer), ByVal WSC_Description As String, ByVal Original_WSC_Document_ID As Integer, ByVal Original_WSC_ID As Global.System.Nullable(Of Integer), ByVal Original_Library_ID As Global.System.Nullable(Of Integer), ByVal Original_WSC_Description As String) As Integer
+            If (WSC_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Library_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Library_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (WSC_Description Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(WSC_Description,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_WSC_Document_ID,Integer)
+            If (Original_WSC_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_WSC_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Library_ID.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Library_ID.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (Original_WSC_Description Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_WSC_Description,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -46821,19 +48043,24 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Solid261_2_ID, WSC_ID, Solid_261_2, Solid_261_2_NCitation, Solid_261_2_NDe"& _ 
                 "scription, Solid_261_2_NType FROM dbo.WSC_SW_261_2"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_SW_261_2"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_SW_261_2DataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_SW_261_2DataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -46846,9 +48073,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_SW_261_2DataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_SW_261_2DataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_SW_261_2DataTable = New EnviroHealthSafety.WSC_SW_261_2DataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_SW_261_2DataTable = New EnviroHealthSafety_Data.WSC_SW_261_2DataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -46856,14 +48083,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_SW_261_2DataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_SW_261_2DataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_SW_261_2")
         End Function
         
@@ -47033,6 +48260,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -47232,20 +48486,25 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Excluded_S261_4_ID, Excluded_S261_4vExempt, Excluded_S261_4vExempt_YType, "& _ 
                 "Excluded_S261_4vExempt_YCitation, Excluded_S261_4vExempt_YDescription, WSC_ID FR"& _ 
                 "OM dbo.WSC_SWE_261_4"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_SWE_261_4"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_SWE_261_4DataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_SWE_261_4DataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -47258,9 +48517,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_SWE_261_4DataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_SWE_261_4DataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_SWE_261_4DataTable = New EnviroHealthSafety.WSC_SWE_261_4DataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_SWE_261_4DataTable = New EnviroHealthSafety_Data.WSC_SWE_261_4DataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -47268,14 +48527,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_SWE_261_4DataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_SWE_261_4DataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_SWE_261_4")
         End Function
         
@@ -47439,6 +48698,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -47646,7 +48932,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT UserKnowledge_ID, WSC_ID, UserKnowledge_Name, UserKnowledge_Type, UserKnow"& _ 
@@ -47654,18 +48940,23 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT UserKnowledge_ID, WSC_ID, UserKnowledge_Name, UserKnowledge_Type, UserKnow"& _ 
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_WSD_UserKnowledge"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT UserKnowledge_ID, WSC_ID, UserKnowledge_Name, UserKnowledge_Type, UserKnow"& _ 
                 "ledge_Date, UserKnowledge_Library_ID FROM dbo.WSC_WSD_UserKnowledge"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHere WSC_I"& _ 
                 "D = ?"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -47678,9 +48969,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable = New EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable = New EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -47689,8 +48980,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByFilterWSCID(ByVal dataTable As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable, ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillByFilterWSCID(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable, ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
             Else
@@ -47707,14 +48998,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByFilterWSCID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataByFilterWSCID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable = New EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable = New EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -47722,14 +49013,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_WSD_UserKnowledgeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSD_UserKnowledgeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_WSD_UserKnowledge")
         End Function
         
@@ -47928,6 +49219,33 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -48123,7 +49441,7 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WasteAnalysis_ID, WasteAnalysis_SamplingDate, WasteAnalysis_Name, Library_"& _ 
@@ -48131,17 +49449,22 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT WasteAnalysis_ID, WasteAnalysis_SamplingDate, WasteAnalysis_Name, Library_"& _ 
-                "ID, WSC_ID FROM dbo.WSC_WSD_WasteAnalysis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where WSC_ID = ?"
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_WSD_WasteAnalysis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_ID = ?)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT WasteAnalysis_ID, WasteAnalysis_SamplingDate, WasteAnalysis_Name, Library_"& _ 
+                "ID, WSC_ID FROM dbo.WSC_WSD_WasteAnalysis"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Where WSC_ID = ?"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -48154,9 +49477,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable = New EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable = New EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -48165,8 +49488,8 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByFilterWSCID(ByVal dataTable As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable, ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function FillByFilterWSCID(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable, ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
             Else
@@ -48183,14 +49506,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByFilterWSCID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+        Public Overloads Overridable Function GetDataByFilterWSCID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (WSC_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable = New EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable = New EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -48198,14 +49521,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_WSD_WasteAnalysisDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSD_WasteAnalysisDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_WSD_WasteAnalysis")
         End Function
         
@@ -48379,6 +49702,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WSC_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -48593,20 +49943,25 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_WSTD_ID, WCS_WSTD_Description, WCS_WSTD_Rate, WCS_WSTD_RateUnits, WCS_"& _ 
                 "WSTD_LDR, WCS_WSTD_LDR_Wastewater, WCS_WSTD_LDR_NonWastewater, WCS_WSTD_DOTName,"& _ 
                 " WCS_ID FROM dbo.WSC_WSTD"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_WSTD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WCS_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WCS_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WCS_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_WSTDDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSTDDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -48619,9 +49974,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_WSTDDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_WSTDDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_WSTDDataTable = New EnviroHealthSafety.WSC_WSTDDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_WSTDDataTable = New EnviroHealthSafety_Data.WSC_WSTDDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -48629,14 +49984,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_WSTDDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSTDDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_WSTD")
         End Function
         
@@ -48819,6 +50174,33 @@ Namespace EnviroHealthSafetyTableAdapters
                 End If
             End Try
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_ID(ByVal WCS_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WCS_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WCS_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
     End Class
     
     '''<summary>
@@ -48996,18 +50378,23 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT WSC_UHC_ID, UTSConstituent_ID, WSC_WSTD_ID FROM dbo.WSC_WSTD_UHCList"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "DELETE FROM dbo.WSC_WSTD_UHCList"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (WSC_WSTD_ID = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_WSTD_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_WSTD_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_WSTD_UHCListDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSTD_UHCListDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -49020,9 +50407,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_WSTD_UHCListDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.WSC_WSTD_UHCListDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_WSTD_UHCListDataTable = New EnviroHealthSafety.WSC_WSTD_UHCListDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.WSC_WSTD_UHCListDataTable = New EnviroHealthSafety_Data.WSC_WSTD_UHCListDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -49030,14 +50417,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_WSTD_UHCListDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.WSC_WSTD_UHCListDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "WSC_WSTD_UHCList")
         End Function
         
@@ -49163,6 +50550,33 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByWSC_WSTD_ID(ByVal WSC_WSTD_ID As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
+            If (WSC_WSTD_ID.HasValue = true) Then
+                command.Parameters(0).Value = CType(WSC_WSTD_ID.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -49391,7 +50805,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_FEGeneralDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_FEGeneralDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -49404,9 +50818,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.ztbl_Dev_FEGeneralDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.ztbl_Dev_FEGeneralDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.ztbl_Dev_FEGeneralDataTable = New EnviroHealthSafety.ztbl_Dev_FEGeneralDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.ztbl_Dev_FEGeneralDataTable = New EnviroHealthSafety_Data.ztbl_Dev_FEGeneralDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -49414,14 +50828,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_FEGeneralDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_FEGeneralDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "ztbl_Dev_FEGeneral")
         End Function
         
@@ -49917,7 +51331,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_IssuesDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_IssuesDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -49930,9 +51344,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.ztbl_Dev_IssuesDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.ztbl_Dev_IssuesDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.ztbl_Dev_IssuesDataTable = New EnviroHealthSafety.ztbl_Dev_IssuesDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.ztbl_Dev_IssuesDataTable = New EnviroHealthSafety_Data.ztbl_Dev_IssuesDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -49940,14 +51354,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_IssuesDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_IssuesDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "ztbl_Dev_Issues")
         End Function
         
@@ -50522,7 +51936,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_LoginHistoryDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_LoginHistoryDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -50535,9 +51949,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.ztbl_Dev_LoginHistoryDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.ztbl_Dev_LoginHistoryDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.ztbl_Dev_LoginHistoryDataTable = New EnviroHealthSafety.ztbl_Dev_LoginHistoryDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.ztbl_Dev_LoginHistoryDataTable = New EnviroHealthSafety_Data.ztbl_Dev_LoginHistoryDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -50545,14 +51959,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_LoginHistoryDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_LoginHistoryDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "ztbl_Dev_LoginHistory")
         End Function
         
@@ -50895,7 +52309,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_TableManagerDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_TableManagerDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -50908,9 +52322,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.ztbl_Dev_TableManagerDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.ztbl_Dev_TableManagerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.ztbl_Dev_TableManagerDataTable = New EnviroHealthSafety.ztbl_Dev_TableManagerDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.ztbl_Dev_TableManagerDataTable = New EnviroHealthSafety_Data.ztbl_Dev_TableManagerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -50918,14 +52332,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.ztbl_Dev_TableManagerDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.ztbl_Dev_TableManagerDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "ztbl_Dev_TableManager")
         End Function
         
@@ -51341,7 +52755,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.ztbl_EmployeeDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.ztbl_EmployeeDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -51354,9 +52768,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.ztbl_EmployeeDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.ztbl_EmployeeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.ztbl_EmployeeDataTable = New EnviroHealthSafety.ztbl_EmployeeDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.ztbl_EmployeeDataTable = New EnviroHealthSafety_Data.ztbl_EmployeeDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -51364,14 +52778,14 @@ Namespace EnviroHealthSafetyTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.ztbl_EmployeeDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety_Data.ztbl_EmployeeDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             Return Me.Adapter.Update(dataSet, "ztbl_Employee")
         End Function
         
@@ -51734,1358 +53148,6 @@ Namespace EnviroHealthSafetyTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class LibraryTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
-        
-        Private _connection As Global.System.Data.Odbc.OdbcConnection
-        
-        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
-        
-        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "Library"
-            tableMapping.ColumnMappings.Add("Library_ID", "Library_ID")
-            tableMapping.ColumnMappings.Add("Document_Active", "Document_Active")
-            tableMapping.ColumnMappings.Add("Document_Type", "Document_Type")
-            tableMapping.ColumnMappings.Add("Document_Name", "Document_Name")
-            tableMapping.ColumnMappings.Add("Document_Description", "Document_Description")
-            tableMapping.ColumnMappings.Add("Document_Version", "Document_Version")
-            tableMapping.ColumnMappings.Add("Document_Notes", "Document_Notes")
-            tableMapping.ColumnMappings.Add("Document_Owner", "Document_Owner")
-            tableMapping.ColumnMappings.Add("Document_DateCreate", "Document_DateCreate")
-            tableMapping.ColumnMappings.Add("Document_DateUpload", "Document_DateUpload")
-            tableMapping.ColumnMappings.Add("USBR_ERDMS_Link", "USBR_ERDMS_Link")
-            tableMapping.ColumnMappings.Add("Document_WebsiteLink", "Document_WebsiteLink")
-            tableMapping.ColumnMappings.Add("Document_NetworkLocation", "Document_NetworkLocation")
-            tableMapping.ColumnMappings.Add("Office_ID", "Office_ID")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[Library] WHERE (([Library_ID] = ?) AND ("& _ 
-                "[Document_Active] = ?) AND ((? = 1 AND [Document_Type] IS NULL) OR ([Document_Ty"& _ 
-                "pe] = ?)) AND ((? = 1 AND [Document_Name] IS NULL) OR ([Document_Name] = ?)) AND"& _ 
-                " ((? = 1 AND [Document_Version] IS NULL) OR ([Document_Version] = ?)) AND ([Docu"& _ 
-                "ment_Owner] = ?) AND ((? = 1 AND [Document_DateCreate] IS NULL) OR ([Document_Da"& _ 
-                "teCreate] = ?)) AND ((? = 1 AND [Document_DateUpload] IS NULL) OR ([Document_Dat"& _ 
-                "eUpload] = ?)) AND ((? = 1 AND [Office_ID] IS NULL) OR ([Office_ID] = ?)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Name", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Version", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateCreate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateUpload", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[dbo].[Library] ([Document_Active], [Document_T"& _ 
-                "ype], [Document_Name], [Document_Description], [Document_Version], [Document_Not"& _ 
-                "es], [Document_Owner], [Document_DateCreate], [Document_DateUpload], [USBR_ERDMS"& _ 
-                "_Link], [Document_WebsiteLink], [Document_NetworkLocation], [Office_ID]) VALUES "& _ 
-                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Description", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Notes", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Notes", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("USBR_ERDMS_Link", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "USBR_ERDMS_Link", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_WebsiteLink", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_WebsiteLink", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_NetworkLocation", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_NetworkLocation", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [EnvroHealthSafetydb].[dbo].[Library] SET [Document_Active] = ?, [Document"& _ 
-                "_Type] = ?, [Document_Name] = ?, [Document_Description] = ?, [Document_Version] "& _ 
-                "= ?, [Document_Notes] = ?, [Document_Owner] = ?, [Document_DateCreate] = ?, [Doc"& _ 
-                "ument_DateUpload] = ?, [USBR_ERDMS_Link] = ?, [Document_WebsiteLink] = ?, [Docum"& _ 
-                "ent_NetworkLocation] = ?, [Office_ID] = ? WHERE (([Library_ID] = ?) AND ([Docume"& _ 
-                "nt_Active] = ?) AND ((? = 1 AND [Document_Type] IS NULL) OR ([Document_Type] = ?"& _ 
-                ")) AND ((? = 1 AND [Document_Name] IS NULL) OR ([Document_Name] = ?)) AND ((? = "& _ 
-                "1 AND [Document_Version] IS NULL) OR ([Document_Version] = ?)) AND ([Document_Ow"& _ 
-                "ner] = ?) AND ((? = 1 AND [Document_DateCreate] IS NULL) OR ([Document_DateCreat"& _ 
-                "e] = ?)) AND ((? = 1 AND [Document_DateUpload] IS NULL) OR ([Document_DateUpload"& _ 
-                "] = ?)) AND ((? = 1 AND [Office_ID] IS NULL) OR ([Office_ID] = ?)))"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Description", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Notes", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Notes", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("USBR_ERDMS_Link", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "USBR_ERDMS_Link", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_WebsiteLink", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_WebsiteLink", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Document_NetworkLocation", Global.System.Data.Odbc.OdbcType.NText, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_NetworkLocation", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Active", Global.System.Data.Odbc.OdbcType.Bit, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Active", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Type", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Type", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Name", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Name", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Name", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_Version", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Version", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Version", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_Owner", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_Owner", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateCreate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateCreate", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateCreate", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Document_DateUpload", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Document_DateUpload", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Document_DateUpload", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Office_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Office_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
-            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Library_ID, Document_Active, Document_Type, Document_Name, Document_Descri"& _ 
-                "ption, Document_Version, Document_Notes, Document_Owner, Document_DateCreate, Do"& _ 
-                "cument_DateUpload, USBR_ERDMS_Link, Document_WebsiteLink, Document_NetworkLocati"& _ 
-                "on, Office_ID FROM dbo.Library"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.LibraryDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.LibraryDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.LibraryDataTable = New EnviroHealthSafety.LibraryDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.LibraryDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
-            Return Me.Adapter.Update(dataSet, "Library")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Library_ID As Integer, ByVal Original_Document_Active As Boolean, ByVal Original_Document_Type As Global.System.Nullable(Of Integer), ByVal Original_Document_Name As String, ByVal Original_Document_Version As String, ByVal Original_Document_Owner As Integer, ByVal Original_Document_DateCreate As Global.System.Nullable(Of Date), ByVal Original_Document_DateUpload As Global.System.Nullable(Of Date), ByVal Original_Office_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Library_ID,Integer)
-            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Document_Active,Boolean)
-            If (Original_Document_Type.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Document_Type.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Document_Name Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Document_Name,String)
-            End If
-            If (Original_Document_Version Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Document_Version,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Document_Owner,Integer)
-            If (Original_Document_DateCreate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Document_DateCreate.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Document_DateUpload.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Document_DateUpload.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Office_ID.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Office_ID.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Document_Active As Boolean, ByVal Document_Type As Global.System.Nullable(Of Integer), ByVal Document_Name As String, ByVal Document_Description As String, ByVal Document_Version As String, ByVal Document_Notes As String, ByVal Document_Owner As Integer, ByVal Document_DateCreate As Global.System.Nullable(Of Date), ByVal Document_DateUpload As Global.System.Nullable(Of Date), ByVal USBR_ERDMS_Link As String, ByVal Document_WebsiteLink As String, ByVal Document_NetworkLocation As String, ByVal Office_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Document_Active,Boolean)
-            If (Document_Type.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Document_Type.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (Document_Name Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Document_Name,String)
-            End If
-            If (Document_Description Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Document_Description,String)
-            End If
-            If (Document_Version Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Document_Version,String)
-            End If
-            If (Document_Notes Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Document_Notes,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(6).Value = CType(Document_Owner,Integer)
-            If (Document_DateCreate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(Document_DateCreate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (Document_DateUpload.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(Document_DateUpload.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (USBR_ERDMS_Link Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(USBR_ERDMS_Link,String)
-            End If
-            If (Document_WebsiteLink Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Document_WebsiteLink,String)
-            End If
-            If (Document_NetworkLocation Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(Document_NetworkLocation,String)
-            End If
-            If (Office_ID.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(Office_ID.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal Document_Active As Boolean,  _
-                    ByVal Document_Type As Global.System.Nullable(Of Integer),  _
-                    ByVal Document_Name As String,  _
-                    ByVal Document_Description As String,  _
-                    ByVal Document_Version As String,  _
-                    ByVal Document_Notes As String,  _
-                    ByVal Document_Owner As Integer,  _
-                    ByVal Document_DateCreate As Global.System.Nullable(Of Date),  _
-                    ByVal Document_DateUpload As Global.System.Nullable(Of Date),  _
-                    ByVal USBR_ERDMS_Link As String,  _
-                    ByVal Document_WebsiteLink As String,  _
-                    ByVal Document_NetworkLocation As String,  _
-                    ByVal Office_ID As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_Library_ID As Integer,  _
-                    ByVal Original_Document_Active As Boolean,  _
-                    ByVal Original_Document_Type As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_Document_Name As String,  _
-                    ByVal Original_Document_Version As String,  _
-                    ByVal Original_Document_Owner As Integer,  _
-                    ByVal Original_Document_DateCreate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_Document_DateUpload As Global.System.Nullable(Of Date),  _
-                    ByVal Original_Office_ID As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Document_Active,Boolean)
-            If (Document_Type.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Document_Type.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (Document_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Document_Name,String)
-            End If
-            If (Document_Description Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Document_Description,String)
-            End If
-            If (Document_Version Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Document_Version,String)
-            End If
-            If (Document_Notes Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Document_Notes,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Document_Owner,Integer)
-            If (Document_DateCreate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Document_DateCreate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (Document_DateUpload.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Document_DateUpload.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (USBR_ERDMS_Link Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(USBR_ERDMS_Link,String)
-            End If
-            If (Document_WebsiteLink Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Document_WebsiteLink,String)
-            End If
-            If (Document_NetworkLocation Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Document_NetworkLocation,String)
-            End If
-            If (Office_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Office_ID.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Library_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Document_Active,Boolean)
-            If (Original_Document_Type.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Document_Type.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Document_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Document_Name,String)
-            End If
-            If (Original_Document_Version Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Document_Version,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Document_Owner,Integer)
-            If (Original_Document_DateCreate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Document_DateCreate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Document_DateUpload.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Document_DateUpload.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Office_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_Office_ID.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class tlkpHSC_HealthHazardTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
-        
-        Private _connection As Global.System.Data.Odbc.OdbcConnection
-        
-        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
-        
-        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "tlkpHSC_HealthHazard"
-            tableMapping.ColumnMappings.Add("HSC_Environmental_ID", "HSC_Environmental_ID")
-            tableMapping.ColumnMappings.Add("HSC_Environmental_HCode", "HSC_Environmental_HCode")
-            tableMapping.ColumnMappings.Add("HSC_Environmental_Statement", "HSC_Environmental_Statement")
-            tableMapping.ColumnMappings.Add("HSC_Environmental_Category", "HSC_Environmental_Category")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[tlkpHSC_HealthHazard] WHERE (([HSC_Envir"& _ 
-                "onmental_ID] = ?) AND ((? = 1 AND [HSC_Environmental_HCode] IS NULL) OR ([HSC_En"& _ 
-                "vironmental_HCode] = ?)) AND ((? = 1 AND [HSC_Environmental_Statement] IS NULL) "& _ 
-                "OR ([HSC_Environmental_Statement] = ?)) AND ((? = 1 AND [HSC_Environmental_Categ"& _ 
-                "ory] IS NULL) OR ([HSC_Environmental_Category] = ?)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[dbo].[tlkpHSC_HealthHazard] ([HSC_Environmenta"& _ 
-                "l_HCode], [HSC_Environmental_Statement], [HSC_Environmental_Category]) VALUES (?"& _ 
-                ", ?, ?)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [EnvroHealthSafetydb].[dbo].[tlkpHSC_HealthHazard] SET [HSC_Environmental_"& _ 
-                "HCode] = ?, [HSC_Environmental_Statement] = ?, [HSC_Environmental_Category] = ? "& _ 
-                "WHERE (([HSC_Environmental_ID] = ?) AND ((? = 1 AND [HSC_Environmental_HCode] IS"& _ 
-                " NULL) OR ([HSC_Environmental_HCode] = ?)) AND ((? = 1 AND [HSC_Environmental_St"& _ 
-                "atement] IS NULL) OR ([HSC_Environmental_Statement] = ?)) AND ((? = 1 AND [HSC_E"& _ 
-                "nvironmental_Category] IS NULL) OR ([HSC_Environmental_Category] = ?)))"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_HCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_HCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Statement", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Statement", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_HSC_Environmental_Category", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HSC_Environmental_Category", Global.System.Data.DataRowVersion.Original, false, Nothing))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
-            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT HSC_Environmental_ID, HSC_Environmental_HCode, HSC_Environmental_Statement"& _ 
-                ", HSC_Environmental_Category FROM dbo.tlkpHSC_HealthHazard"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.tlkpHSC_HealthHazardDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.tlkpHSC_HealthHazardDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.tlkpHSC_HealthHazardDataTable = New EnviroHealthSafety.tlkpHSC_HealthHazardDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.tlkpHSC_HealthHazardDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
-            Return Me.Adapter.Update(dataSet, "tlkpHSC_HealthHazard")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_HSC_Environmental_ID As Integer, ByVal Original_HSC_Environmental_HCode As String, ByVal Original_HSC_Environmental_Statement As String, ByVal Original_HSC_Environmental_Category As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_HSC_Environmental_ID,Integer)
-            If (Original_HSC_Environmental_HCode Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_HSC_Environmental_HCode,String)
-            End If
-            If (Original_HSC_Environmental_Statement Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_HSC_Environmental_Statement,String)
-            End If
-            If (Original_HSC_Environmental_Category Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_HSC_Environmental_Category,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal HSC_Environmental_HCode As String, ByVal HSC_Environmental_Statement As String, ByVal HSC_Environmental_Category As String) As Integer
-            If (HSC_Environmental_HCode Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(HSC_Environmental_HCode,String)
-            End If
-            If (HSC_Environmental_Statement Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(HSC_Environmental_Statement,String)
-            End If
-            If (HSC_Environmental_Category Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(HSC_Environmental_Category,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal HSC_Environmental_HCode As String, ByVal HSC_Environmental_Statement As String, ByVal HSC_Environmental_Category As String, ByVal Original_HSC_Environmental_ID As Integer, ByVal Original_HSC_Environmental_HCode As String, ByVal Original_HSC_Environmental_Statement As String, ByVal Original_HSC_Environmental_Category As String) As Integer
-            If (HSC_Environmental_HCode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(HSC_Environmental_HCode,String)
-            End If
-            If (HSC_Environmental_Statement Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(HSC_Environmental_Statement,String)
-            End If
-            If (HSC_Environmental_Category Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(HSC_Environmental_Category,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_HSC_Environmental_ID,Integer)
-            If (Original_HSC_Environmental_HCode Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_HSC_Environmental_HCode,String)
-            End If
-            If (Original_HSC_Environmental_Statement Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_HSC_Environmental_Statement,String)
-            End If
-            If (Original_HSC_Environmental_Category Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_HSC_Environmental_Category,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class WSC_SupportingDocumentTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
-        
-        Private _connection As Global.System.Data.Odbc.OdbcConnection
-        
-        Private _transaction As Global.System.Data.Odbc.OdbcTransaction
-        
-        Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "WSC_SupportingDocument"
-            tableMapping.ColumnMappings.Add("WSC_Document_ID", "WSC_Document_ID")
-            tableMapping.ColumnMappings.Add("WSC_ID", "WSC_ID")
-            tableMapping.ColumnMappings.Add("Library_ID", "Library_ID")
-            tableMapping.ColumnMappings.Add("WSC_Description", "WSC_Description")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EnvroHealthSafetydb].[dbo].[WSC_SupportingDocument] WHERE (([WSC_Doc"& _ 
-                "ument_ID] = ?) AND ((? = 1 AND [WSC_ID] IS NULL) OR ([WSC_ID] = ?)) AND ((? = 1 "& _ 
-                "AND [Library_ID] IS NULL) OR ([Library_ID] = ?)) AND ((? = 1 AND [WSC_Descriptio"& _ 
-                "n] IS NULL) OR ([WSC_Description] = ?)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Document_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Document_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_Description", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EnvroHealthSafetydb].[dbo].[WSC_SupportingDocument] ([WSC_ID], [Libr"& _ 
-                "ary_ID], [WSC_Description]) VALUES (?, ?, ?)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [EnvroHealthSafetydb].[dbo].[WSC_SupportingDocument] SET [WSC_ID] = ?, [Li"& _ 
-                "brary_ID] = ?, [WSC_Description] = ? WHERE (([WSC_Document_ID] = ?) AND ((? = 1 "& _ 
-                "AND [WSC_ID] IS NULL) OR ([WSC_ID] = ?)) AND ((? = 1 AND [Library_ID] IS NULL) O"& _ 
-                "R ([Library_ID] = ?)) AND ((? = 1 AND [WSC_Description] IS NULL) OR ([WSC_Descri"& _ 
-                "ption] = ?)))"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Document_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Document_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_Library_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Library_ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_WSC_Description", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_WSC_Description", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "WSC_Description", Global.System.Data.DataRowVersion.Original, false, Nothing))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.Odbc.OdbcConnection()
-            Me._connection.ConnectionString = Global.EnviroHealthSafety.My.MySettings.Default.EnvroHealthSafetydbConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(0) {}
-            Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT WSC_Document_ID, WSC_ID, Library_ID, WSC_Description FROM dbo.WSC_Supporti"& _ 
-                "ngDocument"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.WSC_SupportingDocumentDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.WSC_SupportingDocumentDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.WSC_SupportingDocumentDataTable = New EnviroHealthSafety.WSC_SupportingDocumentDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As EnviroHealthSafety.WSC_SupportingDocumentDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As EnviroHealthSafety) As Integer
-            Return Me.Adapter.Update(dataSet, "WSC_SupportingDocument")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_WSC_Document_ID As Integer, ByVal Original_WSC_ID As Global.System.Nullable(Of Integer), ByVal Original_Library_ID As Global.System.Nullable(Of Integer), ByVal Original_WSC_Description As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_WSC_Document_ID,Integer)
-            If (Original_WSC_ID.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_WSC_ID.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Library_ID.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_Library_ID.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Original_WSC_Description Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_WSC_Description,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal WSC_ID As Global.System.Nullable(Of Integer), ByVal Library_ID As Global.System.Nullable(Of Integer), ByVal WSC_Description As String) As Integer
-            If (WSC_ID.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (Library_ID.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Library_ID.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (WSC_Description Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(WSC_Description,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal WSC_ID As Global.System.Nullable(Of Integer), ByVal Library_ID As Global.System.Nullable(Of Integer), ByVal WSC_Description As String, ByVal Original_WSC_Document_ID As Integer, ByVal Original_WSC_ID As Global.System.Nullable(Of Integer), ByVal Original_Library_ID As Global.System.Nullable(Of Integer), ByVal Original_WSC_Description As String) As Integer
-            If (WSC_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(WSC_ID.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (Library_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Library_ID.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (WSC_Description Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(WSC_Description,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_WSC_Document_ID,Integer)
-            If (Original_WSC_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_WSC_ID.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Library_ID.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Library_ID.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (Original_WSC_Description Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_WSC_Description,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
     Partial Public Class qry_SearchProductManufacturerTableAdapter
         Inherits Global.System.ComponentModel.Component
         
@@ -53238,15 +53300,16 @@ Namespace EnviroHealthSafetyTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT dbo.Chemical_Product.Product_Name, dbo.SDS.SDS_ProductCode, dbo.SDS.SDS_Nu"& _ 
-                "mber, dbo.Chemical_Manufacturer.Manufacturer_Name, dbo.Chemical_Product.Product_"& _ 
-                "HazWaste, dbo.SDS.SDS_Active, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  dbo.Chemical_Manufacturer.Manu"& _ 
-                "facturer_ID, dbo.SDS.Product_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     dbo.SDS, dbo.Chemical_ResponsibleParty"& _ 
-                ", dbo.Chemical_Manufacturer, dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  dbo.SDS.Product_ID = d"& _ 
-                "bo.Chemical_Product.Product_ID AND dbo.Chemical_ResponsibleParty.Manufacturer_ID"& _ 
-                " = dbo.Chemical_Manufacturer.Manufacturer_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  dbo.Chemica"& _ 
-                "l_ResponsibleParty.Product_ID = dbo.Chemical_Product.Product_ID AND (CONVERT([VA"& _ 
-                "RCHAR], dbo.Chemical_Manufacturer.Manufacturer_Name) LIKE '%' + ? + '%')"
+            Me._commandCollection(1).CommandText = "SELECT        dbo.Chemical_Product.Product_Name, dbo.SDS.SDS_ProductCode, dbo.SDS"& _ 
+                ".SDS_Number, dbo.Chemical_Manufacturer.Manufacturer_Name, dbo.Chemical_Product.P"& _ 
+                "roduct_HazWaste, dbo.SDS.SDS_Active, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         dbo.Chemical_Man"& _ 
+                "ufacturer.Manufacturer_ID, dbo.SDS.Product_ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            dbo.Chemical_Resp"& _ 
+                "onsibleParty, dbo.Chemical_Manufacturer, dbo.SDS, dbo.Chemical_Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     dbo.Chemical_ResponsibleParty.Manufacturer_ID = dbo.Chemical_Manufacturer.M"& _ 
+                "anufacturer_ID AND dbo.Chemical_ResponsibleParty.Product_ID = dbo.Chemical_Produ"& _ 
+                "ct.Product_ID AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         dbo.SDS.Product_ID = dbo.Chemical_P"& _ 
+                "roduct.Product_ID AND (CONVERT([VARCHAR], dbo.Chemical_Manufacturer.Manufacturer"& _ 
+                "_Name) LIKE '%' + ? + '%')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Param1", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
@@ -53281,7 +53344,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -53294,9 +53357,9 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As EnviroHealthSafety.qry_SearchProductManufacturerDataTable
+        Public Overloads Overridable Function GetData() As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety.qry_SearchProductManufacturerDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -53305,7 +53368,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBySearchByManufacturer(ByVal dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable, ByVal Param1 As String) As Integer
+        Public Overloads Overridable Function FillBySearchByManufacturer(ByVal dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable, ByVal Param1 As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
@@ -53323,14 +53386,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBySearchByManufacturer(ByVal Param1 As String) As EnviroHealthSafety.qry_SearchProductManufacturerDataTable
+        Public Overloads Overridable Function GetDataBySearchByManufacturer(ByVal Param1 As String) As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
             End If
-            Dim dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety.qry_SearchProductManufacturerDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -53339,7 +53402,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBySearchProductName(ByVal dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable, ByVal Param1 As String) As Integer
+        Public Overloads Overridable Function FillBySearchProductName(ByVal dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable, ByVal Param1 As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
@@ -53357,14 +53420,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBySearchProductName(ByVal Param1 As String) As EnviroHealthSafety.qry_SearchProductManufacturerDataTable
+        Public Overloads Overridable Function GetDataBySearchProductName(ByVal Param1 As String) As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
             End If
-            Dim dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety.qry_SearchProductManufacturerDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -53373,7 +53436,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBySearchSDSNumber(ByVal dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable, ByVal Param1 As String) As Integer
+        Public Overloads Overridable Function FillBySearchSDSNumber(ByVal dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable, ByVal Param1 As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
@@ -53391,14 +53454,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBySearchSDSNumber(ByVal Param1 As String) As EnviroHealthSafety.qry_SearchProductManufacturerDataTable
+        Public Overloads Overridable Function GetDataBySearchSDSNumber(ByVal Param1 As String) As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (Param1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Param1")
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
             End If
-            Dim dataTable As EnviroHealthSafety.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety.qry_SearchProductManufacturerDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable = New EnviroHealthSafety_Data.qry_SearchProductManufacturerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -53587,7 +53650,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.qry_ChemicalProduct_SDSGeneralDataTable, ByVal Product_ID As Integer) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.qry_ChemicalProduct_SDSGeneralDataTable, ByVal Product_ID As Integer) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID,Integer)
             If (Me.ClearBeforeFill = true) Then
@@ -53601,10 +53664,10 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Product_ID As Integer) As EnviroHealthSafety.qry_ChemicalProduct_SDSGeneralDataTable
+        Public Overloads Overridable Function GetData(ByVal Product_ID As Integer) As EnviroHealthSafety_Data.qry_ChemicalProduct_SDSGeneralDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID,Integer)
-            Dim dataTable As EnviroHealthSafety.qry_ChemicalProduct_SDSGeneralDataTable = New EnviroHealthSafety.qry_ChemicalProduct_SDSGeneralDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.qry_ChemicalProduct_SDSGeneralDataTable = New EnviroHealthSafety_Data.qry_ChemicalProduct_SDSGeneralDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -53778,7 +53841,7 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety.qry_ChemicalProduct_CurrentLocationDataTable, ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As EnviroHealthSafety_Data.qry_ChemicalProduct_CurrentLocationDataTable, ByVal Product_ID As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Product_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID.Value,Integer)
@@ -53796,14 +53859,14 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal Product_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety.qry_ChemicalProduct_CurrentLocationDataTable
+        Public Overloads Overridable Function GetData(ByVal Product_ID As Global.System.Nullable(Of Integer)) As EnviroHealthSafety_Data.qry_ChemicalProduct_CurrentLocationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Product_ID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(Product_ID.Value,Integer)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            Dim dataTable As EnviroHealthSafety.qry_ChemicalProduct_CurrentLocationDataTable = New EnviroHealthSafety.qry_ChemicalProduct_CurrentLocationDataTable()
+            Dim dataTable As EnviroHealthSafety_Data.qry_ChemicalProduct_CurrentLocationDataTable = New EnviroHealthSafety_Data.qry_ChemicalProduct_CurrentLocationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -53832,6 +53895,8 @@ Namespace EnviroHealthSafetyTableAdapters
         
         Private _chemical_WasteGeneratorTableAdapter As Chemical_WasteGeneratorTableAdapter
         
+        Private _libraryTableAdapter As LibraryTableAdapter
+        
         Private _sDSTableAdapter As SDSTableAdapter
         
         Private _sysdiagramsTableAdapter As sysdiagramsTableAdapter
@@ -53845,6 +53910,8 @@ Namespace EnviroHealthSafetyTableAdapters
         Private _tlkpHazard_ClassTableAdapter As tlkpHazard_ClassTableAdapter
         
         Private _tlkpHazard_TypeTableAdapter As tlkpHazard_TypeTableAdapter
+        
+        Private _tlkpHSC_HealthHazardTableAdapter As tlkpHSC_HealthHazardTableAdapter
         
         Private _tlkpHSC_PhysicalHazardTableAdapter As tlkpHSC_PhysicalHazardTableAdapter
         
@@ -53874,8 +53941,6 @@ Namespace EnviroHealthSafetyTableAdapters
         
         Private _trace_xe_action_mapTableAdapter As trace_xe_action_mapTableAdapter
         
-        Private _trace_xe_event_mapTableAdapter As trace_xe_event_mapTableAdapter
-        
         Private _wSCTableAdapter As WSCTableAdapter
         
         Private _wSC_CHWTableAdapter As WSC_CHWTableAdapter
@@ -53893,6 +53958,8 @@ Namespace EnviroHealthSafetyTableAdapters
         Private _wSC_LHW_UListTableAdapter As WSC_LHW_UListTableAdapter
         
         Private _wSC_RCRA_DeterminationTableAdapter As WSC_RCRA_DeterminationTableAdapter
+        
+        Private _wSC_SupportingDocumentTableAdapter As WSC_SupportingDocumentTableAdapter
         
         Private _wSC_SW_261_2TableAdapter As WSC_SW_261_2TableAdapter
         
@@ -53915,12 +53982,6 @@ Namespace EnviroHealthSafetyTableAdapters
         Private _ztbl_Dev_TableManagerTableAdapter As ztbl_Dev_TableManagerTableAdapter
         
         Private _ztbl_EmployeeTableAdapter As ztbl_EmployeeTableAdapter
-        
-        Private _libraryTableAdapter As LibraryTableAdapter
-        
-        Private _tlkpHSC_HealthHazardTableAdapter As tlkpHSC_HealthHazardTableAdapter
-        
-        Private _wSC_SupportingDocumentTableAdapter As WSC_SupportingDocumentTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -54004,6 +54065,20 @@ Namespace EnviroHealthSafetyTableAdapters
             End Get
             Set
                 Me._chemical_WasteGeneratorTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property LibraryTableAdapter() As LibraryTableAdapter
+            Get
+                Return Me._libraryTableAdapter
+            End Get
+            Set
+                Me._libraryTableAdapter = value
             End Set
         End Property
         
@@ -54102,6 +54177,20 @@ Namespace EnviroHealthSafetyTableAdapters
             End Get
             Set
                 Me._tlkpHazard_TypeTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property tlkpHSC_HealthHazardTableAdapter() As tlkpHSC_HealthHazardTableAdapter
+            Get
+                Return Me._tlkpHSC_HealthHazardTableAdapter
+            End Get
+            Set
+                Me._tlkpHSC_HealthHazardTableAdapter = value
             End Set
         End Property
         
@@ -54306,20 +54395,6 @@ Namespace EnviroHealthSafetyTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property trace_xe_event_mapTableAdapter() As trace_xe_event_mapTableAdapter
-            Get
-                Return Me._trace_xe_event_mapTableAdapter
-            End Get
-            Set
-                Me._trace_xe_event_mapTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
         Public Property WSCTableAdapter() As WSCTableAdapter
             Get
                 Return Me._wSCTableAdapter
@@ -54438,6 +54513,20 @@ Namespace EnviroHealthSafetyTableAdapters
             End Get
             Set
                 Me._wSC_RCRA_DeterminationTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property WSC_SupportingDocumentTableAdapter() As WSC_SupportingDocumentTableAdapter
+            Get
+                Return Me._wSC_SupportingDocumentTableAdapter
+            End Get
+            Set
+                Me._wSC_SupportingDocumentTableAdapter = value
             End Set
         End Property
         
@@ -54596,48 +54685,6 @@ Namespace EnviroHealthSafetyTableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property LibraryTableAdapter() As LibraryTableAdapter
-            Get
-                Return Me._libraryTableAdapter
-            End Get
-            Set
-                Me._libraryTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property tlkpHSC_HealthHazardTableAdapter() As tlkpHSC_HealthHazardTableAdapter
-            Get
-                Return Me._tlkpHSC_HealthHazardTableAdapter
-            End Get
-            Set
-                Me._tlkpHSC_HealthHazardTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property WSC_SupportingDocumentTableAdapter() As WSC_SupportingDocumentTableAdapter
-            Get
-                Return Me._wSC_SupportingDocumentTableAdapter
-            End Get
-            Set
-                Me._wSC_SupportingDocumentTableAdapter = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property BackupDataSetBeforeUpdate() As Boolean
             Get
@@ -54676,6 +54723,10 @@ Namespace EnviroHealthSafetyTableAdapters
                             AndAlso (Not (Me._chemical_WasteGeneratorTableAdapter.Connection) Is Nothing)) Then
                     Return Me._chemical_WasteGeneratorTableAdapter.Connection
                 End If
+                If ((Not (Me._libraryTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._libraryTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._libraryTableAdapter.Connection
+                End If
                 If ((Not (Me._sDSTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._sDSTableAdapter.Connection) Is Nothing)) Then
                     Return Me._sDSTableAdapter.Connection
@@ -54703,6 +54754,10 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (Me._tlkpHazard_TypeTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._tlkpHazard_TypeTableAdapter.Connection) Is Nothing)) Then
                     Return Me._tlkpHazard_TypeTableAdapter.Connection
+                End If
+                If ((Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._tlkpHSC_HealthHazardTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._tlkpHSC_HealthHazardTableAdapter.Connection
                 End If
                 If ((Not (Me._tlkpHSC_PhysicalHazardTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._tlkpHSC_PhysicalHazardTableAdapter.Connection) Is Nothing)) Then
@@ -54760,10 +54815,6 @@ Namespace EnviroHealthSafetyTableAdapters
                             AndAlso (Not (Me._trace_xe_action_mapTableAdapter.Connection) Is Nothing)) Then
                     Return Me._trace_xe_action_mapTableAdapter.Connection
                 End If
-                If ((Not (Me._trace_xe_event_mapTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._trace_xe_event_mapTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._trace_xe_event_mapTableAdapter.Connection
-                End If
                 If ((Not (Me._wSCTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._wSCTableAdapter.Connection) Is Nothing)) Then
                     Return Me._wSCTableAdapter.Connection
@@ -54799,6 +54850,10 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (Me._wSC_RCRA_DeterminationTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._wSC_RCRA_DeterminationTableAdapter.Connection) Is Nothing)) Then
                     Return Me._wSC_RCRA_DeterminationTableAdapter.Connection
+                End If
+                If ((Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._wSC_SupportingDocumentTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._wSC_SupportingDocumentTableAdapter.Connection
                 End If
                 If ((Not (Me._wSC_SW_261_2TableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._wSC_SW_261_2TableAdapter.Connection) Is Nothing)) Then
@@ -54844,18 +54899,6 @@ Namespace EnviroHealthSafetyTableAdapters
                             AndAlso (Not (Me._ztbl_EmployeeTableAdapter.Connection) Is Nothing)) Then
                     Return Me._ztbl_EmployeeTableAdapter.Connection
                 End If
-                If ((Not (Me._libraryTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._libraryTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._libraryTableAdapter.Connection
-                End If
-                If ((Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._tlkpHSC_HealthHazardTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._tlkpHSC_HealthHazardTableAdapter.Connection
-                End If
-                If ((Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._wSC_SupportingDocumentTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._wSC_SupportingDocumentTableAdapter.Connection
-                End If
                 Return Nothing
             End Get
             Set
@@ -54884,6 +54927,9 @@ Namespace EnviroHealthSafetyTableAdapters
                 If (Not (Me._chemical_WasteGeneratorTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
+                If (Not (Me._libraryTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
                 If (Not (Me._sDSTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
@@ -54903,6 +54949,9 @@ Namespace EnviroHealthSafetyTableAdapters
                     count = (count + 1)
                 End If
                 If (Not (Me._tlkpHazard_TypeTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 If (Not (Me._tlkpHSC_PhysicalHazardTableAdapter) Is Nothing) Then
@@ -54947,9 +54996,6 @@ Namespace EnviroHealthSafetyTableAdapters
                 If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._trace_xe_event_mapTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
                 If (Not (Me._wSCTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
@@ -54975,6 +55021,9 @@ Namespace EnviroHealthSafetyTableAdapters
                     count = (count + 1)
                 End If
                 If (Not (Me._wSC_RCRA_DeterminationTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 If (Not (Me._wSC_SW_261_2TableAdapter) Is Nothing) Then
@@ -55010,15 +55059,6 @@ Namespace EnviroHealthSafetyTableAdapters
                 If (Not (Me._ztbl_EmployeeTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._libraryTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
-                If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
-                If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
                 Return count
             End Get
         End Property
@@ -55028,7 +55068,7 @@ Namespace EnviroHealthSafetyTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As EnviroHealthSafety, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As EnviroHealthSafety_Data, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._chemical_LocationTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.Chemical_Location.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
@@ -55036,6 +55076,15 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._chemical_LocationTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._wSCTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._wSCTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -55111,21 +55160,30 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC_SupportingDocument.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._wSC_SupportingDocumentTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.trace_xe_action_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._trace_xe_action_mapTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             If (Not (Me._wSC_SW_261_2TableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC_SW_261_2.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._wSC_SW_261_2TableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._wSC_SWE_261_4TableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC_SWE_261_4.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._wSC_SWE_261_4TableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -55210,48 +55268,12 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._libraryTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Library.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._wSC_SWE_261_4TableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC_SWE_261_4.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._libraryTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tlkpHSC_HealthHazard.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tlkpHSC_HealthHazardTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC_SupportingDocument.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._wSC_SupportingDocumentTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._wSCTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.WSC.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._wSCTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._trace_xe_event_mapTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.trace_xe_event_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._trace_xe_event_mapTableAdapter.Update(updatedRows))
+                    result = (result + Me._wSC_SWE_261_4TableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -55261,6 +55283,24 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._tlkpUTS_ConstituentTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._tlkpRegionTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tlkpRegion.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._tlkpRegionTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._tlkpRCRA_TypeTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tlkpRCRA_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._tlkpRCRA_TypeTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -55297,6 +55337,15 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._chemical_WasteGeneratorTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._libraryTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.Library.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._libraryTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -55360,6 +55409,15 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._tlkpHazard_TypeTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tlkpHSC_HealthHazard.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._tlkpHSC_HealthHazardTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -55453,33 +55511,6 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._tlkpRCRA_TypeTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tlkpRCRA_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tlkpRCRA_TypeTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._tlkpRegionTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tlkpRegion.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tlkpRegionTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.trace_xe_action_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._trace_xe_action_mapTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -55488,13 +55519,21 @@ Namespace EnviroHealthSafetyTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As EnviroHealthSafety, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As EnviroHealthSafety_Data, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._chemical_LocationTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.Chemical_Location.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._chemical_LocationTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._wSCTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._wSCTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -55562,19 +55601,27 @@ Namespace EnviroHealthSafetyTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC_SupportingDocument.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._wSC_SupportingDocumentTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.trace_xe_action_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._trace_xe_action_mapTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             If (Not (Me._wSC_SW_261_2TableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC_SW_261_2.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._wSC_SW_261_2TableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._wSC_SWE_261_4TableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC_SWE_261_4.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._wSC_SWE_261_4TableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -55650,43 +55697,11 @@ Namespace EnviroHealthSafetyTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._libraryTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.Library.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._wSC_SWE_261_4TableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC_SWE_261_4.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._libraryTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.tlkpHSC_HealthHazard.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tlkpHSC_HealthHazardTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC_SupportingDocument.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._wSC_SupportingDocumentTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._wSCTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.WSC.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._wSCTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._trace_xe_event_mapTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.trace_xe_event_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._trace_xe_event_mapTableAdapter.Update(addedRows))
+                    result = (result + Me._wSC_SWE_261_4TableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -55695,6 +55710,22 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._tlkpUTS_ConstituentTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._tlkpRegionTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.tlkpRegion.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._tlkpRegionTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._tlkpRCRA_TypeTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.tlkpRCRA_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._tlkpRCRA_TypeTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -55727,6 +55758,14 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._chemical_WasteGeneratorTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._libraryTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.Library.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._libraryTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -55783,6 +55822,14 @@ Namespace EnviroHealthSafetyTableAdapters
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._tlkpHazard_TypeTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.tlkpHSC_HealthHazard.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._tlkpHSC_HealthHazardTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -55866,30 +55913,6 @@ Namespace EnviroHealthSafetyTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._tlkpRCRA_TypeTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.tlkpRCRA_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tlkpRCRA_TypeTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._tlkpRegionTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.tlkpRegion.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tlkpRegionTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.trace_xe_action_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._trace_xe_action_mapTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -55898,32 +55921,8 @@ Namespace EnviroHealthSafetyTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As EnviroHealthSafety, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As EnviroHealthSafety_Data, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.trace_xe_action_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._trace_xe_action_mapTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._tlkpRegionTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpRegion.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tlkpRegionTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._tlkpRCRA_TypeTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpRCRA_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tlkpRCRA_TypeTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._tlkpOffice_TypeTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpOffice_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -56004,6 +56003,14 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpHSC_HealthHazard.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tlkpHSC_HealthHazardTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._tlkpHazard_TypeTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpHazard_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -56060,6 +56067,14 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._libraryTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Library.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._libraryTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._chemical_WasteGeneratorTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.Chemical_WasteGenerator.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -56092,6 +56107,22 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._tlkpRCRA_TypeTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpRCRA_Type.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tlkpRCRA_TypeTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._tlkpRegionTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpRegion.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tlkpRegionTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._tlkpUTS_ConstituentTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpUTS_Constituent.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -56100,43 +56131,11 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._trace_xe_event_mapTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.trace_xe_event_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._wSC_SWE_261_4TableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC_SWE_261_4.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._trace_xe_event_mapTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._wSCTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._wSCTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC_SupportingDocument.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._wSC_SupportingDocumentTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tlkpHSC_HealthHazard.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tlkpHSC_HealthHazardTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._libraryTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.Library.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._libraryTableAdapter.Update(deletedRows))
+                    result = (result + Me._wSC_SWE_261_4TableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -56212,19 +56211,27 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._wSC_SWE_261_4TableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC_SWE_261_4.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._wSC_SWE_261_4TableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._wSC_SW_261_2TableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC_SW_261_2.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._wSC_SW_261_2TableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._trace_xe_action_mapTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.trace_xe_action_map.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._trace_xe_action_mapTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC_SupportingDocument.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._wSC_SupportingDocumentTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -56292,6 +56299,14 @@ Namespace EnviroHealthSafetyTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._wSCTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.WSC.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._wSCTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._chemical_LocationTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.Chemical_Location.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -56334,7 +56349,7 @@ Namespace EnviroHealthSafetyTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As EnviroHealthSafety) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As EnviroHealthSafety_Data) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
@@ -56363,6 +56378,11 @@ Namespace EnviroHealthSafetyTableAdapters
             End If
             If ((Not (Me._chemical_WasteGeneratorTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._chemical_WasteGeneratorTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
+            If ((Not (Me._libraryTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._libraryTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -56398,6 +56418,11 @@ Namespace EnviroHealthSafetyTableAdapters
             End If
             If ((Not (Me._tlkpHazard_TypeTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._tlkpHazard_TypeTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
+            If ((Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._tlkpHSC_HealthHazardTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -56471,11 +56496,6 @@ Namespace EnviroHealthSafetyTableAdapters
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
-            If ((Not (Me._trace_xe_event_mapTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._trace_xe_event_mapTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
             If ((Not (Me._wSCTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._wSCTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
@@ -56518,6 +56538,11 @@ Namespace EnviroHealthSafetyTableAdapters
             End If
             If ((Not (Me._wSC_RCRA_DeterminationTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._wSC_RCRA_DeterminationTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
+            If ((Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._wSC_SupportingDocumentTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -56573,21 +56598,6 @@ Namespace EnviroHealthSafetyTableAdapters
             End If
             If ((Not (Me._ztbl_EmployeeTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._ztbl_EmployeeTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
-            If ((Not (Me._libraryTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._libraryTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
-            If ((Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._tlkpHSC_HealthHazardTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
-            If ((Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._wSC_SupportingDocumentTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
@@ -56668,6 +56678,15 @@ Namespace EnviroHealthSafetyTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._chemical_WasteGeneratorTableAdapter.Adapter)
                     End If
                 End If
+                If (Not (Me._libraryTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._libraryTableAdapter, Me._libraryTableAdapter.Connection)
+                    Me._libraryTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
+                    Me._libraryTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
+                    If Me._libraryTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._libraryTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._libraryTableAdapter.Adapter)
+                    End If
+                End If
                 If (Not (Me._sDSTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._sDSTableAdapter, Me._sDSTableAdapter.Connection)
                     Me._sDSTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
@@ -56729,6 +56748,15 @@ Namespace EnviroHealthSafetyTableAdapters
                     If Me._tlkpHazard_TypeTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._tlkpHazard_TypeTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._tlkpHazard_TypeTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._tlkpHSC_HealthHazardTableAdapter, Me._tlkpHSC_HealthHazardTableAdapter.Connection)
+                    Me._tlkpHSC_HealthHazardTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
+                    Me._tlkpHSC_HealthHazardTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
+                    If Me._tlkpHSC_HealthHazardTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._tlkpHSC_HealthHazardTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tlkpHSC_HealthHazardTableAdapter.Adapter)
                     End If
                 End If
                 If (Not (Me._tlkpHSC_PhysicalHazardTableAdapter) Is Nothing) Then
@@ -56857,15 +56885,6 @@ Namespace EnviroHealthSafetyTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._trace_xe_action_mapTableAdapter.Adapter)
                     End If
                 End If
-                If (Not (Me._trace_xe_event_mapTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._trace_xe_event_mapTableAdapter, Me._trace_xe_event_mapTableAdapter.Connection)
-                    Me._trace_xe_event_mapTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
-                    Me._trace_xe_event_mapTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
-                    If Me._trace_xe_event_mapTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._trace_xe_event_mapTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._trace_xe_event_mapTableAdapter.Adapter)
-                    End If
-                End If
                 If (Not (Me._wSCTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._wSCTableAdapter, Me._wSCTableAdapter.Connection)
                     Me._wSCTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
@@ -56945,6 +56964,15 @@ Namespace EnviroHealthSafetyTableAdapters
                     If Me._wSC_RCRA_DeterminationTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._wSC_RCRA_DeterminationTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._wSC_RCRA_DeterminationTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._wSC_SupportingDocumentTableAdapter, Me._wSC_SupportingDocumentTableAdapter.Connection)
+                    Me._wSC_SupportingDocumentTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
+                    Me._wSC_SupportingDocumentTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
+                    If Me._wSC_SupportingDocumentTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._wSC_SupportingDocumentTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._wSC_SupportingDocumentTableAdapter.Adapter)
                     End If
                 End If
                 If (Not (Me._wSC_SW_261_2TableAdapter) Is Nothing) Then
@@ -57046,33 +57074,6 @@ Namespace EnviroHealthSafetyTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._ztbl_EmployeeTableAdapter.Adapter)
                     End If
                 End If
-                If (Not (Me._libraryTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._libraryTableAdapter, Me._libraryTableAdapter.Connection)
-                    Me._libraryTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
-                    Me._libraryTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
-                    If Me._libraryTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._libraryTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._libraryTableAdapter.Adapter)
-                    End If
-                End If
-                If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._tlkpHSC_HealthHazardTableAdapter, Me._tlkpHSC_HealthHazardTableAdapter.Connection)
-                    Me._tlkpHSC_HealthHazardTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
-                    Me._tlkpHSC_HealthHazardTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
-                    If Me._tlkpHSC_HealthHazardTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._tlkpHSC_HealthHazardTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tlkpHSC_HealthHazardTableAdapter.Adapter)
-                    End If
-                End If
-                If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._wSC_SupportingDocumentTableAdapter, Me._wSC_SupportingDocumentTableAdapter.Connection)
-                    Me._wSC_SupportingDocumentTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
-                    Me._wSC_SupportingDocumentTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
-                    If Me._wSC_SupportingDocumentTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._wSC_SupportingDocumentTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._wSC_SupportingDocumentTableAdapter.Adapter)
-                    End If
-                End If
                 '
                 '---- Perform updates -----------
                 '
@@ -57153,6 +57154,10 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me._chemical_WasteGeneratorTableAdapter.Connection = CType(revertConnections(Me._chemical_WasteGeneratorTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._chemical_WasteGeneratorTableAdapter.Transaction = Nothing
                 End If
+                If (Not (Me._libraryTableAdapter) Is Nothing) Then
+                    Me._libraryTableAdapter.Connection = CType(revertConnections(Me._libraryTableAdapter),Global.System.Data.Odbc.OdbcConnection)
+                    Me._libraryTableAdapter.Transaction = Nothing
+                End If
                 If (Not (Me._sDSTableAdapter) Is Nothing) Then
                     Me._sDSTableAdapter.Connection = CType(revertConnections(Me._sDSTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._sDSTableAdapter.Transaction = Nothing
@@ -57180,6 +57185,10 @@ Namespace EnviroHealthSafetyTableAdapters
                 If (Not (Me._tlkpHazard_TypeTableAdapter) Is Nothing) Then
                     Me._tlkpHazard_TypeTableAdapter.Connection = CType(revertConnections(Me._tlkpHazard_TypeTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._tlkpHazard_TypeTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
+                    Me._tlkpHSC_HealthHazardTableAdapter.Connection = CType(revertConnections(Me._tlkpHSC_HealthHazardTableAdapter),Global.System.Data.Odbc.OdbcConnection)
+                    Me._tlkpHSC_HealthHazardTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._tlkpHSC_PhysicalHazardTableAdapter) Is Nothing) Then
                     Me._tlkpHSC_PhysicalHazardTableAdapter.Connection = CType(revertConnections(Me._tlkpHSC_PhysicalHazardTableAdapter),Global.System.Data.Odbc.OdbcConnection)
@@ -57237,10 +57246,6 @@ Namespace EnviroHealthSafetyTableAdapters
                     Me._trace_xe_action_mapTableAdapter.Connection = CType(revertConnections(Me._trace_xe_action_mapTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._trace_xe_action_mapTableAdapter.Transaction = Nothing
                 End If
-                If (Not (Me._trace_xe_event_mapTableAdapter) Is Nothing) Then
-                    Me._trace_xe_event_mapTableAdapter.Connection = CType(revertConnections(Me._trace_xe_event_mapTableAdapter),Global.System.Data.Odbc.OdbcConnection)
-                    Me._trace_xe_event_mapTableAdapter.Transaction = Nothing
-                End If
                 If (Not (Me._wSCTableAdapter) Is Nothing) Then
                     Me._wSCTableAdapter.Connection = CType(revertConnections(Me._wSCTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._wSCTableAdapter.Transaction = Nothing
@@ -57276,6 +57281,10 @@ Namespace EnviroHealthSafetyTableAdapters
                 If (Not (Me._wSC_RCRA_DeterminationTableAdapter) Is Nothing) Then
                     Me._wSC_RCRA_DeterminationTableAdapter.Connection = CType(revertConnections(Me._wSC_RCRA_DeterminationTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._wSC_RCRA_DeterminationTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
+                    Me._wSC_SupportingDocumentTableAdapter.Connection = CType(revertConnections(Me._wSC_SupportingDocumentTableAdapter),Global.System.Data.Odbc.OdbcConnection)
+                    Me._wSC_SupportingDocumentTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._wSC_SW_261_2TableAdapter) Is Nothing) Then
                     Me._wSC_SW_261_2TableAdapter.Connection = CType(revertConnections(Me._wSC_SW_261_2TableAdapter),Global.System.Data.Odbc.OdbcConnection)
@@ -57320,18 +57329,6 @@ Namespace EnviroHealthSafetyTableAdapters
                 If (Not (Me._ztbl_EmployeeTableAdapter) Is Nothing) Then
                     Me._ztbl_EmployeeTableAdapter.Connection = CType(revertConnections(Me._ztbl_EmployeeTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._ztbl_EmployeeTableAdapter.Transaction = Nothing
-                End If
-                If (Not (Me._libraryTableAdapter) Is Nothing) Then
-                    Me._libraryTableAdapter.Connection = CType(revertConnections(Me._libraryTableAdapter),Global.System.Data.Odbc.OdbcConnection)
-                    Me._libraryTableAdapter.Transaction = Nothing
-                End If
-                If (Not (Me._tlkpHSC_HealthHazardTableAdapter) Is Nothing) Then
-                    Me._tlkpHSC_HealthHazardTableAdapter.Connection = CType(revertConnections(Me._tlkpHSC_HealthHazardTableAdapter),Global.System.Data.Odbc.OdbcConnection)
-                    Me._tlkpHSC_HealthHazardTableAdapter.Transaction = Nothing
-                End If
-                If (Not (Me._wSC_SupportingDocumentTableAdapter) Is Nothing) Then
-                    Me._wSC_SupportingDocumentTableAdapter.Connection = CType(revertConnections(Me._wSC_SupportingDocumentTableAdapter),Global.System.Data.Odbc.OdbcConnection)
-                    Me._wSC_SupportingDocumentTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

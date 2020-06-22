@@ -146,7 +146,7 @@ Err_ErrorHandler:                           ' Label to jump to on error.
 
     Private Sub SearchSubstance()
         Try
-            Me.Qry_SearchProductManufacturerTableAdapter.FillBySearchProductName(Me.EnviroHealthSafety.qry_SearchProductManufacturer, txt_SearchSubstance.Text
+            Me.Qry_SearchProductManufacturerTableAdapter.FillBySearchProductName(Me.EnviroHealthSafety_Data.qry_SearchProductManufacturer, txt_SearchSubstance.Text
                                                                                )
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
@@ -155,7 +155,7 @@ Err_ErrorHandler:                           ' Label to jump to on error.
 
     Private Sub SearchManufacturer()
         Try
-            Me.Qry_SearchProductManufacturerTableAdapter.FillBySearchByManufacturer(Me.EnviroHealthSafety.qry_SearchProductManufacturer, txt_SearchManufacturer.Text)
+            Me.Qry_SearchProductManufacturerTableAdapter.FillBySearchByManufacturer(Me.EnviroHealthSafety_Data.qry_SearchProductManufacturer, txt_SearchManufacturer.Text)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -164,7 +164,7 @@ Err_ErrorHandler:                           ' Label to jump to on error.
 
     Private Sub SearchSDSNumber()
         Try
-            Me.Qry_SearchProductManufacturerTableAdapter.FillBySearchSDSNumber(Me.EnviroHealthSafety.qry_SearchProductManufacturer, txt_SearchSDSNo.Text)
+            Me.Qry_SearchProductManufacturerTableAdapter.FillBySearchSDSNumber(Me.EnviroHealthSafety_Data.qry_SearchProductManufacturer, txt_SearchSDSNo.Text)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -173,7 +173,7 @@ Err_ErrorHandler:                           ' Label to jump to on error.
 
     Private Sub SearchDefault()
         Try
-            Me.Qry_SearchProductManufacturerTableAdapter.Fill(Me.EnviroHealthSafety.qry_SearchProductManufacturer)
+            Me.Qry_SearchProductManufacturerTableAdapter.Fill(Me.EnviroHealthSafety_Data.qry_SearchProductManufacturer)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try

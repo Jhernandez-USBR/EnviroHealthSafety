@@ -32,10 +32,10 @@ Partial Class frmProduct_Manufacturer
         Dim Manufacturer_CityLabel As System.Windows.Forms.Label
         Dim Manufacturer_StateLabel As System.Windows.Forms.Label
         Dim Manufacturer_AreaCodeLabel As System.Windows.Forms.Label
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.Chemical_ManufacturerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Chemical_ManufacturerTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_ManufacturerTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
+        Me.Chemical_ManufacturerTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_ManufacturerTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
         Me.Manufacturer_IDTextBox = New System.Windows.Forms.TextBox()
         Me.Manufacturer_NameTextBox = New System.Windows.Forms.TextBox()
         Me.Manufacturer_DescriptionTextBox = New System.Windows.Forms.TextBox()
@@ -60,7 +60,7 @@ Partial Class frmProduct_Manufacturer
         Manufacturer_CityLabel = New System.Windows.Forms.Label()
         Manufacturer_StateLabel = New System.Windows.Forms.Label()
         Manufacturer_AreaCodeLabel = New System.Windows.Forms.Label()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Chemical_ManufacturerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TStrip_Manufacturer.SuspendLayout()
         Me.SuspendLayout()
@@ -146,15 +146,15 @@ Partial Class frmProduct_Manufacturer
         Manufacturer_AreaCodeLabel.TabIndex = 19
         Manufacturer_AreaCodeLabel.Text = "Area Code:"
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Chemical_ManufacturerBindingSource
         '
         Me.Chemical_ManufacturerBindingSource.DataMember = "Chemical_Manufacturer"
-        Me.Chemical_ManufacturerBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.Chemical_ManufacturerBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Chemical_ManufacturerTableAdapter
         '
@@ -189,8 +189,8 @@ Partial Class frmProduct_Manufacturer
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -415,7 +415,7 @@ Partial Class frmProduct_Manufacturer
         Me.Name = "frmProduct_Manufacturer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Product Manufacturer"
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Chemical_ManufacturerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TStrip_Manufacturer.ResumeLayout(False)
         Me.TStrip_Manufacturer.PerformLayout()
@@ -424,10 +424,10 @@ Partial Class frmProduct_Manufacturer
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents Chemical_ManufacturerBindingSource As BindingSource
-    Friend WithEvents Chemical_ManufacturerTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_ManufacturerTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
+    Friend WithEvents Chemical_ManufacturerTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_ManufacturerTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
     Friend WithEvents Manufacturer_IDTextBox As TextBox
     Friend WithEvents Manufacturer_NameTextBox As TextBox
     Friend WithEvents Manufacturer_DescriptionTextBox As TextBox

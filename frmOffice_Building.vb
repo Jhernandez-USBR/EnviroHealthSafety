@@ -9,11 +9,11 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice_PhysicalLocation' table. You can move, or remove it, as needed.
+            'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice_PhysicalLocation' table. You can move, or remove it, as needed.
             Me.TlkpOffice_PhysicalLocationTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice_PhysicalLocation)
-            'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice' table. You can move, or remove it, as needed.
+            'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice' table. You can move, or remove it, as needed.
             Me.TlkpOfficeTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice)
-            'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpOffice_Building' table. You can move, or remove it, as needed.
+            'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpOffice_Building' table. You can move, or remove it, as needed.
             Me.TlkpOffice_BuildingTableAdapter.Fill(Me.EnviroHealthSafety.tlkpOffice_Building)
 
 

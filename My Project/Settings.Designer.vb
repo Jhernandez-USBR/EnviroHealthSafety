@@ -57,7 +57,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Dsn=EnviroHealthSafety103")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=ibr4ucrdb103;Initial Catalog=EnvroHealthSafetydb;Integrated Security="& _ 
+            "True")>  _
         Public ReadOnly Property EnvroHealthSafetydbConnectionString() As String
             Get
                 Return CType(Me("EnvroHealthSafetydbConnectionString"),String)

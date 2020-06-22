@@ -30,7 +30,7 @@ Partial Class frm_ChemicalProduct_General
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Qry_ChemicalProduct_SDSGeneralBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -58,11 +58,11 @@ Partial Class frm_ChemicalProduct_General
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Product_IDTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Qry_ChemicalProduct_SDSGeneralTableAdapter = New EnviroHealthSafetyTableAdapters.qry_ChemicalProduct_SDSGeneralTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
+        Me.Qry_ChemicalProduct_SDSGeneralTableAdapter = New EnviroHealthSafety_DataTableAdapters.qry_ChemicalProduct_SDSGeneralTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
         Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.Qry_ChemicalProduct_SDSGeneralBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -134,12 +134,12 @@ Partial Class frm_ChemicalProduct_General
         'Qry_ChemicalProduct_SDSGeneralBindingSource
         '
         Me.Qry_ChemicalProduct_SDSGeneralBindingSource.DataMember = "qry_ChemicalProduct_SDSGeneral"
-        Me.Qry_ChemicalProduct_SDSGeneralBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.Qry_ChemicalProduct_SDSGeneralBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label7
         '
@@ -521,8 +521,8 @@ Partial Class frm_ChemicalProduct_General
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -569,7 +569,7 @@ Partial Class frm_ChemicalProduct_General
         Me.Name = "frm_ChemicalProduct_General"
         Me.Text = "Product Details"
         CType(Me.Qry_ChemicalProduct_SDSGeneralBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -611,10 +611,10 @@ Partial Class frm_ChemicalProduct_General
     Friend WithEvents Label16 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents Qry_ChemicalProduct_SDSGeneralBindingSource As BindingSource
-    Friend WithEvents Qry_ChemicalProduct_SDSGeneralTableAdapter As EnviroHealthSafetyTableAdapters.qry_ChemicalProduct_SDSGeneralTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
+    Friend WithEvents Qry_ChemicalProduct_SDSGeneralTableAdapter As EnviroHealthSafety_DataTableAdapters.qry_ChemicalProduct_SDSGeneralTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
     Friend WithEvents Product_IDTextBox As TextBox
     Friend WithEvents Label2 As Label
 End Class

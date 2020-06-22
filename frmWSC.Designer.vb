@@ -32,12 +32,12 @@ Partial Class frmWSC
         Dim WCS_ReviewerLabel As System.Windows.Forms.Label
         Dim WCS_ApproverDateLabel As System.Windows.Forms.Label
         Dim WCS_ReviewerDateLabel As System.Windows.Forms.Label
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.WSCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.WSCTableAdapter = New EnviroHealthSafetyTableAdapters.WSCTableAdapter()
-        Me.TableAdapterManager = New EnviroHealthSafetyTableAdapters.TableAdapterManager()
-        Me.TlkpOfficeTableAdapter = New EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter()
-        Me.Ztbl_EmployeeTableAdapter = New EnviroHealthSafetyTableAdapters.ztbl_EmployeeTableAdapter()
+        Me.WSCTableAdapter = New EnviroHealthSafety_DataTableAdapters.WSCTableAdapter()
+        Me.TableAdapterManager = New EnviroHealthSafety_DataTableAdapters.TableAdapterManager()
+        Me.TlkpOfficeTableAdapter = New EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter()
+        Me.Ztbl_EmployeeTableAdapter = New EnviroHealthSafety_DataTableAdapters.ztbl_EmployeeTableAdapter()
         Me.WSC_IDTextBox = New System.Windows.Forms.TextBox()
         Me.WSC_NameTextBox = New System.Windows.Forms.TextBox()
         Me.Office_IDComboBox = New System.Windows.Forms.ComboBox()
@@ -73,7 +73,7 @@ Partial Class frmWSC
         WCS_ReviewerLabel = New System.Windows.Forms.Label()
         WCS_ApproverDateLabel = New System.Windows.Forms.Label()
         WCS_ReviewerDateLabel = New System.Windows.Forms.Label()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WSCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TlkpOfficeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZtblEmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -162,15 +162,15 @@ Partial Class frmWSC
         WCS_ReviewerDateLabel.TabIndex = 29
         WCS_ReviewerDateLabel.Text = "Reviewed Date:"
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'WSCBindingSource
         '
         Me.WSCBindingSource.DataMember = "WSC"
-        Me.WSCBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.WSCBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSCTableAdapter
         '
@@ -205,8 +205,8 @@ Partial Class frmWSC
         Me.TableAdapterManager.tlkpRegionTableAdapter = Nothing
         Me.TableAdapterManager.tlkpUTS_ConstituentTableAdapter = Nothing
         Me.TableAdapterManager.trace_xe_action_mapTableAdapter = Nothing
-        Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafetyTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        'Me.TableAdapterManager.trace_xe_event_mapTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = EnviroHealthSafety_DataTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.WSC_CHW_ToxicConstituentTableAdapter = Nothing
         Me.TableAdapterManager.WSC_CHWTableAdapter = Nothing
         Me.TableAdapterManager.WSC_LHW_FListTableAdapter = Nothing
@@ -273,7 +273,7 @@ Partial Class frmWSC
         'TlkpOfficeBindingSource
         '
         Me.TlkpOfficeBindingSource.DataMember = "tlkpOffice"
-        Me.TlkpOfficeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.TlkpOfficeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSC_EmployeeReviewerComboBox
         '
@@ -292,7 +292,7 @@ Partial Class frmWSC
         'ZtblEmployeeBindingSource
         '
         Me.ZtblEmployeeBindingSource.DataMember = "ztbl_Employee"
-        Me.ZtblEmployeeBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ZtblEmployeeBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'WSC_DateCreatedDateTimePicker
         '
@@ -588,7 +588,7 @@ Partial Class frmWSC
         Me.MinimumSize = New System.Drawing.Size(750, 600)
         Me.Name = "frmWSC"
         Me.Text = "Waste Stream Characterization Background"
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WSCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TlkpOfficeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZtblEmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -599,10 +599,10 @@ Partial Class frmWSC
 
     End Sub
 
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents WSCBindingSource As BindingSource
-    Friend WithEvents WSCTableAdapter As EnviroHealthSafetyTableAdapters.WSCTableAdapter
-    Friend WithEvents TableAdapterManager As EnviroHealthSafetyTableAdapters.TableAdapterManager
+    Friend WithEvents WSCTableAdapter As EnviroHealthSafety_DataTableAdapters.WSCTableAdapter
+    Friend WithEvents TableAdapterManager As EnviroHealthSafety_DataTableAdapters.TableAdapterManager
     Friend WithEvents WSC_IDTextBox As TextBox
     Friend WithEvents WSC_NameTextBox As TextBox
     Friend WithEvents Office_IDComboBox As ComboBox
@@ -619,9 +619,9 @@ Partial Class frmWSC
     Friend WithEvents btn_WSC_F1 As FontAwesome.Sharp.IconButton
     Friend WithEvents lbl_ReferenceName As Label
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafetyTableAdapters.tlkpOfficeTableAdapter
+    Friend WithEvents TlkpOfficeTableAdapter As EnviroHealthSafety_DataTableAdapters.tlkpOfficeTableAdapter
     Friend WithEvents TlkpOfficeBindingSource As BindingSource
-    Friend WithEvents Ztbl_EmployeeTableAdapter As EnviroHealthSafetyTableAdapters.ztbl_EmployeeTableAdapter
+    Friend WithEvents Ztbl_EmployeeTableAdapter As EnviroHealthSafety_DataTableAdapters.ztbl_EmployeeTableAdapter
     Friend WithEvents ZtblEmployeeBindingSource As BindingSource
     Friend WithEvents btn_PreviousForm As FontAwesome.Sharp.IconToolStripButton
     Friend WithEvents btn_NewWSC As FontAwesome.Sharp.IconToolStripButton

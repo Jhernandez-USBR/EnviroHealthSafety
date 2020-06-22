@@ -16,8 +16,8 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>S:\WRM\Environmental Health and Safety Database\1_Database\2_PublishingApp\</PublishUrl>
-    <Install>false</Install>
-    <InstallFrom>Disk</InstallFrom>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -25,12 +25,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>\\ibr4ucrfp004.bor.doi.net\Software%24\WRM\Environmental Health and Safety Database\1_Database\2_PublishingApp\</InstallUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Environmental Health and Safety</ProductName>
     <PublisherName>Bureau of Reclamation</PublisherName>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -84,6 +85,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=5.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.5.12.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
@@ -114,11 +118,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="EnviroHealthSafety.designer.vb">
-      <DependentUpon>EnviroHealthSafety.vb</DependentUpon>
+    <Compile Include="EnviroHealthSafety_Data.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnviroHealthSafety_Data.xsd</DependentUpon>
     </Compile>
-    <Compile Include="EnviroHealthSafety.vb">
-      <DependentUpon>EnviroHealthSafety.xsd</DependentUpon>
+    <Compile Include="EnviroHealthSafety_Data.vb">
+      <DependentUpon>EnviroHealthSafety_Data.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmWSC_WSD_Identification.Designer.vb">
       <DependentUpon>frmWSC_WSD_Identification.vb</DependentUpon>
@@ -362,14 +368,18 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="EnviroHealthSafety.xsc">
-      <DependentUpon>EnviroHealthSafety.xsd</DependentUpon>
+    <None Include="EnviroHealthSafety_Data.xsc">
+      <DependentUpon>EnviroHealthSafety_Data.xsd</DependentUpon>
     </None>
-    <None Include="EnviroHealthSafety.xsd" />
-    <None Include="EnviroHealthSafety.xss">
-      <DependentUpon>EnviroHealthSafety.xsd</DependentUpon>
+    <None Include="EnviroHealthSafety_Data.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EnviroHealthSafety_Data.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <None Include="EnviroHealthSafety_TemporaryKey.pfx" />
+    <None Include="EnviroHealthSafety_Data.xss">
+      <DependentUpon>EnviroHealthSafety_Data.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

@@ -3,14 +3,14 @@
     Dim savedCursor As Windows.Forms.Cursor
     Private currentProductTab As Form
     Private Sub frmProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.ztbl_Employee' table. You can move, or remove it, as needed.
-        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety.ztbl_Employee)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Manufacturer' table. You can move, or remove it, as needed.
-        Me.Chemical_ManufacturerTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Manufacturer)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_ResponsibleParty' table. You can move, or remove it, as needed.
-        Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_ResponsibleParty)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Product' table. You can move, or remove it, as needed.
-        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Product)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.ztbl_Employee' table. You can move, or remove it, as needed.
+        Me.Ztbl_EmployeeTableAdapter.Fill(Me.EnviroHealthSafety_Data.ztbl_Employee)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Manufacturer' table. You can move, or remove it, as needed.
+        Me.Chemical_ManufacturerTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Manufacturer)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_ResponsibleParty' table. You can move, or remove it, as needed.
+        Me.Chemical_ResponsiblePartyTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Product' table. You can move, or remove it, as needed.
+        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Product)
 
         If (CP_ProductID = 0 Or IsNothing(CP_ProductID)) Then
             Me.Chemical_ProductBindingSource.AddNew()
@@ -33,7 +33,7 @@
     Private Sub Refresh_dgvSearchProductID()
         Try
             If Not (Me.Product_IDTextBox.Text = "" Or IsNothing(Me.Product_IDTextBox.Text)) Then
-                Me.Chemical_ResponsiblePartyTableAdapter.FillByProductID(Me.EnviroHealthSafety.Chemical_ResponsibleParty, CInt(Me.Product_IDTextBox.Text))
+                Me.Chemical_ResponsiblePartyTableAdapter.FillByProductID(Me.EnviroHealthSafety_Data.Chemical_ResponsibleParty, CInt(Me.Product_IDTextBox.Text))
             End If
 
         Catch ex As System.Exception
@@ -78,11 +78,11 @@
             Me.ValidateProduct_DetailData()
             Me.Validate()
             Me.Chemical_ProductBindingSource.EndEdit()
-            Me.Chemical_ProductTableAdapter.Update(Me.EnviroHealthSafety.Chemical_Product)
+            Me.Chemical_ProductTableAdapter.Update(Me.EnviroHealthSafety_Data.Chemical_Product)
 
             MsgBox("Save Record! - frm_ProductDetail")
             If (CInt(Product_IDTextBox.Text) = -1) Then
-                Me.Chemical_ProductTableAdapter.FillByProductNameExact(Me.EnviroHealthSafety.Chemical_Product, Me.Product_NameTextBox.Text)
+                Me.Chemical_ProductTableAdapter.FillByProductNameExact(Me.EnviroHealthSafety_Data.Chemical_Product, Me.Product_NameTextBox.Text)
 
                 mod_ChemicalProduct.SetCP_ProductID(CInt(Me.Product_IDTextBox.Text))
 

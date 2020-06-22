@@ -26,14 +26,14 @@ Partial Class frm_SDSResult
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_SDSResult))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.dgv_SDSResult = New System.Windows.Forms.DataGridView()
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.ChemicalProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Chemical_ProductTableAdapter = New EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter()
-        Me.EnviroHealthSafetyBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Chemical_ProductTableAdapter = New EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter()
+        Me.EnviroHealthSafety_DataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.dgv_SDSResult, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ChemicalProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafetyBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_DataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -61,24 +61,24 @@ Partial Class frm_SDSResult
         Me.dgv_SDSResult.Size = New System.Drawing.Size(675, 446)
         Me.dgv_SDSResult.TabIndex = 2
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ChemicalProductBindingSource
         '
         Me.ChemicalProductBindingSource.DataMember = "Chemical_Product"
-        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.ChemicalProductBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
         'Chemical_ProductTableAdapter
         '
         Me.Chemical_ProductTableAdapter.ClearBeforeFill = True
         '
-        'EnviroHealthSafetyBindingSource
+        'EnviroHealthSafety_DataBindingSource
         '
-        Me.EnviroHealthSafetyBindingSource.DataSource = Me.EnviroHealthSafety
-        Me.EnviroHealthSafetyBindingSource.Position = 0
+        Me.EnviroHealthSafety_DataBindingSource.DataSource = Me.EnviroHealthSafety_Data
+        Me.EnviroHealthSafety_DataBindingSource.Position = 0
         '
         'frm_SDSResult
         '
@@ -95,16 +95,16 @@ Partial Class frm_SDSResult
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Safety Data Sheet Search Results"
         CType(Me.dgv_SDSResult, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChemicalProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafetyBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_DataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Button1 As Button
     Friend WithEvents dgv_SDSResult As DataGridView
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
     Friend WithEvents ChemicalProductBindingSource As BindingSource
-    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafetyTableAdapters.Chemical_ProductTableAdapter
-    Friend WithEvents EnviroHealthSafetyBindingSource As BindingSource
+    Friend WithEvents Chemical_ProductTableAdapter As EnviroHealthSafety_DataTableAdapters.Chemical_ProductTableAdapter
+    Friend WithEvents EnviroHealthSafety_DataBindingSource As BindingSource
 End Class

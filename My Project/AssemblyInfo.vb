@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("EnviroHealthSafety")>
+<Assembly: AssemblyTitle("EnviroHealthSafety_Data")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("EnviroHealthSafety")>
+<Assembly: AssemblyProduct("EnviroHealthSafety_Data")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
 <Assembly: AssemblyTrademark("")>
 

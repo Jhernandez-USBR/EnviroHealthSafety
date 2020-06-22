@@ -2,20 +2,20 @@
 
 
     Private Sub frmWSC_WSD_Identification_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.tlkpCHW_Toxic_Constituent' table. You can move, or remove it, as needed.
-        Me.TlkpCHW_Toxic_ConstituentTableAdapter.Fill(Me.EnviroHealthSafety.tlkpCHW_Toxic_Constituent)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC_CHW_ToxicConstituent' table. You can move, or remove it, as needed.
-        Me.WSC_CHW_ToxicConstituentTableAdapter.Fill(Me.EnviroHealthSafety.WSC_CHW_ToxicConstituent)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.WSC_CHW' table. You can move, or remove it, as needed.
-        Me.WSC_CHWTableAdapter.Fill(Me.EnviroHealthSafety.WSC_CHW)
-        Me.WSC_LHW_PListTableAdapter.Fill(Me.EnviroHealthSafety.WSC_LHW_PList)
-        Me.WSC_LHW_KListTableAdapter.Fill(Me.EnviroHealthSafety.WSC_LHW_KList)
-        Me.TlkpLHW_PUTableAdapter.Fill(Me.EnviroHealthSafety.tlkpLHW_PU)
-        Me.WSC_LHW_UListTableAdapter.Fill(Me.EnviroHealthSafety.WSC_LHW_UList)
-        Me.TlkpLHW_FKTableAdapter.Fill(Me.EnviroHealthSafety.tlkpLHW_FK)
-        Me.WSC_LHW_FListTableAdapter.Fill(Me.EnviroHealthSafety.WSC_LHW_FList)
-        Me.WSC_LHWTableAdapter.Fill(Me.EnviroHealthSafety.WSC_LHW)
-        Me.WSC_SW_261_2TableAdapter.Fill(Me.EnviroHealthSafety.WSC_SW_261_2)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.tlkpCHW_Toxic_Constituent' table. You can move, or remove it, as needed.
+        Me.TlkpCHW_Toxic_ConstituentTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpCHW_Toxic_Constituent)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC_CHW_ToxicConstituent' table. You can move, or remove it, as needed.
+        Me.WSC_CHW_ToxicConstituentTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_CHW_ToxicConstituent)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.WSC_CHW' table. You can move, or remove it, as needed.
+        Me.WSC_CHWTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_CHW)
+        Me.WSC_LHW_PListTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_LHW_PList)
+        Me.WSC_LHW_KListTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_LHW_KList)
+        Me.TlkpLHW_PUTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpLHW_PU)
+        Me.WSC_LHW_UListTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_LHW_UList)
+        Me.TlkpLHW_FKTableAdapter.Fill(Me.EnviroHealthSafety_Data.tlkpLHW_FK)
+        Me.WSC_LHW_FListTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_LHW_FList)
+        Me.WSC_LHWTableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_LHW)
+        Me.WSC_SW_261_2TableAdapter.Fill(Me.EnviroHealthSafety_Data.WSC_SW_261_2)
 
         Dim Position261_2 As Integer
         Dim Position261_4 As Integer
@@ -213,7 +213,7 @@
 
             If Not (Me.WSC_LHW_IDTextBox.Text = "") Then
                 MsgBox("Refresh dgv - F Listed")
-                Me.WSC_LHW_FListTableAdapter.FillByFilterWSCID(Me.EnviroHealthSafety.WSC_LHW_FList, CInt(Me.WSC_LHW_IDTextBox.Text))
+                Me.WSC_LHW_FListTableAdapter.FillByFilterWSCID(Me.EnviroHealthSafety_Data.WSC_LHW_FList, CInt(Me.WSC_LHW_IDTextBox.Text))
             End If
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)

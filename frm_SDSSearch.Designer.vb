@@ -34,7 +34,7 @@ Partial Class frm_SDSSearch
         Me.SDSProductCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SDSActiveDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.QrySearchProductManufacturerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EnviroHealthSafety = New EnviroHealthSafety()
+        Me.EnviroHealthSafety_Data = New EnviroHealthSafety_Data()
         Me.btn_SDSSearch = New System.Windows.Forms.Button()
         Me.lbl_SearchSubstance = New System.Windows.Forms.Label()
         Me.txt_SearchSubstance = New System.Windows.Forms.TextBox()
@@ -43,11 +43,11 @@ Partial Class frm_SDSSearch
         Me.txt_SearchManufacturer = New System.Windows.Forms.TextBox()
         Me.txt_SearchSDSNo = New System.Windows.Forms.TextBox()
         Me.lbl_SearchManufacturer = New System.Windows.Forms.Label()
-        Me.Qry_SearchProductManufacturerTableAdapter = New EnviroHealthSafetyTableAdapters.qry_SearchProductManufacturerTableAdapter()
+        Me.Qry_SearchProductManufacturerTableAdapter = New EnviroHealthSafety_DataTableAdapters.qry_SearchProductManufacturerTableAdapter()
         Me.Panel_Main.SuspendLayout()
         CType(Me.dgv_ProductListResult, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QrySearchProductManufacturerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel_Main
@@ -164,12 +164,12 @@ Partial Class frm_SDSSearch
         'QrySearchProductManufacturerBindingSource
         '
         Me.QrySearchProductManufacturerBindingSource.DataMember = "qry_SearchProductManufacturer"
-        Me.QrySearchProductManufacturerBindingSource.DataSource = Me.EnviroHealthSafety
+        Me.QrySearchProductManufacturerBindingSource.DataSource = Me.EnviroHealthSafety_Data
         '
-        'EnviroHealthSafety
+        'EnviroHealthSafety_Data
         '
-        Me.EnviroHealthSafety.DataSetName = "EnviroHealthSafety"
-        Me.EnviroHealthSafety.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.EnviroHealthSafety_Data.DataSetName = "EnviroHealthSafety_Data"
+        Me.EnviroHealthSafety_Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'btn_SDSSearch
         '
@@ -299,7 +299,7 @@ Partial Class frm_SDSSearch
         Me.Panel_Main.PerformLayout()
         CType(Me.dgv_ProductListResult, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QrySearchProductManufacturerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnviroHealthSafety, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EnviroHealthSafety_Data, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -315,8 +315,8 @@ Partial Class frm_SDSSearch
     Friend WithEvents lbl_SearchManufacturer As Label
     Friend WithEvents dgv_ProductListResult As DataGridView
     Friend WithEvents QrySearchProductManufacturerBindingSource As BindingSource
-    Friend WithEvents EnviroHealthSafety As EnviroHealthSafety
-    Friend WithEvents Qry_SearchProductManufacturerTableAdapter As EnviroHealthSafetyTableAdapters.qry_SearchProductManufacturerTableAdapter
+    Friend WithEvents EnviroHealthSafety_Data As EnviroHealthSafety_Data
+    Friend WithEvents Qry_SearchProductManufacturerTableAdapter As EnviroHealthSafety_DataTableAdapters.qry_SearchProductManufacturerTableAdapter
     Friend WithEvents ProductIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ProductNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ManufacturerNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn

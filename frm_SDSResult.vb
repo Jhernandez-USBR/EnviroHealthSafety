@@ -10,10 +10,10 @@ Public Class frm_SDSResult
 
 
     Private Sub frm_SDSResult_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.Chemical_Product' table. You can move, or remove it, as needed.
-        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety.Chemical_Product)
-        'TODO: This line of code loads data into the 'EnviroHealthSafety.SDS' table. You can move, or remove it, as needed.
-        'Me.SDSTableAdapter.Fill(Me.EnviroHealthSafety.SDS)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.Chemical_Product' table. You can move, or remove it, as needed.
+        Me.Chemical_ProductTableAdapter.Fill(Me.EnviroHealthSafety_Data.Chemical_Product)
+        'TODO: This line of code loads data into the 'EnviroHealthSafety_Data.SDS' table. You can move, or remove it, as needed.
+        'Me.SDSTableAdapter.Fill(Me.EnviroHealthSafety_Data.SDS)
 
         On Error GoTo Err_ErrorHandler
 
